@@ -13,6 +13,8 @@
 		FEC3FC5E271944EA001890E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC3FC5C271944EA001890E7 /* Main.storyboard */; };
 		FEC3FC60271944EC001890E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEC3FC5F271944EC001890E7 /* Assets.xcassets */; };
 		FEC3FC63271944EC001890E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC3FC61271944EC001890E7 /* LaunchScreen.storyboard */; };
+		FEC3FC6D27197F88001890E7 /* MediaInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3FC6C27197F88001890E7 /* MediaInformation.swift */; };
+		FEC3FC6F271982E0001890E7 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3FC6E271982E0001890E7 /* Media.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FEC3FC5F271944EC001890E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEC3FC62271944EC001890E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEC3FC64271944EC001890E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEC3FC6C27197F88001890E7 /* MediaInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaInformation.swift; sourceTree = "<group>"; };
+		FEC3FC6E271982E0001890E7 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +64,11 @@
 				FEC3FC58271944EA001890E7 /* SceneDelegate.swift */,
 				FEC3FC5A271944EA001890E7 /* ViewController.swift */,
 				FEC3FC5C271944EA001890E7 /* Main.storyboard */,
+				FEC3FC6C27197F88001890E7 /* MediaInformation.swift */,
 				FEC3FC5F271944EC001890E7 /* Assets.xcassets */,
 				FEC3FC61271944EC001890E7 /* LaunchScreen.storyboard */,
 				FEC3FC64271944EC001890E7 /* Info.plist */,
+				FEC3FC6E271982E0001890E7 /* Media.swift */,
 			);
 			path = TrendMediaProject;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEC3FC5B271944EA001890E7 /* ViewController.swift in Sources */,
+				FEC3FC6D27197F88001890E7 /* MediaInformation.swift in Sources */,
+				FEC3FC6F271982E0001890E7 /* Media.swift in Sources */,
 				FEC3FC57271944EA001890E7 /* AppDelegate.swift in Sources */,
 				FEC3FC59271944EA001890E7 /* SceneDelegate.swift in Sources */,
 			);
