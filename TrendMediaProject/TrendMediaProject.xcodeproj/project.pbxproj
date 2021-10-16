@@ -67,11 +67,11 @@
 				FEC3FC5A271944EA001890E7 /* ViewController.swift */,
 				FEC3FC94271ACFC5001890E7 /* MediaTableViewCell.swift */,
 				FEC3FC5C271944EA001890E7 /* Main.storyboard */,
-				FEC3FC6C27197F88001890E7 /* MediaInformation.swift */,
 				FEC3FC5F271944EC001890E7 /* Assets.xcassets */,
 				FEC3FC61271944EC001890E7 /* LaunchScreen.storyboard */,
 				FEC3FC64271944EC001890E7 /* Info.plist */,
 				FEC3FC6E271982E0001890E7 /* Media.swift */,
+				FEC3FC6C27197F88001890E7 /* MediaInformation.swift */,
 			);
 			path = TrendMediaProject;
 			sourceTree = "<group>";

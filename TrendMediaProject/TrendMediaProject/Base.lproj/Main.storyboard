@@ -33,11 +33,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaTableViewCell" rowHeight="403" id="aJX-GQ-p1a" customClass="MediaTableViewCell" customModule="TrendMediaProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="403"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaTableViewCell" rowHeight="430" id="aJX-GQ-p1a" customClass="MediaTableViewCell" customModule="TrendMediaProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="430"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aJX-GQ-p1a" id="zXt-og-rIm">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="403"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#SF #액션" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRv-4f-Cj6">
@@ -46,9 +46,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="베놈 2: 렛 데어 비 카니지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKV-3H-VHX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021-09-30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKV-3H-VHX">
                                                     <rect key="frame" x="20" y="331" width="374" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -97,20 +97,23 @@
                                                         <constraint firstItem="tGh-Kj-XBD" firstAttribute="centerX" secondItem="5HQ-Lt-4DR" secondAttribute="centerX" id="n8r-z9-Oj3"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021-09-30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feF-HZ-QZn">
-                                                    <rect key="frame" x="20" y="351.5" width="374" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="줄거리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feF-HZ-QZn">
+                                                    <rect key="frame" x="20" y="351.5" width="374" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="7gz-5n-U9e"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="feF-HZ-QZn" firstAttribute="top" secondItem="hKV-3H-VHX" secondAttribute="bottom" id="32n-3s-KMX"/>
+                                                <constraint firstItem="feF-HZ-QZn" firstAttribute="top" secondItem="hKV-3H-VHX" secondAttribute="bottom" id="0Kh-VE-fGx"/>
                                                 <constraint firstItem="qna-KM-NGq" firstAttribute="top" secondItem="V9s-4i-s7l" secondAttribute="bottom" constant="6.5" id="4yY-qy-4ed"/>
                                                 <constraint firstItem="V9s-4i-s7l" firstAttribute="leading" secondItem="zXt-og-rIm" secondAttribute="leading" constant="20" id="8HZ-Zx-nur"/>
                                                 <constraint firstItem="hKV-3H-VHX" firstAttribute="leading" secondItem="zXt-og-rIm" secondAttribute="leading" constant="20" id="Bo1-3P-57l"/>
-                                                <constraint firstItem="feF-HZ-QZn" firstAttribute="leading" secondItem="zXt-og-rIm" secondAttribute="leading" constant="20" id="OQj-R0-WD3"/>
-                                                <constraint firstItem="feF-HZ-QZn" firstAttribute="top" secondItem="hKV-3H-VHX" secondAttribute="bottom" id="S38-Ls-hdl"/>
+                                                <constraint firstAttribute="trailing" secondItem="feF-HZ-QZn" secondAttribute="trailing" constant="20" id="LYk-iz-uMN"/>
+                                                <constraint firstItem="feF-HZ-QZn" firstAttribute="leading" secondItem="zXt-og-rIm" secondAttribute="leading" constant="20" id="YMG-U4-jfR"/>
                                                 <constraint firstAttribute="trailing" secondItem="qna-KM-NGq" secondAttribute="trailing" constant="20" id="aoB-6w-xdc"/>
                                                 <constraint firstItem="jRv-4f-Cj6" firstAttribute="top" secondItem="zXt-og-rIm" secondAttribute="top" id="ayH-5U-tmv"/>
                                                 <constraint firstItem="V9s-4i-s7l" firstAttribute="top" secondItem="jRv-4f-Cj6" secondAttribute="bottom" id="cgg-dT-Nyf"/>
@@ -122,11 +125,18 @@
                                                 <constraint firstAttribute="trailing" secondItem="V9s-4i-s7l" secondAttribute="trailing" constant="20" id="hUF-Se-C3a"/>
                                                 <constraint firstItem="qna-KM-NGq" firstAttribute="top" secondItem="V9s-4i-s7l" secondAttribute="bottom" constant="6.5" id="lCe-Gh-JEM"/>
                                                 <constraint firstItem="hKV-3H-VHX" firstAttribute="top" secondItem="qna-KM-NGq" secondAttribute="bottom" constant="7.5" id="o1H-Bt-Oh3"/>
-                                                <constraint firstAttribute="trailing" secondItem="feF-HZ-QZn" secondAttribute="trailing" constant="20" id="smV-12-Hwx"/>
                                                 <constraint firstAttribute="trailing" secondItem="jRv-4f-Cj6" secondAttribute="trailing" constant="20" id="ucf-kC-0tt"/>
                                                 <constraint firstItem="5HQ-Lt-4DR" firstAttribute="bottom" secondItem="qna-KM-NGq" secondAttribute="bottom" id="wrt-df-oFd"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="genreTextLabel" destination="jRv-4f-Cj6" id="gqG-rH-zdI"/>
+                                            <outlet property="overviewLabel" destination="feF-HZ-QZn" id="51o-0v-hyz"/>
+                                            <outlet property="posterImageView" destination="qna-KM-NGq" id="hKQ-bL-WI5"/>
+                                            <outlet property="rateLabel" destination="mLN-rg-dJo" id="kVa-lt-Vkw"/>
+                                            <outlet property="releaseDateLabel" destination="hKV-3H-VHX" id="oGJ-dr-yNE"/>
+                                            <outlet property="titleTextLabel" destination="V9s-4i-s7l" id="LWM-R4-EE8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

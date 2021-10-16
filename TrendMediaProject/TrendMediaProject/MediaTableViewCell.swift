@@ -9,6 +9,13 @@ import UIKit
 
 class MediaTableViewCell: UITableViewCell {
 
+    @IBOutlet var genreTextLabel: UILabel!
+    @IBOutlet var titleTextLabel: UILabel!
+    @IBOutlet var posterImageView: UIImageView!
+    @IBOutlet var rateLabel: UILabel!
+    @IBOutlet var releaseDateLabel: UILabel!
+    @IBOutlet var overviewLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
