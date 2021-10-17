@@ -5,6 +5,8 @@
 //  Created by sungyeon kim on 2021/10/15.
 //
 
+// present로 b화면 구현하기
+
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -13,9 +15,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: nil)
     }
     
+    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mediaInformation.tvShow.count
