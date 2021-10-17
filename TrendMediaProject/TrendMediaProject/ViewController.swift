@@ -24,7 +24,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
         let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        //        nav.modalTransitionStyle = .flipHorizontal
         self.present(nav, animated: true, completion: nil)
+
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
