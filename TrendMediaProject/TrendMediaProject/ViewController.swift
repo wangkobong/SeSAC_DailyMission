@@ -12,7 +12,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var mediaInformation = MediaInformation()
-  
+//    var castmatesList = mediaInformation.tvShow.
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,8 +68,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 450
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard.init(name: "Main", bundle: nil)
+        
+        guard let vc = sb.instantiateViewController(withIdentifier: "CastmatesTableViewController") as? CastmatesTableViewController else {
+            print("ERROR") // 대신에 Alert으로 사용자에게 에러를 보여줌
+            return
+        }
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    
+    
 
-
+    }
 
 }
-

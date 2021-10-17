@@ -18,6 +18,7 @@
 		FEC3FC95271ACFC5001890E7 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3FC94271ACFC5001890E7 /* MediaTableViewCell.swift */; };
 		FEC3FC97271BD0D8001890E7 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3FC96271BD0D8001890E7 /* SearchTableViewController.swift */; };
 		FEC3FC99271BD2F8001890E7 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3FC98271BD2F8001890E7 /* SearchTableViewCell.swift */; };
+		FEC3FC9B271C3AE0001890E7 /* CastmatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3FC9A271C3AE0001890E7 /* CastmatesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FEC3FC94271ACFC5001890E7 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		FEC3FC96271BD0D8001890E7 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		FEC3FC98271BD2F8001890E7 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		FEC3FC9A271C3AE0001890E7 /* CastmatesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastmatesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				FEC3FC5A271944EA001890E7 /* ViewController.swift */,
 				FEC3FC94271ACFC5001890E7 /* MediaTableViewCell.swift */,
 				FEC3FC5C271944EA001890E7 /* Main.storyboard */,
+				FEC3FC9A271C3AE0001890E7 /* CastmatesTableViewController.swift */,
 				FEC3FC96271BD0D8001890E7 /* SearchTableViewController.swift */,
 				FEC3FC98271BD2F8001890E7 /* SearchTableViewCell.swift */,
 				FEC3FC5F271944EC001890E7 /* Assets.xcassets */,
@@ -161,6 +164,7 @@
 				FEC3FC99271BD2F8001890E7 /* SearchTableViewCell.swift in Sources */,
 				FEC3FC95271ACFC5001890E7 /* MediaTableViewCell.swift in Sources */,
 				FEC3FC59271944EA001890E7 /* SceneDelegate.swift in Sources */,
+				FEC3FC9B271C3AE0001890E7 /* CastmatesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
