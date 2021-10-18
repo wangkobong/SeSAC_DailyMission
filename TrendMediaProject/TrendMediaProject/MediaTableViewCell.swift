@@ -15,7 +15,7 @@ class MediaTableViewCell: UITableViewCell {
     @IBOutlet var rateLabel: UILabel!
     @IBOutlet var releaseDateLabel: UILabel!
     @IBOutlet var overviewLabel: UILabel!
-    
+    @IBOutlet var clipbutton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

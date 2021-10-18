@@ -15,7 +15,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
     }
     
@@ -48,6 +47,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.genreTextLabel.text = row.genre
         cell.rateLabel.text = String(row.rate)
         cell.releaseDateLabel.text = row.releaseDate
+        
+        cell.clipbutton.layer.cornerRadius = 0.5 * cell.clipbutton.bounds.size.width
+        cell.clipbutton.clipsToBounds = true
 //        do {
 //            let data = try Data(contentsOf: url!)
 //            cell.posterImageView.image = UIImage(data: data)
@@ -85,6 +87,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
+    
+    @IBAction func clupButtonPressed(_ sender: UIButton) {
+        print("df")
+    }
+    
 
 }
 
