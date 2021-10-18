@@ -12,12 +12,11 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var mediaInformation = MediaInformation()
-//    var castmatesList = mediaInformation.tvShow.
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: nil)
+
     }
     
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
@@ -57,10 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        } catch {
 //            print(error)
 //        }
-        
-
-
-
+   
         
         return cell
     }
@@ -71,16 +67,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        
+
         guard let vc = sb.instantiateViewController(withIdentifier: "CastmatesTableViewController") as? CastmatesTableViewController else {
             print("ERROR") // 대신에 Alert으로 사용자에게 에러를 보여줌
             return
         }
         
+        let row = mediaInformation.tvShow[indexPath.row]
+        vc.mediaTitle = row.title
+        vc.releaseDate = row.releaseDate
+        vc.genre = row.genre
+        vc.region = row.region
+        vc.overview = row.overview
+        vc.rate = row.rate
+        vc.starring = row.starring
+        vc.backdropImage = row.backdropImage
         self.navigationController?.pushViewController(vc, animated: true)
-    
-    
 
     }
 
 }
+

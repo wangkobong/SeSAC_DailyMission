@@ -17,5 +17,6 @@ struct TvShow {
     let rate: Double
     let starring: String
     let backdropImage: String
+
 }
 
