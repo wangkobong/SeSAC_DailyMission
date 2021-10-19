@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -188,6 +189,9 @@
                                         <color key="tintColor" systemColor="systemIndigoColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="book.closed" catalog="system"/>
+                                        <connections>
+                                            <action selector="bookButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iGo-6n-TXk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -436,7 +440,60 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPx-5Z-vrq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1795.6521739130437" y="-94.419642857142847"/>
+            <point key="canvasLocation" x="1809" y="-95"/>
+        </scene>
+        <!--Book Collection View Controller-->
+        <scene sceneID="JnQ-1B-k4o">
+            <objects>
+                <viewController storyboardIdentifier="BookCollectionViewController" id="zo1-d2-HhB" customClass="BookCollectionViewController" customModule="TrendMediaProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wn6-4i-UZL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="edC-oh-g74">
+                                <rect key="frame" x="20" y="85" width="394" height="777"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gl2-3Z-1GF">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCollectionViewCell" id="efy-mR-9pP" customClass="BookCollectionViewCell" customModule="TrendMediaProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qy6-a5-qbV">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IO9-5e-wtz">
+                                <rect key="frame" x="0.0" y="41" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="m8M-Hf-Zc6">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="dSA-2J-6Mu">
+                                            <imageReference key="image" image="chevron.backward" catalog="system" renderingMode="original"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bqf-Ny-rfp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0F7-zP-pJO"/>
+                    <connections>
+                        <outlet property="bookCollectionView" destination="edC-oh-g74" id="DU3-cq-3f3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yPf-nV-ZKS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2830.434782608696" y="-50.223214285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nEe-Tm-2Mh">
@@ -460,6 +517,7 @@
     <resources>
         <image name="a_tale_dark_grimm" width="182" height="276"/>
         <image name="book.closed" catalog="system" width="115" height="128"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="film" catalog="system" width="128" height="93"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="sex_education" width="350" height="525"/>

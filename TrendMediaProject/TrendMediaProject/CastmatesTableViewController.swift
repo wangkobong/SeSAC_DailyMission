@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CastmatesTableViewController: UITableViewController {
 
@@ -15,6 +16,7 @@ class CastmatesTableViewController: UITableViewController {
     var starring: String?
     var backdropImage: String?
     var actorList: [String]?
+    var genre: String?
     
     @IBOutlet var summaryCollectionView: UICollectionView!
     
@@ -49,6 +51,7 @@ class CastmatesTableViewController: UITableViewController {
 
         cell.nameLabel.text = actorList?[indexPath.row]
         cell.roleLabel.text = " \(genre ?? "배우")"
+        
 
         return cell
     }
@@ -69,7 +72,7 @@ extension CastmatesTableViewController: UICollectionViewDelegate, UICollectionVi
         
  
         let url = URL(string: backdropImage ?? "")
-//        cell.posterImageView.kf.setImage(with:url)
+        cell.posterImageView.kf.setImage(with:url)
         cell.titleLabel.text = mediaTitle
         cell.summaryLabel.text = overview
         print(overview)

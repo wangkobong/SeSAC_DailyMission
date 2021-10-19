@@ -30,6 +30,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
     }
+    @IBAction func bookButtonPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "BookCollectionViewController") as! BookCollectionViewController
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        //        nav.modalTransitionStyle = .flipHorizontal
+        self.present(nav, animated: true, completion: nil)
+
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mediaInformation.tvShow.count
@@ -80,9 +89,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let row = mediaInformation.tvShow[indexPath.row]
         vc.mediaTitle = row.title
-        vc.releaseDate = row.releaseDate
         vc.genre = row.genre
-        vc.region = row.region
         vc.overview = row.overview
         vc.rate = row.rate
         vc.starring = row.starring
