@@ -8,6 +8,7 @@
 // present로 b화면 구현하기
 
 import UIKit
+import Kingfisher
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -40,7 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let row = mediaInformation.tvShow[indexPath.row]
-//        let url = URL(string: row.backdropImage)
+        let url = URL(string: row.backdropImage)
         cell.titleTextLabel.text = row.title
         cell.overviewLabel.text = row.overview
         cell.overviewLabel.numberOfLines = 0
@@ -53,13 +54,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        do {
 //            let data = try Data(contentsOf: url!)
 //            cell.posterImageView.image = UIImage(data: data)
-//            cell.posterImageView.contentMode = .scaleToFill
+
 //            cell.posterImageView.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
 //        } catch {
 //            print(error)
 //        }
-   
-        
+
+        cell.posterImageView.kf.setImage(with:url)
+        cell.posterImageView.contentMode = .scaleToFill
+
         return cell
     }
     
