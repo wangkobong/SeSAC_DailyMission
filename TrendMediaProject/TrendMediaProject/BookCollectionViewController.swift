@@ -16,7 +16,8 @@ class BookCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonPressed))
+        
         bookCollectionView.delegate = self
         bookCollectionView.dataSource = self
         
@@ -34,6 +35,11 @@ class BookCollectionViewController: UIViewController {
         bookCollectionView.collectionViewLayout = layout
         
     }
+    
+    @objc func closeButtonPressed() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     
 
 }

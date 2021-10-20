@@ -40,6 +40,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
+    
+    @IBAction func pinButtonPressed(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TheaterLocationViewController") as! TheaterLocationViewController
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        //        nav.modalTransitionStyle = .flipHorizontal
+        self.present(nav, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mediaInformation.tvShow.count
     }

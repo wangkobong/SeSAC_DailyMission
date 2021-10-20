@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -22,6 +21,14 @@
                                 <rect key="frame" x="0.0" y="69" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="TREND MEDIA" id="yLa-I4-pqR">
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Item" id="jJU-zV-OZ0"/>
+                                            <barButtonItem title="Item" image="pin.fill" catalog="system" id="NtN-Za-nWz">
+                                                <connections>
+                                                    <action selector="pinButtonPressed:" destination="BYZ-38-t0r" id="MXF-kU-qJm"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="1jQ-rQ-Sdp">
                                             <connections>
                                                 <action selector="searchButtonPressed:" destination="BYZ-38-t0r" id="f0d-8L-lRD"/>
@@ -31,11 +38,8 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="w0C-G0-jCG">
-                                <rect key="frame" x="0.0" y="193" width="414" height="490"/>
+                                <rect key="frame" x="0.0" y="193" width="414" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="490" id="eIa-H7-3NP"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaTableViewCell" rowHeight="708" id="aJX-GQ-p1a" customClass="MediaTableViewCell" customModule="TrendMediaProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="708"/>
@@ -205,6 +209,7 @@
                             <constraint firstItem="gvE-J7-0Ck" firstAttribute="top" secondItem="bB9-SM-zrn" secondAttribute="bottom" id="1d6-GE-M2l"/>
                             <constraint firstItem="w0C-G0-jCG" firstAttribute="top" secondItem="gvE-J7-0Ck" secondAttribute="bottom" id="AOn-Bx-yKX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gvE-J7-0Ck" secondAttribute="trailing" id="Dnd-D3-Dbf"/>
+                            <constraint firstAttribute="bottom" secondItem="w0C-G0-jCG" secondAttribute="bottom" id="EMk-o6-BaD"/>
                             <constraint firstItem="gvE-J7-0Ck" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EvK-7N-YmY"/>
                             <constraint firstItem="bB9-SM-zrn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ROz-aN-MQ8"/>
                             <constraint firstItem="w0C-G0-jCG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bzH-1z-Mq7"/>
@@ -319,6 +324,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zz0-D8-prT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1808.6956521739132" y="541.74107142857144"/>
+        </scene>
+        <!--Theater Location View Controller-->
+        <scene sceneID="3Cp-tk-cCE">
+            <objects>
+                <viewController storyboardIdentifier="TheaterLocationViewController" id="Lc5-fb-yv5" customClass="TheaterLocationViewController" customModule="TrendMediaProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o8B-1l-X8c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mdh-gb-zJ3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="w6U-JG-vmw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mdh-gb-zJ3" firstAttribute="leading" secondItem="w6U-JG-vmw" secondAttribute="leading" id="Omq-dg-708"/>
+                            <constraint firstItem="mdh-gb-zJ3" firstAttribute="trailing" secondItem="w6U-JG-vmw" secondAttribute="trailing" id="TZX-Jx-PDL"/>
+                            <constraint firstAttribute="bottom" secondItem="mdh-gb-zJ3" secondAttribute="bottom" id="bC0-Sp-L4Y"/>
+                            <constraint firstItem="mdh-gb-zJ3" firstAttribute="top" secondItem="w6U-JG-vmw" secondAttribute="top" id="uJl-ZN-iAD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="mdh-gb-zJ3" id="bci-qf-yw1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Amf-GK-3NU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2628.985507246377" y="541.74107142857144"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="2rb-cv-vy3">
@@ -471,17 +505,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IO9-5e-wtz">
-                                <rect key="frame" x="0.0" y="41" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="m8M-Hf-Zc6">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="dSA-2J-6Mu">
-                                            <imageReference key="image" image="chevron.backward" catalog="system" renderingMode="original"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bqf-Ny-rfp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -493,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPf-nV-ZKS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2830.434782608696" y="-50.223214285714285"/>
+            <point key="canvasLocation" x="2649" y="-95"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nEe-Tm-2Mh">
@@ -517,9 +540,9 @@
     <resources>
         <image name="a_tale_dark_grimm" width="182" height="276"/>
         <image name="book.closed" catalog="system" width="115" height="128"/>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="film" catalog="system" width="128" height="93"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
+        <image name="pin.fill" catalog="system" width="119" height="128"/>
         <image name="sex_education" width="350" height="525"/>
         <image name="tv.and.mediabox" catalog="system" width="128" height="89"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
