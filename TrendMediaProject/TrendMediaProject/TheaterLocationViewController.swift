@@ -22,16 +22,16 @@ class TheaterLocationViewController: UIViewController {
  
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self ,action: nil)
         navigationItem.rightBarButtonItem?.title = "filter"
-        
-        let location = CLLocationCoordinate2D(latitude: 37.498282917564765, longitude: 127.02763571410598)
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.1)
-        let region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
-        
-        let annotaion = MKPointAnnotation()
-        annotaion.title = "강남역"
-        annotaion.coordinate = location
-        mapView.addAnnotation(annotaion)
+        // 37.49826709543227, 127.02763571410598
+//        let location = CLLocationCoordinate2D(latitude: 37.49826709543227, longitude: 127.02763571410598)
+//        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.1)
+//        let region = MKCoordinateRegion(center: location, span: span)
+//        mapView.setRegion(region, animated: true)
+//
+//        let annotaion = MKPointAnnotation()
+//        annotaion.title = "갱남역"
+//        annotaion.coordinate = location
+//        mapView.addAnnotation(annotaion)
         
         mapView.delegate = self
         locationManager.delegate = self
@@ -71,7 +71,39 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization() //앱을 사용하는 동안에 대한 위치 권한 요청
             locationManager.startUpdatingLocation() //위치 접근 시작
         case .restricted, .denied:
-            print("DENIED, 설정으로 유도")
+            let location = CLLocationCoordinate2D(latitude: 37.566401502360314, longitude: 126.97795582898831)
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.1)
+            let region = MKCoordinateRegion(center: location, span: span)
+            mapView.setRegion(region, animated: true)
+    
+            let annotaion = MKPointAnnotation()
+            annotaion.title = "서울시청"
+            annotaion.coordinate = location
+            mapView.addAnnotation(annotaion)
+//            let alter = UIAlertController(title: "위치권한 설정이 '안함'으로 되어있습니다.", message: "앱 설정 화면으로 가시겠습니까? \n '아니오'를 선택하시면 앱이 종료됩니다.", preferredStyle: UIAlertController.Style.alert)
+//            let logOkAction = UIAlertAction(title: "네", style: UIAlertAction.Style.default){
+//                (action: UIAlertAction) in
+//                if #available(iOS 10.0, *) {
+//                    UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
+//                } else {
+//                    UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
+//                }
+//            }
+//            let logNoAction = UIAlertAction(title: "아니오", style: UIAlertAction.Style.destructive){
+//                (action: UIAlertAction) in
+//                exit(0)
+//            }
+//            alter.addAction(logNoAction)
+//            alter.addAction(logOkAction)
+//            self.present(alter, animated: true, completion: nil)
+            showAlert(title: "위치권한 설정을 거부하셨습니다", message: "앱 설정 화면으로 가시겠습니까? \n '아니오'를 선택하시면 앱이 종료됩니다.", okTitle: "설정으로 이동") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
+                } else {
+                    UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
+                }
+            }
+            locationManager.startUpdatingLocation() //위치 접근 시작
         case .authorizedAlways:
             print("Always")
         case .authorizedWhenInUse:
@@ -97,32 +129,42 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        print(#function)
+
         if let coordinate = locations.last?.coordinate {
-            
+
             let annotation = MKPointAnnotation()
             annotation.title = "CURRENT LOCATION"
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
-            
+
             let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let region = MKCoordinateRegion(center: coordinate, span: span)
             mapView.setRegion(region, animated: true)
+
+            //10. (중요)
+            locationManager.startUpdatingLocation()
         } else {
             print("Location Cannot Find")
         }
     }
+
+
+
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(#function)
+        print(error)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkUserLocationServiceAuthorization()
         print(#function)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print(#function)
+        checkUserLocationServiceAuthorization()
     }
     
     
