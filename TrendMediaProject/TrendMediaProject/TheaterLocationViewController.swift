@@ -22,17 +22,12 @@ class TheaterLocationViewController: UIViewController {
  
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self ,action: nil)
         navigationItem.rightBarButtonItem?.title = "filter"
-        // 37.49826709543227, 127.02763571410598
-//        let location = CLLocationCoordinate2D(latitude: 37.49826709543227, longitude: 127.02763571410598)
-//        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.1)
-//        let region = MKCoordinateRegion(center: location, span: span)
-//        mapView.setRegion(region, animated: true)
-//
-//        let annotaion = MKPointAnnotation()
-//        annotaion.title = "갱남역"
-//        annotaion.coordinate = location
-//        mapView.addAnnotation(annotaion)
-        
+        let lat = locationManager.location?.coordinate.latitude
+        let long = locationManager.location?.coordinate.longitude
+        self.title = ""
+        print(findAddr(lat: lat ?? 0, long: long ?? 0))
+
+
         mapView.delegate = self
         locationManager.delegate = self
 
@@ -40,8 +35,21 @@ class TheaterLocationViewController: UIViewController {
     
     @objc func closeButtonPressed() {
         self.dismiss(animated: true, completion: nil)
+
+    }
+    
+    func findAddr(lat: CLLocationDegrees, long: CLLocationDegrees) -> String{
+        let findLocation = CLLocation(latitude: lat, longitude: long)
+        let geocoder = CLGeocoder()
+        let locale = Locale(identifier: "Ko-kr")
+        var test = ""
+        geocoder.reverseGeocodeLocation(findLocation, preferredLocale: locale) { placemarks, error in
+            <#code#>
+        }
+        return ""
     }
 }
+
 
 // MARK: - MKMapViewDelegate
 extension TheaterLocationViewController: CLLocationManagerDelegate {
@@ -96,14 +104,14 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
 //            alter.addAction(logNoAction)
 //            alter.addAction(logOkAction)
 //            self.present(alter, animated: true, completion: nil)
-            showAlert(title: "위치권한 설정을 거부하셨습니다", message: "앱 설정 화면으로 가시겠습니까? \n '아니오'를 선택하시면 앱이 종료됩니다.", okTitle: "설정으로 이동") {
+            showAlert(title: "위치권한 설정을 거부하셨습니다", message: "위치 설정 화면으로 가시겠습니까?", okTitle: "설정으로 이동") {
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
                 } else {
                     UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
                 }
             }
-            locationManager.startUpdatingLocation() //위치 접근 시작
+            locationManager.startUpdatingLocation()
         case .authorizedAlways:
             print("Always")
         case .authorizedWhenInUse:
