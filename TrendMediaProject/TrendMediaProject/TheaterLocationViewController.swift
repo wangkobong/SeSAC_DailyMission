@@ -14,6 +14,13 @@ class TheaterLocationViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    var locality = ""
+    var thorughfare = ""
+    
+//    locality 프로퍼티 = 강남구
+//
+//    thorughfare = 삼성동
+//
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +29,6 @@ class TheaterLocationViewController: UIViewController {
  
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self ,action: nil)
         navigationItem.rightBarButtonItem?.title = "filter"
-        let lat = locationManager.location?.coordinate.latitude
-        let long = locationManager.location?.coordinate.longitude
-        self.title = ""
-        print(findAddr(lat: lat ?? 0, long: long ?? 0))
-
 
         mapView.delegate = self
         locationManager.delegate = self
@@ -38,15 +40,19 @@ class TheaterLocationViewController: UIViewController {
 
     }
     
-    func findAddr(lat: CLLocationDegrees, long: CLLocationDegrees) -> String{
+    func printLocality(_ lat: CLLocationDegrees, _ long: CLLocationDegrees) -> String{
+        print(#function)
         let findLocation = CLLocation(latitude: lat, longitude: long)
         let geocoder = CLGeocoder()
         let locale = Locale(identifier: "Ko-kr")
-        var test = ""
+
         geocoder.reverseGeocodeLocation(findLocation, preferredLocale: locale) { placemarks, error in
-            <#code#>
+            let placemark: CLPlacemark? = placemarks?[0]
+            self.locality = placemark?.locality ?? "고백구"
+            self.thorughfare = placemark?.thoroughfare ?? "행복동"
+
         }
-        return ""
+        return "\(self.locality) \(self.thorughfare)"
     }
 }
 
@@ -88,7 +94,7 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
             annotaion.title = "서울시청"
             annotaion.coordinate = location
             mapView.addAnnotation(annotaion)
-//            let alter = UIAlertController(title: "위치권한 설정이 '안함'으로 되어있습니다.", message: "앱 설정 화면으로 가시겠습니까? \n '아니오'를 선택하시면 앱이 종료됩니다.", preferredStyle: UIAlertController.Style.alert)
+            //            let alter = UIAlertController(title: "위치권한 설정이 '안함'으로 되어있습니다.", message: "앱 설정 화면으로 가시겠습니까? \n '아니오'를 선택하시면 앱이 종료됩니다.", preferredStyle: UIAlertController.Style.alert)
 //            let logOkAction = UIAlertAction(title: "네", style: UIAlertAction.Style.default){
 //                (action: UIAlertAction) in
 //                if #available(iOS 10.0, *) {
@@ -116,6 +122,7 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
             print("Always")
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation() // 위치 접근 시작! => didUpdateLocations 실행
+
         @unknown default:
             print("DEFAULT")
         }
@@ -151,6 +158,8 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
             mapView.setRegion(region, animated: true)
 
             //10. (중요)
+            let result = printLocality(coordinate.latitude, coordinate.longitude)
+            self.title = result
             locationManager.startUpdatingLocation()
         } else {
             print("Location Cannot Find")
