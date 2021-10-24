@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE7A5664272540E300D878F4 /* TheaterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A5663272540E300D878F4 /* TheaterLocation.swift */; };
+		FE7A56662725412600D878F4 /* Theater.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A56652725412600D878F4 /* Theater.swift */; };
+		FE7A56682725581D00D878F4 /* FilterAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A56672725581D00D878F4 /* FilterAlert+Extension.swift */; };
 		FEA5C791271F1A2700C591B0 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5C78F271F1A2700C591B0 /* BookCollectionViewCell.swift */; };
 		FEA5C792271F1A2700C591B0 /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA5C790271F1A2700C591B0 /* BookCollectionViewCell.xib */; };
 		FEA5C794271F1BD800C591B0 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5C793271F1BD800C591B0 /* BookCollectionViewController.swift */; };
@@ -31,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE7A5663272540E300D878F4 /* TheaterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterLocation.swift; sourceTree = "<group>"; };
+		FE7A56652725412600D878F4 /* Theater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theater.swift; sourceTree = "<group>"; };
+		FE7A56672725581D00D878F4 /* FilterAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterAlert+Extension.swift"; sourceTree = "<group>"; };
 		FEA5C78F271F1A2700C591B0 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEA5C790271F1A2700C591B0 /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
 		FEA5C793271F1BD800C591B0 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 				FEC3FC5C271944EA001890E7 /* Main.storyboard */,
 				FEA5C79727204B0000C591B0 /* TheaterLocationViewController.swift */,
 				FEE861BB2721B0780053F571 /* Alert+Extension.swift */,
+				FE7A56672725581D00D878F4 /* FilterAlert+Extension.swift */,
 				FEA5C78F271F1A2700C591B0 /* BookCollectionViewCell.swift */,
 				FEA5C790271F1A2700C591B0 /* BookCollectionViewCell.xib */,
 				FEC3FCE3271F089C001890E7 /* SummaryCollectionViewCell.swift */,
@@ -107,6 +114,8 @@
 				FEC3FC64271944EC001890E7 /* Info.plist */,
 				FEC3FC6E271982E0001890E7 /* Media.swift */,
 				FEC3FC6C27197F88001890E7 /* MediaInformation.swift */,
+				FE7A5663272540E300D878F4 /* TheaterLocation.swift */,
+				FE7A56652725412600D878F4 /* Theater.swift */,
 			);
 			path = TrendMediaProject;
 			sourceTree = "<group>";
@@ -196,12 +205,15 @@
 				FEA5C791271F1A2700C591B0 /* BookCollectionViewCell.swift in Sources */,
 				FEC3FC6D27197F88001890E7 /* MediaInformation.swift in Sources */,
 				FEC3FC6F271982E0001890E7 /* Media.swift in Sources */,
+				FE7A5664272540E300D878F4 /* TheaterLocation.swift in Sources */,
 				FEC3FC97271BD0D8001890E7 /* SearchTableViewController.swift in Sources */,
+				FE7A56682725581D00D878F4 /* FilterAlert+Extension.swift in Sources */,
 				FEC3FC57271944EA001890E7 /* AppDelegate.swift in Sources */,
 				FEC3FCE5271F089C001890E7 /* SummaryCollectionViewCell.swift in Sources */,
 				FEC3FC99271BD2F8001890E7 /* SearchTableViewCell.swift in Sources */,
 				FEC3FC95271ACFC5001890E7 /* MediaTableViewCell.swift in Sources */,
 				FEC3FC9D271C3C9E001890E7 /* CastmatesTableViewCell.swift in Sources */,
+				FE7A56662725412600D878F4 /* Theater.swift in Sources */,
 				FEA5C794271F1BD800C591B0 /* BookCollectionViewController.swift in Sources */,
 				FEC3FC59271944EA001890E7 /* SceneDelegate.swift in Sources */,
 				FEC3FC9B271C3AE0001890E7 /* CastmatesTableViewController.swift in Sources */,

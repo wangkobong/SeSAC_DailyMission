@@ -334,16 +334,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mdh-gb-zJ3">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="813"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mbl-PH-Elx">
+                                <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                                <segments>
+                                    <segment title="롯데시네마"/>
+                                    <segment title="메가박스"/>
+                                    <segment title="CGV"/>
+                                    <segment title="전체"/>
+                                </segments>
+                                <connections>
+                                    <action selector="filterTheaterPressed:" destination="Lc5-fb-yv5" eventType="valueChanged" id="R1b-u9-Gsn"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w6U-JG-vmw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="w6U-JG-vmw" firstAttribute="trailing" secondItem="mbl-PH-Elx" secondAttribute="trailing" id="Aly-sm-W82"/>
+                            <constraint firstItem="mbl-PH-Elx" firstAttribute="top" secondItem="w6U-JG-vmw" secondAttribute="top" id="FV6-Lc-G8I"/>
+                            <constraint firstItem="mbl-PH-Elx" firstAttribute="leading" secondItem="w6U-JG-vmw" secondAttribute="leading" id="K7q-g9-geP"/>
                             <constraint firstItem="mdh-gb-zJ3" firstAttribute="leading" secondItem="w6U-JG-vmw" secondAttribute="leading" id="Omq-dg-708"/>
                             <constraint firstItem="mdh-gb-zJ3" firstAttribute="trailing" secondItem="w6U-JG-vmw" secondAttribute="trailing" id="TZX-Jx-PDL"/>
                             <constraint firstAttribute="bottom" secondItem="mdh-gb-zJ3" secondAttribute="bottom" id="bC0-Sp-L4Y"/>
-                            <constraint firstItem="mdh-gb-zJ3" firstAttribute="top" secondItem="w6U-JG-vmw" secondAttribute="top" id="uJl-ZN-iAD"/>
+                            <constraint firstItem="mdh-gb-zJ3" firstAttribute="top" secondItem="mbl-PH-Elx" secondAttribute="bottom" constant="8" id="xgO-se-RnR"/>
                         </constraints>
                     </view>
                     <connections>

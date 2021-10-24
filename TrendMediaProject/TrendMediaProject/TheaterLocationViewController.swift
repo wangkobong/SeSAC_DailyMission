@@ -14,6 +14,7 @@ class TheaterLocationViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    let theaterLocations = TheaterLocation()
     var locality = ""
     var thorughfare = ""
     
@@ -27,18 +28,63 @@ class TheaterLocationViewController: UIViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self ,action: #selector(closeButtonPressed))
  
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self ,action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self ,action: #selector(filterButtonClicked))
         navigationItem.rightBarButtonItem?.title = "filter"
 
         mapView.delegate = self
         locationManager.delegate = self
-
+  
     }
     
     @objc func closeButtonPressed() {
         self.dismiss(animated: true, completion: nil)
 
     }
+    
+    @objc func filterButtonClicked(_ sender: Any){
+        print("filter pressed")
+    }
+    
+
+    @IBAction func filterTheaterPressed(_ sender: UISegmentedControl) {
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
+        let theaterName = sender.titleForSegment(at: sender.selectedSegmentIndex)
+        if theaterName == "전체" {
+            let filterType = theaterLocations.theaters
+            for theater in filterType {
+                let annotation = MKPointAnnotation()
+                let coordinate = CLLocationCoordinate2D(latitude: theater.latitude , longitude: theater.longitude)
+                let location = theater.location
+                annotation.title = location
+                annotation.coordinate = coordinate
+                let seoul = CLLocationCoordinate2D(latitude: 37.566401502360314, longitude: 126.97795582898831)
+                let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 0.5)
+                let region = MKCoordinateRegion(center: seoul, span: span)
+                mapView.setRegion(region, animated: true)
+                mapView.addAnnotation(annotation)
+            }
+            
+        } else {
+            let filterType = theaterLocations.theaters.filter{ $0.type == theaterName }
+            for theater in filterType {
+                let annotation = MKPointAnnotation()
+                let coordinate = CLLocationCoordinate2D(latitude: theater.latitude , longitude: theater.longitude)
+                let lacation = theater.location
+                annotation.title = lacation
+                annotation.coordinate = coordinate
+                let seoul = CLLocationCoordinate2D(latitude: 37.566401502360314, longitude: 126.97795582898831)
+                let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 0.5)
+                let region = MKCoordinateRegion(center: seoul, span: span)
+                mapView.setRegion(region, animated: true)
+                mapView.addAnnotation(annotation)
+            }
+        }
+     
+        locationManager.startUpdatingLocation()
+    }
+    
+    
     
     func printLocality(_ lat: CLLocationDegrees, _ long: CLLocationDegrees) -> String{
         print(#function)
@@ -145,8 +191,19 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(#function)
+            
+//        theaterLocation.theaters.map { theater in
+//            let annotation = MKPointAnnotation()
+//            annotation.title = theater.location
+//            mapView.addAnnotation(annotation)
+//
+//            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+//            let region = MKCoordinateRegion(center: coordinate, span: span)
+//            mapView.setRegion(region, animated: true)
+//        }
 
         if let coordinate = locations.last?.coordinate {
+
 
             let annotation = MKPointAnnotation()
             annotation.title = "CURRENT LOCATION"
@@ -160,7 +217,9 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
             //10. (중요)
             let result = printLocality(coordinate.latitude, coordinate.longitude)
             self.title = result
+
             locationManager.startUpdatingLocation()
+            locationManager.stopUpdatingLocation()
         } else {
             print("Location Cannot Find")
         }
