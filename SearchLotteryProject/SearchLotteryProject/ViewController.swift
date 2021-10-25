@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var sixthWinNumber: UILabel!
     @IBOutlet weak var bonusWinNumber: UILabel!
     
+    @IBOutlet weak var winNumbersView: UIView!
     
     
     override func viewDidLoad() {
@@ -48,15 +49,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
             case .success(let value):
                 let json = JSON(value)
                 let drawNumber = json["drwNo"]
-                self.drawDateLabel.text = json["drwNoDate"].stringValue + " 추첨"
-                self.drawNumberLabel.text = "\(drawNumber)회 당첨결과"
-                self.firstWinNumber.text = String(json["drwtNo1"].intValue)
-                self.secondWinNumber.text = String(json["drwtNo2"].intValue)
-                self.thirdWinNumber.text = String(json["drwtNo3"].intValue)
-                self.fourthWinNumber.text = String(json["drwtNo4"].intValue)
-                self.fifthWinNumber.text = String(json["drwtNo5"].intValue)
-                self.sixthWinNumber.text = String(json["drwtNo6"].intValue)
-                self.bonusWinNumber.text = String(json["bnusNo"].intValue)
+                if json["returnValue"] != "fail" {
+                    self.winNumbersView.alpha = 1
+                    self.drawDateLabel.text = json["drwNoDate"].stringValue + " 추첨"
+                    self.drawNumberLabel.text = "\(drawNumber)회차 당첨결과"
+                    self.firstWinNumber.text = String(json["drwtNo1"].intValue)
+                    self.secondWinNumber.text = String(json["drwtNo2"].intValue)
+                    self.thirdWinNumber.text = String(json["drwtNo3"].intValue)
+                    self.fourthWinNumber.text = String(json["drwtNo4"].intValue)
+                    self.fifthWinNumber.text = String(json["drwtNo5"].intValue)
+                    self.sixthWinNumber.text = String(json["drwtNo6"].intValue)
+                    self.bonusWinNumber.text = String(json["bnusNo"].intValue)
+                } else {
+                    self.drawNumberLabel.text = "존재하지 않는 회차입니다."
+                    self.drawDateLabel.text = ""
+                    self.winNumbersView.alpha = 0
+                }
                 print("JSON: \(json)")
             case .failure(let error):
                 print(error)
@@ -88,7 +96,7 @@ extension ViewController: UITextViewDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if let drawNumber = drawNumberTextFiled.text {
-            getDrawResult(Int(drawNumber) ?? 1)
+            getDrawResult(Int(drawNumber) ?? 999999)
         }
         drawNumberTextFiled.text = ""
     }
