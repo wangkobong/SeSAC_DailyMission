@@ -163,7 +163,7 @@
                                 </constraints>
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dw3-IR-rWE">
-                                <rect key="frame" x="20" y="762" width="0.0" height="100"/>
+                                <rect key="frame" x="20" y="762" width="374" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="vuL-3x-Knl"/>
                                 </constraints>
@@ -184,6 +184,18 @@
                             <constraint firstItem="6ao-XX-rmH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rFa-24-FUv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bonusWinNumber" destination="S2d-DU-z9d" id="7uT-fL-h5Q"/>
+                        <outlet property="drawDateLabel" destination="wrw-lR-4Tv" id="hXb-12-6MA"/>
+                        <outlet property="drawNumberLabel" destination="ldz-zw-yf4" id="FEU-u3-fk3"/>
+                        <outlet property="drawNumberTextFiled" destination="47a-um-AST" id="mxe-Fd-MTi"/>
+                        <outlet property="fifthWinNumber" destination="HLB-ue-aOg" id="JhE-Wt-Rll"/>
+                        <outlet property="firstWinNumber" destination="bP3-u6-xHI" id="vLF-Ev-ect"/>
+                        <outlet property="fourthWinNumber" destination="DAm-pu-lC0" id="tiF-2Q-ClW"/>
+                        <outlet property="secondWinNumber" destination="vY8-7k-cBM" id="RAO-py-8ED"/>
+                        <outlet property="sixthWinNumber" destination="QuR-Cd-w1i" id="sVw-Vw-Gdo"/>
+                        <outlet property="thirdWinNumber" destination="aML-UF-xmk" id="x0n-bp-B8K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
