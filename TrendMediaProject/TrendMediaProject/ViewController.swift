@@ -66,6 +66,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.overviewLabel.numberOfLines = 0
         cell.genreTextLabel.text = row.genre
         cell.rateLabel.text = String(row.rate)
+        cell.rateLabel.textColor = .black
         cell.releaseDateLabel.text = row.releaseDate
         
         cell.clipbutton.layer.cornerRadius = 0.5 * cell.clipbutton.bounds.size.width
@@ -109,7 +110,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func clupButtonPressed(_ sender: UIButton) {
-        print("df")
+        print(sender)
     }
     
 

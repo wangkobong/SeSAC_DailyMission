@@ -28,7 +28,8 @@ class BookCollectionViewController: UIViewController {
         let spacing: CGFloat = 20
         let width = UIScreen.main.bounds.width - (spacing * 4)
         layout.itemSize = CGSize(width: 150, height: (width / 3) * 1.2)
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .vertical
