@@ -87,7 +87,6 @@ class TheaterLocationViewController: UIViewController {
     
     
     func printLocality(_ lat: CLLocationDegrees, _ long: CLLocationDegrees) -> String{
-        print(#function)
         let findLocation = CLLocation(latitude: lat, longitude: long)
         let geocoder = CLGeocoder()
         let locale = Locale(identifier: "Ko-kr")

@@ -17,6 +17,8 @@ import SwiftyJSON
  */
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    
+    var numberOfPickerViews = Array(1...999)
 
     @IBOutlet weak var drawNumberTextFiled: UITextField!
     @IBOutlet weak var drawDateLabel: UILabel!
@@ -32,11 +34,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var winNumbersView: UIView!
     
+    @IBOutlet weak var winNumberPickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         drawNumberTextFiled.delegate = self
         drawNumberTextFiled.addDoneButtonToKeyboard(myAction:  #selector(self.drawNumberTextFiled.resignFirstResponder))
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     
@@ -123,3 +130,22 @@ extension UITextField{
     self.inputAccessoryView = doneToolbar
  }
 }
+
+extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        1
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        numberOfPickerViews.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        drawNumberTextFiled.text = String(component)
+        drawNumberTextFiled.inputView = winNumberPickerView
+    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+            150
+        }
+}
+

@@ -195,6 +195,7 @@
                         <outlet property="secondWinNumber" destination="vY8-7k-cBM" id="RAO-py-8ED"/>
                         <outlet property="sixthWinNumber" destination="QuR-Cd-w1i" id="sVw-Vw-Gdo"/>
                         <outlet property="thirdWinNumber" destination="aML-UF-xmk" id="x0n-bp-B8K"/>
+                        <outlet property="winNumberPickerView" destination="dw3-IR-rWE" id="Fgo-wd-HFT"/>
                         <outlet property="winNumbersView" destination="Kgn-pH-uyA" id="EcT-ie-SMM"/>
                     </connections>
                 </viewController>
