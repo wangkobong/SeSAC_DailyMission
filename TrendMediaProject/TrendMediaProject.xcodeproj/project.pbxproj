@@ -15,6 +15,10 @@
 		FE7A56EC2727A7DC00D878F4 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A56EB2727A7DC00D878F4 /* MovieModel.swift */; };
 		FE7A56EE272807FB00D878F4 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE7A56ED272807FB00D878F4 /* WeatherInfo.plist */; };
 		FE7A56F02728088C00D878F4 /* TrendMedia++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A56EF2728088C00D878F4 /* TrendMedia++Bundle.swift */; };
+		FE7A56F22728343E00D878F4 /* BoxOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A56F12728343E00D878F4 /* BoxOfficeViewController.swift */; };
+		FE7A56F5272835F500D878F4 /* TweeTextField in Frameworks */ = {isa = PBXBuildFile; productRef = FE7A56F4272835F500D878F4 /* TweeTextField */; };
+		FE7A56F72728375A00D878F4 /* BoxOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A56F62728375A00D878F4 /* BoxOfficeTableViewCell.swift */; };
+		FE7A56F92728417700D878F4 /* BoxOfficeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A56F82728417700D878F4 /* BoxOfficeModel.swift */; };
 		FEA5C791271F1A2700C591B0 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5C78F271F1A2700C591B0 /* BookCollectionViewCell.swift */; };
 		FEA5C792271F1A2700C591B0 /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA5C790271F1A2700C591B0 /* BookCollectionViewCell.xib */; };
 		FEA5C794271F1BD800C591B0 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5C793271F1BD800C591B0 /* BookCollectionViewController.swift */; };
@@ -45,6 +49,9 @@
 		FE7A56EB2727A7DC00D878F4 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		FE7A56ED272807FB00D878F4 /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
 		FE7A56EF2728088C00D878F4 /* TrendMedia++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendMedia++Bundle.swift"; sourceTree = "<group>"; };
+		FE7A56F12728343E00D878F4 /* BoxOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewController.swift; sourceTree = "<group>"; };
+		FE7A56F62728375A00D878F4 /* BoxOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeTableViewCell.swift; sourceTree = "<group>"; };
+		FE7A56F82728417700D878F4 /* BoxOfficeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeModel.swift; sourceTree = "<group>"; };
 		FEA5C78F271F1A2700C591B0 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEA5C790271F1A2700C591B0 /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
 		FEA5C793271F1BD800C591B0 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +84,7 @@
 				FE7A56EA27279D5700D878F4 /* SwiftyJSON in Frameworks */,
 				FEC3FCD0271DA3BA001890E7 /* Kingfisher in Frameworks */,
 				FE7A56E427279D2400D878F4 /* Alamofire in Frameworks */,
+				FE7A56F5272835F500D878F4 /* TweeTextField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +137,9 @@
 				FE7A56EB2727A7DC00D878F4 /* MovieModel.swift */,
 				FE7A56ED272807FB00D878F4 /* WeatherInfo.plist */,
 				FE7A56EF2728088C00D878F4 /* TrendMedia++Bundle.swift */,
+				FE7A56F12728343E00D878F4 /* BoxOfficeViewController.swift */,
+				FE7A56F62728375A00D878F4 /* BoxOfficeTableViewCell.swift */,
+				FE7A56F82728417700D878F4 /* BoxOfficeModel.swift */,
 			);
 			path = TrendMediaProject;
 			sourceTree = "<group>";
@@ -153,6 +164,7 @@
 				FEC3FCCF271DA3BA001890E7 /* Kingfisher */,
 				FE7A56E327279D2400D878F4 /* Alamofire */,
 				FE7A56E927279D5700D878F4 /* SwiftyJSON */,
+				FE7A56F4272835F500D878F4 /* TweeTextField */,
 			);
 			productName = TrendMediaProject;
 			productReference = FEC3FC53271944EA001890E7 /* TrendMediaProject.app */;
@@ -186,6 +198,7 @@
 				FEC3FCCE271DA3BA001890E7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				FE7A56E227279D2400D878F4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FE7A56E827279D5700D878F4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				FE7A56F3272835F500D878F4 /* XCRemoteSwiftPackageReference "TweeTextField" */,
 			);
 			productRefGroup = FEC3FC54271944EA001890E7 /* Products */;
 			projectDirPath = "";
@@ -234,6 +247,9 @@
 				FEC3FC95271ACFC5001890E7 /* MediaTableViewCell.swift in Sources */,
 				FEC3FC9D271C3C9E001890E7 /* CastmatesTableViewCell.swift in Sources */,
 				FE7A56662725412600D878F4 /* Theater.swift in Sources */,
+				FE7A56F72728375A00D878F4 /* BoxOfficeTableViewCell.swift in Sources */,
+				FE7A56F22728343E00D878F4 /* BoxOfficeViewController.swift in Sources */,
+				FE7A56F92728417700D878F4 /* BoxOfficeModel.swift in Sources */,
 				FEA5C794271F1BD800C591B0 /* BookCollectionViewController.swift in Sources */,
 				FEC3FC59271944EA001890E7 /* SceneDelegate.swift in Sources */,
 				FEC3FC9B271C3AE0001890E7 /* CastmatesTableViewController.swift in Sources */,
@@ -474,6 +490,14 @@
 				version = 5.0.0;
 			};
 		};
+		FE7A56F3272835F500D878F4 /* XCRemoteSwiftPackageReference "TweeTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/oleghnidets/TweeTextField.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		FEC3FCCE271DA3BA001890E7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -494,6 +518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FE7A56E827279D5700D878F4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		FE7A56F4272835F500D878F4 /* TweeTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE7A56F3272835F500D878F4 /* XCRemoteSwiftPackageReference "TweeTextField" */;
+			productName = TweeTextField;
 		};
 		FEC3FCCF271DA3BA001890E7 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -27,6 +27,15 @@
           "revision": "2b6054efa051565954e1d2b9da831680026cd768",
           "version": "5.0.0"
         }
+      },
+      {
+        "package": "TweeTextField",
+        "repositoryURL": "https://github.com/oleghnidets/TweeTextField.git",
+        "state": {
+          "branch": "master",
+          "revision": "449c52273788c330cc695d5d9307786571ed6563",
+          "version": null
+        }
       }
     ]
   },
