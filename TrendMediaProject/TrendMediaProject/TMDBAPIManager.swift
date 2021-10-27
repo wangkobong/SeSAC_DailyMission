@@ -10,9 +10,10 @@ import Alamofire
 import SwiftyJSON
 
 class TMDBAPIManger {
-    static let shared = TMDBAPIManger()
     
-    func fetchTrendingData() {
+    static let shared = TMDBAPIManger()
+
+    func fetchTrendingData(result: @escaping (Int, JSON) -> ()) {
         let key = Bundle.main.TMDBKey
         let url = "https://api.themoviedb.org/3/trending/all/day?api_key=\(key)"
         
@@ -20,11 +21,15 @@ class TMDBAPIManger {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
+                for item in json["results"].arrayValue {
+                    let code = response.response?.statusCode ?? 500
+        
+                    result(code, json)
+                }
             case .failure(let error):
                 print(error)
             }
         }
-        
     }
 }
+

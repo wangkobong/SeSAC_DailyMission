@@ -21,6 +21,7 @@
 		FE7A56F92728417700D878F4 /* BoxOfficeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A56F82728417700D878F4 /* BoxOfficeModel.swift */; };
 		FE7A570A27299EFC00D878F4 /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A570927299EFC00D878F4 /* TMDBAPIManager.swift */; };
 		FE7A570C27299F9200D878F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A570B27299F9200D878F4 /* Constants.swift */; };
+		FE7A570E2729A28E00D878F4 /* TrendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A570D2729A28E00D878F4 /* TrendModel.swift */; };
 		FEA5C791271F1A2700C591B0 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5C78F271F1A2700C591B0 /* BookCollectionViewCell.swift */; };
 		FEA5C792271F1A2700C591B0 /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA5C790271F1A2700C591B0 /* BookCollectionViewCell.xib */; };
 		FEA5C794271F1BD800C591B0 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5C793271F1BD800C591B0 /* BookCollectionViewController.swift */; };
@@ -56,6 +57,7 @@
 		FE7A56F82728417700D878F4 /* BoxOfficeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeModel.swift; sourceTree = "<group>"; };
 		FE7A570927299EFC00D878F4 /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		FE7A570B27299F9200D878F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FE7A570D2729A28E00D878F4 /* TrendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendModel.swift; sourceTree = "<group>"; };
 		FEA5C78F271F1A2700C591B0 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEA5C790271F1A2700C591B0 /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
 		FEA5C793271F1BD800C591B0 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				FE7A56F62728375A00D878F4 /* BoxOfficeTableViewCell.swift */,
 				FE7A56F82728417700D878F4 /* BoxOfficeModel.swift */,
 				FE7A570927299EFC00D878F4 /* TMDBAPIManager.swift */,
+				FE7A570D2729A28E00D878F4 /* TrendModel.swift */,
 				FE7A570B27299F9200D878F4 /* Constants.swift */,
 			);
 			path = TrendMediaProject;
@@ -253,6 +256,7 @@
 				FEC3FC99271BD2F8001890E7 /* SearchTableViewCell.swift in Sources */,
 				FEC3FC95271ACFC5001890E7 /* MediaTableViewCell.swift in Sources */,
 				FEC3FC9D271C3C9E001890E7 /* CastmatesTableViewCell.swift in Sources */,
+				FE7A570E2729A28E00D878F4 /* TrendModel.swift in Sources */,
 				FE7A56662725412600D878F4 /* Theater.swift in Sources */,
 				FE7A56F72728375A00D878F4 /* BoxOfficeTableViewCell.swift in Sources */,
 				FE7A56F22728343E00D878F4 /* BoxOfficeViewController.swift in Sources */,

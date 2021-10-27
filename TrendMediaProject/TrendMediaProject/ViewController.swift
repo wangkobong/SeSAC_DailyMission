@@ -5,20 +5,21 @@
 //  Created by sungyeon kim on 2021/10/15.
 //
 
-// present로 b화면 구현하기
-
 import UIKit
 import Kingfisher
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     var mediaInformation = MediaInformation()
+    var trendData: [TrendModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        TMDBAPIManger.shared.fetchTrendingData()
+        loadData()
+        print(trendData)
 
+ 
     }
 
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
@@ -53,7 +54,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mediaInformation.tvShow.count
+//        return mediaInformation.tvShow.count
+        return trendData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,26 +63,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UITableViewCell()
         }
         
-        let row = mediaInformation.tvShow[indexPath.row]
-        let url = URL(string: row.backdropImage)
-        cell.titleTextLabel.text = row.title
-        cell.overviewLabel.text = row.overview
+
+
+        let row = trendData[indexPath.row]
+        let title = row.titleData
+        if title != "" {
+            cell.titleTextLabel.text = row.titleData
+        } else {
+            cell.titleTextLabel.text = "정보 없음"
+        }
+        
+
+        cell.overviewLabel.text = row.overviewData
         cell.overviewLabel.numberOfLines = 0
-        cell.genreTextLabel.text = row.genre
-        cell.rateLabel.text = String(row.rate)
+        cell.rateLabel.text = row.voteAverageData
         cell.rateLabel.textColor = .black
-        cell.releaseDateLabel.text = row.releaseDate
+        cell.genreTextLabel.text = row.mediaTypeData
+        let url = URL(string: "https://image.tmdb.org/t/p/w500/"+row.backdropPathData)
+        cell.releaseDateLabel.text = row.releaseDateData
         
         cell.clipbutton.layer.cornerRadius = 0.5 * cell.clipbutton.bounds.size.width
         cell.clipbutton.clipsToBounds = true
-//        do {
-//            let data = try Data(contentsOf: url!)
-//            cell.posterImageView.image = UIImage(data: data)
-
-//            cell.posterImageView.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
-//        } catch {
-//            print(error)
-//        }
 
         cell.posterImageView.kf.setImage(with:url)
         cell.posterImageView.contentMode = .scaleToFill
@@ -115,6 +118,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(sender)
     }
     
+    func loadData() {
+        TMDBAPIManger.shared.fetchTrendingData { code, json in
+            for item in json["results"].arrayValue {
+                let title = item["title"].stringValue
+                let backdropImage = item["backdrop_path"].stringValue
+                let overview = item["overview"].stringValue
+                let voteAverage = item["vote_average"].stringValue
+                let releaseDate = item["release_date"].stringValue
+                let mediaType = item["media_type"].stringValue
+                let data = TrendModel(titleData: title, backdropPathData: backdropImage, overviewData: overview, voteAverageData: voteAverage, releaseDateData: releaseDate, mediaTypeData: mediaType)
+                self.trendData.append(data)
+            }
+            
+            self.tableView.reloadData()
+        }
+        print(trendData)
+    }
 
+    
 }
 
