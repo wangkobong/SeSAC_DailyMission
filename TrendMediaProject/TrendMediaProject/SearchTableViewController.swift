@@ -10,15 +10,19 @@ import SwiftyJSON
 import Alamofire
 import Kingfisher
 
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
+
     
     var movieData: [MovieModel] = []
-    
     var mediaInformation = MediaInformation()
+    
+    var startPage = 1
+    var totalCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.prefetchDataSource = self
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonPressed))
         
         fetchMovieData()
@@ -28,8 +32,8 @@ class SearchTableViewController: UITableViewController {
     func fetchMovieData() {
         //네이버 영화 API 호출해서 debug 결과 찍기
         
-        if let query = "스파이더맨".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            let url = "https://openapi.naver.com/v1/search/movie.json?query=\(query)&display=15&start=1&"
+        if let query = "아기".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            let url = "https://openapi.naver.com/v1/search/movie.json?query=\(query)&display=10&start=\(startPage)&"
             let clientID = Bundle.main.clientID
             let clientSecret = Bundle.main.clientSecret
             let header: HTTPHeaders = [
@@ -41,8 +45,8 @@ class SearchTableViewController: UITableViewController {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    let firstTitle = json["items"][0]["title"].stringValue
                     
+                    self.totalCount = json["total"].intValue
                     for item in json["items"].arrayValue {
                         let title = item ["title"].stringValue.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
                         let image = item["image"].stringValue
@@ -57,8 +61,7 @@ class SearchTableViewController: UITableViewController {
                     
                     //정말 중요함!
                     self.tableView.reloadData()
-                    print(self.movieData)
-                    print("첫번쨏: \(firstTitle)")
+ 
                 case .failure(let error):
                     print(error)
                 }
@@ -71,6 +74,23 @@ class SearchTableViewController: UITableViewController {
     
     @objc func closeButtonPressed() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // 셀이 화면에 보이기 전에 필요한 리소스를 미리 다운 받는 기능
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        for indexPath in indexPaths {
+            if movieData.count - 1 == indexPath.row && movieData.count < totalCount {
+                startPage += 10
+                fetchMovieData()
+                print("prefetch: \(indexPath)")
+            }
+        }
+    }
+    
+    //취소
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print("취소:\(indexPaths)")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,6 +106,7 @@ class SearchTableViewController: UITableViewController {
         
         let row = movieData[indexPath.row]
         let url = URL(string: row.imageData)
+        
         
         cell.posterImage.kf.setImage(with:url)
 //        cell.mediaTitleLabel.text = row.title
