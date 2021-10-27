@@ -16,9 +16,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TMDBAPIManger.shared.fetchTrendingData()
 
     }
-    
+
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

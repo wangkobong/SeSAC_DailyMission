@@ -31,6 +31,14 @@ extension Bundle {
         guard let boxOfficeKey = resouce["BoxOfficeKey"] as? String else { fatalError("WeatherInfo.plist에 BoxOfficeKey설정을 해주세요.")}
         return boxOfficeKey
     }
+    
+    var TMDBKey: String {
+        guard let file = self.path(forResource: "WeatherInfo", ofType: "plist") else{ return "" }
+        
+        guard let resouce = NSDictionary(contentsOfFile: file) else { return ""}
+        guard let TMDBKey = resouce["TMDB_API_KEY"] as? String else { fatalError("WeatherInfo.plist에 TMDB_API_KEY설정을 해주세요.")}
+        return TMDBKey
+    }
 }
 
 
