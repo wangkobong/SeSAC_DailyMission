@@ -12,6 +12,8 @@ import SwiftyJSON
 class TMDBAPIManger {
     
     static let shared = TMDBAPIManger()
+    
+    var movieIDList: [Int] = []
 
     func fetchTrendingData(result: @escaping (Int, JSON) -> ()) {
         let key = Bundle.main.TMDBKey
@@ -21,7 +23,7 @@ class TMDBAPIManger {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                for item in json["results"].arrayValue {
+                for _ in json["results"].arrayValue {
                     let code = response.response?.statusCode ?? 500
         
                     result(code, json)
@@ -30,6 +32,26 @@ class TMDBAPIManger {
                 print(error)
             }
         }
+    }
+    
+    func getMovieID(result: @escaping ([Int]) -> ()) {
+        let key = Bundle.main.TMDBKey
+        let url = "https://api.themoviedb.org/3/trending/all/day?api_key=\(key)"
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.movieIDList = json["results"].arrayValue.map{ $0["id"].intValue}
+                result(self.movieIDList)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fetchCreditsData() {
+        let key = Bundle.main.TMDBKey
+        let url = "https://api.themoviedb.org/3/movie/335983/credits?api_key=\(key)&language=en-US"
     }
 }
 

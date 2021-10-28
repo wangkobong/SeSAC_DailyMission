@@ -14,12 +14,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var mediaInformation = MediaInformation()
     var trendData: [TrendModel] = []
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        print(trendData)
-
- 
+        loadData() 
     }
 
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
@@ -97,11 +95,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
+ 
 
         guard let vc = sb.instantiateViewController(withIdentifier: "CastmatesTableViewController") as? CastmatesTableViewController else {
             print("ERROR") // 대신에 Alert으로 사용자에게 에러를 보여줌
             return
         }
+        
         
         let row = mediaInformation.tvShow[indexPath.row]
         vc.mediaTitle = row.title
@@ -133,7 +133,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             self.tableView.reloadData()
         }
-        print(trendData)
     }
 
     

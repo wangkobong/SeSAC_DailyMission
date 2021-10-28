@@ -157,7 +157,7 @@ extension SearchTableViewController: UISearchBarDelegate {
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        <#code#>
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        <#code#>
+//    }
 }

@@ -17,6 +17,8 @@ class CastmatesTableViewController: UITableViewController {
     var backdropImage: String?
     var actorList: [String]?
     var genre: String?
+    var movieIDList2: [Int] = []
+
     
     @IBOutlet var summaryCollectionView: UICollectionView!
     
@@ -29,8 +31,15 @@ class CastmatesTableViewController: UITableViewController {
         
         let nibName = UINib(nibName: SummaryCollectionViewCell.identifier, bundle: nil)
         summaryCollectionView.register(nibName, forCellWithReuseIdentifier: SummaryCollectionViewCell.identifier)
-
+        
+        TMDBAPIManger.shared.getMovieID { movieIDList in
+            print("클로저로 받아온거 : \(movieIDList)")
+            self.movieIDList2 = movieIDList
+            print("전역변수로 선언한거 : \(self.movieIDList2)")
+        }
+       
     }
+    
 
     // MARK: - Table view data source
 
@@ -52,7 +61,7 @@ class CastmatesTableViewController: UITableViewController {
         cell.nameLabel.text = actorList?[indexPath.row]
         cell.roleLabel.text = " \(genre ?? "배우")"
         
-
+        print("movieIDList2 셀포로우앳 \(movieIDList2)")
         return cell
     }
 
@@ -75,8 +84,7 @@ extension CastmatesTableViewController: UICollectionViewDelegate, UICollectionVi
         cell.posterImageView.kf.setImage(with:url)
         cell.titleLabel.text = mediaTitle
         cell.summaryLabel.text = overview
-        print(overview)
-        print(url)
+
         return cell
     }
     
