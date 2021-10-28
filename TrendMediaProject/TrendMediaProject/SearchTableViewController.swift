@@ -15,6 +15,7 @@ class SearchTableViewController: UITableViewController, UITableViewDataSourcePre
     
     var movieData: [MovieModel] = []
     var mediaInformation = MediaInformation()
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var startPage = 1
     var totalCount = 0
@@ -23,17 +24,19 @@ class SearchTableViewController: UITableViewController, UITableViewDataSourcePre
         super.viewDidLoad()
         
         tableView.prefetchDataSource = self
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonPressed))
         
-        fetchMovieData()
+        fetchMovieData(query: "아기")
     }
     
     // 네이버 영화 네트워크 통신
-    func fetchMovieData() {
+    func fetchMovieData(query: String) {
         //네이버 영화 API 호출해서 debug 결과 찍기
         
-        if let query = "아기".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            let url = "https://openapi.naver.com/v1/search/movie.json?query=\(query)&display=10&start=\(startPage)&"
+        if let query1 = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            let url = "https://openapi.naver.com/v1/search/movie.json?query=\(query1)&display=10&start=\(startPage)&"
             let clientID = Bundle.main.clientID
             let clientSecret = Bundle.main.clientSecret
             let header: HTTPHeaders = [
@@ -82,7 +85,7 @@ class SearchTableViewController: UITableViewController, UITableViewDataSourcePre
         for indexPath in indexPaths {
             if movieData.count - 1 == indexPath.row && movieData.count < totalCount {
                 startPage += 10
-                fetchMovieData()
+                fetchMovieData(query: "아기")
                 print("prefetch: \(indexPath)")
             }
         }
@@ -124,4 +127,37 @@ class SearchTableViewController: UITableViewController, UITableViewDataSourcePre
     }
 
 
+}
+
+extension SearchTableViewController: UISearchBarDelegate {
+    
+    
+    // 취소 버튼 눌렀을 떄 실행
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print(#function)
+        
+
+        
+    }
+    // 검색 버튼 눌렀을 때 실행
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(#function)
+        searchBar.showsCancelButton = false
+        if let text = searchBar.text {
+            movieData.removeAll()
+            startPage = 1
+            fetchMovieData(query: text)
+        }
+    }
+    
+    // 서치바에 커서 깜빡이기 시작할떄
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print(#function)
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        <#code#>
+    }
 }
