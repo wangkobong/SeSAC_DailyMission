@@ -8,13 +8,17 @@
 import UIKit
 import Kingfisher
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
+
     
     @IBOutlet weak var tableView: UITableView!
+    
     var mediaInformation = MediaInformation()
     var trendData: [TrendModel] = []
-
-
+    
+    var startPage = 1
+    var totalCount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData() 
@@ -50,6 +54,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //        nav.modalTransitionStyle = .flipHorizontal
         self.present(nav, animated: true, completion: nil)
     }
+/// MARK: - delegate mothods
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        for indexPath in indexPaths {
+            if trendData.count - 1 == indexPath.row && trendData.count < totalCount {
+                startPage += 10
+                loadData()
+                print("prefetch: \(indexPath)")
+            }
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return mediaInformation.tvShow.count
@@ -97,19 +114,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
  
 
-        guard let vc = sb.instantiateViewController(withIdentifier: "CastmatesTableViewController") as? CastmatesTableViewController else {
+        guard let vc = sb.instantiateViewController(withIdentifier: "CastViewController") as? CastViewController else {
             print("ERROR") // 대신에 Alert으로 사용자에게 에러를 보여줌
             return
         }
         
+        loadData()
         
-        let row = mediaInformation.tvShow[indexPath.row]
-        vc.mediaTitle = row.title
-        vc.genre = row.genre
-        vc.overview = row.overview
-        vc.rate = row.rate
-        vc.starring = row.starring
-        vc.backdropImage = row.backdropImage
         self.navigationController?.pushViewController(vc, animated: true)
 
     }

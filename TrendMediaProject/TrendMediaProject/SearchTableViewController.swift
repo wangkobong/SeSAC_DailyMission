@@ -28,7 +28,7 @@ class SearchTableViewController: UITableViewController, UITableViewDataSourcePre
         searchBar.showsCancelButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonPressed))
         
-        fetchMovieData(query: "아기")
+        fetchMovieData(query: "")
     }
     
     // 네이버 영화 네트워크 통신
@@ -36,7 +36,7 @@ class SearchTableViewController: UITableViewController, UITableViewDataSourcePre
         //네이버 영화 API 호출해서 debug 결과 찍기
         
         if let query1 = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            let url = "https://openapi.naver.com/v1/search/movie.json?query=\(query1)&display=10&start=\(startPage)&"
+            let url = "https://openapi.naver.com/v1/search/movie.json?query=\(query1)&display=10&start=\(startPage)"
             let clientID = Bundle.main.clientID
             let clientSecret = Bundle.main.clientSecret
             let header: HTTPHeaders = [
@@ -85,7 +85,7 @@ class SearchTableViewController: UITableViewController, UITableViewDataSourcePre
         for indexPath in indexPaths {
             if movieData.count - 1 == indexPath.row && movieData.count < totalCount {
                 startPage += 10
-                fetchMovieData(query: "아기")
+                fetchMovieData(query: "")
                 print("prefetch: \(indexPath)")
             }
         }

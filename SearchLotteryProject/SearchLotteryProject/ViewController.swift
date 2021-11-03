@@ -40,10 +40,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         drawNumberTextFiled.delegate = self
         drawNumberTextFiled.addDoneButtonToKeyboard(myAction:  #selector(self.drawNumberTextFiled.resignFirstResponder))
+        
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear, .weekday,], from: Date())
+        component.weekday = 1
+        let saturdayWeek = calendar.date(from: component)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let saturdayWeekToString = dateFormatter.string(for: saturdayWeek)
+        print(saturdayWeekToString!)
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func getDrawNumber() {
+        
     }
     
     
@@ -109,6 +124,26 @@ extension ViewController: UITextViewDelegate {
     }
 }
 
+// MARK: - UIPickerViewDelegate
+extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        1
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        numberOfPickerViews.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        drawNumberTextFiled.text = String(component)
+        drawNumberTextFiled.inputView = winNumberPickerView
+    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+            150
+        }
+}
+
+
 
 // MARK: - 숫자패드에 리턴키 넣기
 extension UITextField{
@@ -130,22 +165,3 @@ extension UITextField{
     self.inputAccessoryView = doneToolbar
  }
 }
-
-extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        1
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        numberOfPickerViews.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        drawNumberTextFiled.text = String(component)
-        drawNumberTextFiled.inputView = winNumberPickerView
-    }
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-            150
-        }
-}
-

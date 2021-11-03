@@ -17,7 +17,7 @@ class TMDBAPIManger {
 
     func fetchTrendingData(result: @escaping (Int, JSON) -> ()) {
         let key = Bundle.main.TMDBKey
-        let url = "https://api.themoviedb.org/3/trending/all/day?api_key=\(key)"
+        let url = "https://api.themoviedb.org/3/trending/all/day?api_key=\(key)&display=10&start=1"
         
         AF.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
@@ -49,9 +49,19 @@ class TMDBAPIManger {
         }
     }
     
-    func fetchCreditsData() {
+    func fetchCreditsData(_ movieID: Int, result: @escaping (JSON) -> ()) {
         let key = Bundle.main.TMDBKey
-        let url = "https://api.themoviedb.org/3/movie/335983/credits?api_key=\(key)&language=en-US"
+        let url = "https://api.themoviedb.org/3/movie/\(movieID)/credits?api_key=\(key)&language=en-US"
+        
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                result(json)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
