@@ -11,6 +11,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
 
     static let identifier = "BoxOfficeTableViewCell"
     
+    @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var orderLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!

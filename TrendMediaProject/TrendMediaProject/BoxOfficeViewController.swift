@@ -40,31 +40,67 @@ class BoxOfficeViewController: UIViewController, UITableViewDelegate, UITableVie
         yesterdayDateToString = dateFormatter.string(from: yesterday)
         let regDate = Date()
         registerDateToString = dateFormatter.string(from: regDate)
-        let regDateToInt = Int(registerDateToString)! - 1
-        tasks = localRealm.objects(BoxOffice.self).sorted(byKeyPath: "relaseDate", ascending: false)
+        tasks = localRealm.objects(BoxOffice.self).filter("searchDate == '\(yesterdayDateToString)'")
+         //sorted(byKeyPath: "relaseDate", ascending: false)
 
 //        releaseDateTextField.activeLineColor = .systemBlue
 //        releaseDateTextField.activeLineWidth = 1
 //        releaseDateTextField.animationDuration = 0.3
-
-       if tasks.first?.registerDate == nil {
-            fetchBoxOfficeData(yesterdayDateToString)
-        }
+  
+        
+//        tasks[0].searchDate != yesterdayDateToString ? fetchBoxOfficeData(searchDate: yesterdayDateToString ) : print("이미 검색됨")
+        print(Results<BoxOffice>.self)
+        tasks.isEmpty ? fetchBoxOfficeData(searchDate: yesterdayDateToString) : print("데이터존재")
         print("Realm is located at:", localRealm.configuration.fileURL!)
+        print("viewDidLoad \(viewDidLoad)")
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        boxOfficeTableView.reloadData()
+
     }
     
 
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        let releaseDate = releaseDateTextField.text
-        fetchBoxOfficeData(releaseDate ?? "20210101")
-        self.boxOfficeTableView.reloadData()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let searchDate = releaseDateTextField.text ?? "0000000"
+        let filter = localRealm.objects(BoxOffice.self).filter("searchDate == '\(searchDate)'")
+        filter.isEmpty ? fetchBoxOfficeData(searchDate: searchDate) : print("이미 검색됨")
+        tasks = localRealm.objects(BoxOffice.self).filter("searchDate == '\(searchDate)'")
+        boxOfficeTableView.reloadData()
     }
+    
+    func fetchBoxOfficeData(searchDate: String) {
+        print(#function)
+        let boxOfficeKey = Bundle.main.boxOfficeKey
+        let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(boxOfficeKey)&targetDt=\(searchDate)"
+        AF.request(url, method: .get).validate().responseJSON { [self] response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                for item in json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue {
+                    let title = item["movieNm"].stringValue
+                    let releaseDate = item["openDt"].stringValue
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyyMMdd"
+                    let regDate = Date()
+                    let task = BoxOffice(movieTitle: title, relaseDate: releaseDate, registerDate: regDate, searchDate: searchDate)
+                    try! self.localRealm.write {
+                        self.localRealm.add(task)
+                    }
+                    
+                }
+                self.boxOfficeTableView.reloadData()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     
     func createDatePickerView(){
         //toolbar 만들기, done 버튼이 들어갈 곳
@@ -97,37 +133,13 @@ class BoxOfficeViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
-    func fetchBoxOfficeData(_ yesterdayDate: String) {
-        print(#function)
-        let boxOfficeKey = Bundle.main.boxOfficeKey
-        let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(boxOfficeKey)&targetDt=\(yesterdayDate)"
-        AF.request(url, method: .get).validate().responseJSON { [self] response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                
-                for item in json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue {
-                    let title = item["movieNm"].stringValue
-                    let releaseDate = item["openDt"].stringValue
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyyMMdd"
-                    let regDate = Date()
-                    let task = BoxOffice(movieTitle: title, relaseDate: releaseDate, registerDate: regDate)
-                    try! self.localRealm.write {
-                        self.localRealm.add(task)
-                    }
 
-                }
-                self.boxOfficeTableView.reloadData()
 
-            case .failure(let error):
-                print(error)
-            }
-        }
+    @objc func checkButtonClicked(kobong: UIButton) {
+        
+        
+        print(tasks[kobong.tag].movieTitle)
     }
-    
-
-    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,7 +150,7 @@ class BoxOfficeViewController: UIViewController, UITableViewDelegate, UITableVie
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BoxOfficeTableViewCell.identifier, for: indexPath) as? BoxOfficeTableViewCell else {
             return UITableViewCell()
         }
-        
+//        print("cellForRowAt \(tasks)")
         let row = tasks[indexPath.row]
         
         cell.movieTitleLabel.text = row.movieTitle
