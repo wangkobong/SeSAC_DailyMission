@@ -139,22 +139,6 @@ extension TheaterLocationViewController: CLLocationManagerDelegate {
             annotaion.title = "서울시청"
             annotaion.coordinate = location
             mapView.addAnnotation(annotaion)
-            //            let alter = UIAlertController(title: "위치권한 설정이 '안함'으로 되어있습니다.", message: "앱 설정 화면으로 가시겠습니까? \n '아니오'를 선택하시면 앱이 종료됩니다.", preferredStyle: UIAlertController.Style.alert)
-//            let logOkAction = UIAlertAction(title: "네", style: UIAlertAction.Style.default){
-//                (action: UIAlertAction) in
-//                if #available(iOS 10.0, *) {
-//                    UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
-//                } else {
-//                    UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
-//                }
-//            }
-//            let logNoAction = UIAlertAction(title: "아니오", style: UIAlertAction.Style.destructive){
-//                (action: UIAlertAction) in
-//                exit(0)
-//            }
-//            alter.addAction(logNoAction)
-//            alter.addAction(logOkAction)
-//            self.present(alter, animated: true, completion: nil)
             showAlert(title: "위치권한 설정을 거부하셨습니다", message: "위치 설정 화면으로 가시겠습니까?", okTitle: "설정으로 이동") {
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
