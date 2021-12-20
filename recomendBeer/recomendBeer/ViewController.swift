@@ -75,6 +75,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         header.imageView.image = UIImage(named: "image")
         tableView.tableHeaderView = header
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view)
+            $0.trailing.equalTo(view)
+            $0.bottom.equalTo(refreshButton.snp.top).offset(-20)
+        }
     
         refreshButton.snp.makeConstraints {
             $0.width.equalTo(50)
@@ -90,17 +97,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(0)
         }
         
-        tableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.equalTo(view)
-            $0.trailing.equalTo(view)
-            $0.bottom.equalTo(refreshButton.snp.top).offset(-20)
-        }
+
     }
     
 
     
     @objc func refreshButtonPressed() {
+        fetchRandomBeer()
         print("refreshButtonPressed pressed")
     }
     
@@ -126,3 +129,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 }
 
+extension ViewController {
+    struct DecodableType: Decodable { let url: String }
+    
+    func fetchRandomBeer() {
+        let url = "https://api.punkapi.com/v2/beers/random"
+ 
+        AF.request(url).responseDecodable(of: WelcomeElement.self) { response in
+                    debugPrint("Response: \(response)")
+        }
+    }
+}

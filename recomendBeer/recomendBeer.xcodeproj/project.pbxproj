@@ -15,6 +15,7 @@
 		FE782F052770BF4A000F6EE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FE782F042770BF4A000F6EE6 /* SnapKit */; };
 		FE782F082770BF57000F6EE6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FE782F072770BF57000F6EE6 /* Alamofire */; };
 		FE782F0A2770CC50000F6EE6 /* StretchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F092770CC50000F6EE6 /* StretchHeader.swift */; };
+		FE782F0E2770D98B000F6EE6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F0D2770D98B000F6EE6 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FE782EFB2770BDD7000F6EE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE782EFD2770BDD7000F6EE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE782F092770CC50000F6EE6 /* StretchHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchHeader.swift; sourceTree = "<group>"; };
+		FE782F0D2770D98B000F6EE6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				FE782F092770CC50000F6EE6 /* StretchHeader.swift */,
 				FE782EFA2770BDD7000F6EE6 /* LaunchScreen.storyboard */,
 				FE782EFD2770BDD7000F6EE6 /* Info.plist */,
+				FE782F0D2770D98B000F6EE6 /* Model.swift */,
 			);
 			path = recomendBeer;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE782F0E2770D98B000F6EE6 /* Model.swift in Sources */,
 				FE782F0A2770CC50000F6EE6 /* StretchHeader.swift in Sources */,
 				FE782EF42770BDD5000F6EE6 /* ViewController.swift in Sources */,
 				FE782EF02770BDD5000F6EE6 /* AppDelegate.swift in Sources */,
