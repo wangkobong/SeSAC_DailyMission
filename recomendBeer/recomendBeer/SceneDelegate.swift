@@ -29,10 +29,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let vc2 = SettingViewController(nibName: "SettingViewController", bundle: bundle)
         
         //3. Code
-//        let vc = TabBarController()
-//        let nav = UINavigationController(rootViewController: vc)
-//        window?.rootViewController = TabBarController()
-//        window?.makeKeyAndVisible() // iOS13부터 생김
+        let vc = ViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible() // iOS13부터 생김
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
