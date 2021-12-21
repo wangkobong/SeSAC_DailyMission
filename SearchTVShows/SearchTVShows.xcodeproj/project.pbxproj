@@ -12,6 +12,8 @@
 		FE782F512771DCB8000F6EE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F502771DCB8000F6EE6 /* ViewController.swift */; };
 		FE782F562771DCB9000F6EE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE782F552771DCB9000F6EE6 /* Assets.xcassets */; };
 		FE782F592771DCB9000F6EE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE782F572771DCB9000F6EE6 /* LaunchScreen.storyboard */; };
+		FE782F622771DDD1000F6EE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FE782F612771DDD1000F6EE6 /* SnapKit */; };
+		FE782F642772137E000F6EE6 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F632772137E000F6EE6 /* UICollectionViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,7 @@
 		FE782F552771DCB9000F6EE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE782F582771DCB9000F6EE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE782F5A2771DCB9000F6EE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE782F632772137E000F6EE6 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE782F622771DDD1000F6EE6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +64,7 @@
 				FE782F552771DCB9000F6EE6 /* Assets.xcassets */,
 				FE782F572771DCB9000F6EE6 /* LaunchScreen.storyboard */,
 				FE782F5A2771DCB9000F6EE6 /* Info.plist */,
+				FE782F632772137E000F6EE6 /* UICollectionViewCell+Extension.swift */,
 			);
 			path = SearchTVShows;
 			sourceTree = "<group>";
@@ -80,6 +85,9 @@
 			dependencies = (
 			);
 			name = SearchTVShows;
+			packageProductDependencies = (
+				FE782F612771DDD1000F6EE6 /* SnapKit */,
+			);
 			productName = SearchTVShows;
 			productReference = FE782F492771DCB8000F6EE6 /* SearchTVShows.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +116,9 @@
 				Base,
 			);
 			mainGroup = FE782F402771DCB8000F6EE6;
+			packageReferences = (
+				FE782F602771DDD1000F6EE6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = FE782F4A2771DCB8000F6EE6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE782F642772137E000F6EE6 /* UICollectionViewCell+Extension.swift in Sources */,
 				FE782F512771DCB8000F6EE6 /* ViewController.swift in Sources */,
 				FE782F4D2771DCB8000F6EE6 /* AppDelegate.swift in Sources */,
 				FE782F4F2771DCB8000F6EE6 /* SceneDelegate.swift in Sources */,
@@ -346,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FE782F602771DDD1000F6EE6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FE782F612771DDD1000F6EE6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE782F602771DDD1000F6EE6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE782F412771DCB8000F6EE6 /* Project object */;
 }
