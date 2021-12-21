@@ -10,7 +10,10 @@ import SnapKit
 import Alamofire
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    let api = APIService()
+    var beerData: BeerElement?
+    
     let models = [
         "피자랑 같이 드셈",
         "치킨 사테랑 같이 드셈",
@@ -61,6 +64,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        api.requestRandomBeer { beer in
+            self.beerData = beer
+            print(Thread.isMainThread)
+            DispatchQueue.main.async {
+                print(self.beerData)
+                self.tableView.reloadData()
+            }
+            print(self.beerData)
+        }
 
         [tableView, refreshButton, shareButton].forEach {
             view.addSubview($0)
@@ -103,7 +116,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     
     @objc func refreshButtonPressed() {
-        fetchRandomBeer()
+        api.requestRandomBeer { beer in
+            self.beerData = beer
+            print(Thread.isMainThread)
+            DispatchQueue.main.async {
+                print(self.beerData)
+                self.tableView.reloadData()
+            }
+            print(self.beerData)
+        }
         print("refreshButtonPressed pressed")
     }
     
@@ -112,13 +133,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        models.count
+        beerData?.foodPairing.count ?? 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     
-        cell.textLabel?.text = models[indexPath.row]
+        cell.textLabel?.text = beerData?.foodPairing[indexPath.row]
         return cell
     }
     
@@ -126,17 +147,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let header = tableView.tableHeaderView as? StretchyTableHeaderView else { return }
         
         header.scrollViewDidScroll(scrollView: tableView)
-    }
-}
-
-extension ViewController {
-    struct DecodableType: Decodable { let url: String }
-    
-    func fetchRandomBeer() {
-        let url = "https://api.punkapi.com/v2/beers/random"
- 
-        AF.request(url).responseDecodable(of: WelcomeElement.self) { response in
-                    debugPrint("Response: \(response)")
-        }
     }
 }
