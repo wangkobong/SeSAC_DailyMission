@@ -9,19 +9,10 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
+    
     let memberName = ["효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린"]
     
-    let searchController: UISearchController = {
-        let searchController = UISearchController()
-        
-        return searchController
-    }()
-    
-    let searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.backgroundColor = .white
-        return searchBar
-    }()
+    let searchBar = UISearchBar()
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -35,21 +26,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reuseIdentifier)
+        configureUI()
+
+    }
+    
+    func configureUI() {
+
+        collectionView.backgroundColor = .black
+        title = "영화 및 TV프로그램"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.titleView = searchBar
+        searchBar.sizeToFit()
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.searchTextField.textColor = .black
+        searchBar.searchTextField.backgroundColor = .white
+        searchBar.searchTextField.tintColor = .white
+        
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.barStyle = .black
+        
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.reuseIdentifier)
+        
+        collectionView.register(HeaderCollectionReusableView.self,forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader ,withReuseIdentifier: HeaderCollectionReusableView.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        collectionView.backgroundColor = .yellow
-        
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        
-//        searchController.searchBar.becomeFirstResponder()
-//
-//        self.navigationItem.titleView = searchController.searchBar
-        
+      
         [collectionView].forEach {
             view.addSubview($0)
-        }
+    }
         
 //        searchBar.snp.makeConstraints {
 //            $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -65,22 +70,34 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.reuseIdentifier, for: indexPath)
         cell.backgroundColor = .red
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = collectionView.bounds.width/3.0
-        let yourHeight = yourWidth
-
-        return CGSize(width: yourWidth, height: yourHeight)
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
+        header.configure()
+        return header
     }
-    
     
 }
 
+
+extension ViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("searchButton Clicked")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print(#function)
+    }
+}

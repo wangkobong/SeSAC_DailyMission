@@ -21,9 +21,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         
         let vc = ViewController()
+        let svc = SearchViewController()
         let nav = UINavigationController(rootViewController: vc)
+//        let searchController = UISearchController(searchResultsController: nil)
+//        self.navigationItem.searchController = searchController
+//
+//    
         window?.rootViewController = nav
-        window?.makeKeyAndVisible() 
+        window?.makeKeyAndVisible()
+        
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
