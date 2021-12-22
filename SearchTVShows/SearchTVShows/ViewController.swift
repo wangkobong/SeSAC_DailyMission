@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     let memberName = ["효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린"]
     
     let searchBar = UISearchBar()
+    let posterImageView = UIImageView()
+    let apiService = APIService()
+    var tvShowsData: TVShows?
+    
+    var buffer: Data?
+    var session: URLSession!
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -25,13 +31,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        apiService.requestTVShows { tvShows in
+            print(#function)
+            self.tvShowsData = tvShows
+            print(tvShows!)
+        }
+        request()
         configureUI()
-
+        buffer = Data()
     }
     
     func configureUI() {
-
+        
         collectionView.backgroundColor = .black
         title = "영화 및 TV프로그램"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -64,18 +75,27 @@ class ViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
     }
+    
+    func request() {
+        let url = URL(string: "https://api.themoviedb.org/3/trending/tv/day?api_key=1d58e1b463506e61588d4b93565a4f73")!
+        
+        session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
+        session.dataTask(with: url).resume()
+    }
 
 
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        tvShowsData?.results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.reuseIdentifier, for: indexPath)
         cell.backgroundColor = .red
+        posterImageView.backgroundColor = .yellow
+        cell.addSubview(posterImageView)
         return cell
     }
     
@@ -85,6 +105,33 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return header
     }
     
+}
+
+extension ViewController: URLSessionDataDelegate {
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse) async -> URLSession.ResponseDisposition {
+        
+        if let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) {
+            
+            return .allow
+        } else {
+            return .cancel
+        }
+    }
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        print(#function)
+        buffer?.append(data)
+    }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let error = error {
+            print("ERROR: \(error)")
+        } else {
+            print("성공")
+            print("task: \(task)")
+            print("data: \(self.buffer)")
+        }
+    }
 }
 
 
@@ -99,5 +146,13 @@ extension ViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         print(#function)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print(#function)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
 }

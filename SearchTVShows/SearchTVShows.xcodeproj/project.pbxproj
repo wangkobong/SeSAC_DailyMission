@@ -18,6 +18,8 @@
 		FE782F6A277220B7000F6EE6 /* PosterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE782F68277220B7000F6EE6 /* PosterCollectionViewCell.xib */; };
 		FE782F6C27722251000F6EE6 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F6B27722251000F6EE6 /* HeaderCollectionReusableView.swift */; };
 		FE782F7D277334B4000F6EE6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F7C277334B4000F6EE6 /* SearchViewController.swift */; };
+		FE782F7F2773765A000F6EE6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F7E2773765A000F6EE6 /* APIService.swift */; };
+		FE782F81277377BA000F6EE6 /* TVShowsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F80277377BA000F6EE6 /* TVShowsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		FE782F68277220B7000F6EE6 /* PosterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PosterCollectionViewCell.xib; sourceTree = "<group>"; };
 		FE782F6B27722251000F6EE6 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		FE782F7C277334B4000F6EE6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FE782F7E2773765A000F6EE6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		FE782F80277377BA000F6EE6 /* TVShowsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				FE782F68277220B7000F6EE6 /* PosterCollectionViewCell.xib */,
 				FE782F6B27722251000F6EE6 /* HeaderCollectionReusableView.swift */,
 				FE782F7C277334B4000F6EE6 /* SearchViewController.swift */,
+				FE782F7E2773765A000F6EE6 /* APIService.swift */,
+				FE782F80277377BA000F6EE6 /* TVShowsModel.swift */,
 			);
 			path = SearchTVShows;
 			sourceTree = "<group>";
@@ -164,6 +170,8 @@
 				FE782F4D2771DCB8000F6EE6 /* AppDelegate.swift in Sources */,
 				FE782F4F2771DCB8000F6EE6 /* SceneDelegate.swift in Sources */,
 				FE782F6C27722251000F6EE6 /* HeaderCollectionReusableView.swift in Sources */,
+				FE782F81277377BA000F6EE6 /* TVShowsModel.swift in Sources */,
+				FE782F7F2773765A000F6EE6 /* APIService.swift in Sources */,
 				FE782F69277220B7000F6EE6 /* PosterCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
