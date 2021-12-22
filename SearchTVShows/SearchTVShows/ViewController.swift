@@ -7,13 +7,14 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ViewController: UIViewController {
     
     let memberName = ["효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린", "효정", "미미", "유아", "승희", "지호", "비니", "아린"]
     
     let searchBar = UISearchBar()
-    let posterImageView = UIImageView()
+
     let apiService = APIService()
     var tvShowsData: TVShows?
     
@@ -36,9 +37,9 @@ class ViewController: UIViewController {
             self.tvShowsData = tvShows
             print(tvShows!)
         }
-        request()
+//        request()
         configureUI()
-        buffer = Data()
+//        buffer = Data()
     }
     
     func configureUI() {
@@ -76,13 +77,12 @@ class ViewController: UIViewController {
         }
     }
     
-    func request() {
-        let url = URL(string: "https://api.themoviedb.org/3/trending/tv/day?api_key=1d58e1b463506e61588d4b93565a4f73")!
-        
-        session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
-        session.dataTask(with: url).resume()
-    }
-
+//    func request() {
+//        let url = URL(string: "https://api.themoviedb.org/3/trending/tv/day?api_key=1d58e1b463506e61588d4b93565a4f73")!
+//
+//        session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
+//        session.dataTask(with: url).resume()
+//    }
 
 }
 
@@ -93,9 +93,18 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .red
-        posterImageView.backgroundColor = .yellow
+        let posterImageView = UIImageView()
         cell.addSubview(posterImageView)
+        posterImageView.snp.makeConstraints {
+            $0.edges.equalTo(cell)
+        }
+        let posterPath = tvShowsData?.results[indexPath.row].posterPath
+        let url = "https://image.tmdb.org/t/p/w500\(posterPath!)"
+        
+        if let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let myURL = URL(string: encoded) {
+            print(myURL)
+            posterImageView.kf.setImage(with: myURL)
+        }
         return cell
     }
     

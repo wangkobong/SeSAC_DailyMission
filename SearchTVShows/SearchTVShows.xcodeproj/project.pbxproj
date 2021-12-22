@@ -20,6 +20,7 @@
 		FE782F7D277334B4000F6EE6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F7C277334B4000F6EE6 /* SearchViewController.swift */; };
 		FE782F7F2773765A000F6EE6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F7E2773765A000F6EE6 /* APIService.swift */; };
 		FE782F81277377BA000F6EE6 /* TVShowsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE782F80277377BA000F6EE6 /* TVShowsModel.swift */; };
+		FE782F8427737E9D000F6EE6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FE782F8327737E9D000F6EE6 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE782F8427737E9D000F6EE6 /* Kingfisher in Frameworks */,
 				FE782F622771DDD1000F6EE6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +107,7 @@
 			name = SearchTVShows;
 			packageProductDependencies = (
 				FE782F612771DDD1000F6EE6 /* SnapKit */,
+				FE782F8327737E9D000F6EE6 /* Kingfisher */,
 			);
 			productName = SearchTVShows;
 			productReference = FE782F492771DCB8000F6EE6 /* SearchTVShows.app */;
@@ -136,6 +139,7 @@
 			mainGroup = FE782F402771DCB8000F6EE6;
 			packageReferences = (
 				FE782F602771DDD1000F6EE6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				FE782F8227737E9D000F6EE6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = FE782F4A2771DCB8000F6EE6 /* Products */;
 			projectDirPath = "";
@@ -392,6 +396,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		FE782F8227737E9D000F6EE6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -399,6 +411,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FE782F602771DDD1000F6EE6 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		FE782F8327737E9D000F6EE6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE782F8227737E9D000F6EE6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
