@@ -17,7 +17,7 @@ enum APIError: Error {
 
 class APIService {
     
-    static func login(identifier: String, password: String, completion: @escaping (User?, APIError?)-> Void) {
+    static func login(identifier: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
         let url = URL(string: "http://test.monocoding.com/auth/local")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -52,10 +52,52 @@ class APIService {
             } catch {
                 completion(nil, .invalidData)
             }
-            
-            
-            
-            
+    
         }.resume()
+    }
+    
+    static func register(userName: String, password: String, userEmail: String, completion: @escaping (User?, APIError?) -> Void) {
+        
+        let url = URL(string: "http://test.monocoding.com/auth/local/register")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = "username=\(userName)&password=\(password)&email=\(userEmail)".data(using: .utf8, allowLossyConversion: false)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            print("data: \(data)")
+            print("response: \(response)")
+            print("error: \(error)")
+            guard error == nil else {
+                completion(nil, .failed)
+
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, .noData)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                completion(nil, .invalidData)
+                return
+            }
+            
+            guard response.statusCode == 200 else {
+                completion(nil, .failed)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let userData = try decoder.decode(User.self, from: data)
+                completion(userData, nil)
+                print(userData)
+            } catch {
+                completion(nil, .invalidData)
+            }
+
+        }.resume()
+        
     }
 }

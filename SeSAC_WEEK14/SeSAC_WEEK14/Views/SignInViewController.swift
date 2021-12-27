@@ -9,48 +9,57 @@ import UIKit
 
 class SignViewController: UIViewController {
     
-    let mainView = SignInView()
-    let viewModel = SignInViewModel()
+    let signInView = SignInView()
+    let signInViewModel = SignInViewModel()
+    let signUpViewModel = SignUpViewModel()
     
     override func loadView() {
-        self.view = mainView
+        self.view = signInView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.username.bind { text in
-            self.mainView.usernameTextField.text = text
+        signInViewModel.username.bind { text in
+            self.signInView.usernameTextField.text = text
             print(text)
         }
         
-        viewModel.password.bind { password in
-            self.mainView.passwordTextField.text = password
+        signInViewModel.password.bind { password in
+            self.signInView.passwordTextField.text = password
         }
         
-        mainView.usernameTextField.addTarget(self, action: #selector(usernameTextFieldDidChange(_:)), for: .editingChanged)
+        signInView.usernameTextField.addTarget(self, action: #selector(usernameTextFieldDidChange(_:)), for: .editingChanged)
         
-        mainView.passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange(_:)), for: .editingChanged)
+        signInView.passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange(_:)), for: .editingChanged)
         
-        mainView.singInButton.addTarget(self, action: #selector(singInButtonClicked), for: .touchUpInside)
+        signInView.singInButton.addTarget(self, action: #selector(signInButtonClicked), for: .touchUpInside)
+        
+        signInView.singUpButton.addTarget(self, action: #selector(signUpButtonClicked), for: .touchUpInside)
     }
     
     @objc func usernameTextFieldDidChange(_ textfield: UITextField) {
-        viewModel.username.value = textfield.text ?? ""
+        signInViewModel.username.value = textfield.text ?? ""
     }
     
     @objc func passwordTextFieldDidChange(_ textfield: UITextField) {
-        viewModel.password.value = textfield.text ?? ""
+        signInViewModel.password.value = textfield.text ?? ""
     }
     
-    @objc func singInButtonClicked() {
-        viewModel.postUserLogin {
+    @objc func signInButtonClicked() {
+        print(#function)
+        signInViewModel.postUserLogin {
             DispatchQueue.main.async {
                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
                 windowScene.windows.first?.rootViewController = MainViewController()
                 windowScene.windows.first?.makeKeyAndVisible()
             }
         }
+    }
+    
+    @objc func signUpButtonClicked() {
+        print(#function)
+        self.navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
 
 }

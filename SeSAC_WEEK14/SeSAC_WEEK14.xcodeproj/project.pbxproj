@@ -19,6 +19,10 @@
 		FED23E7227795B2100E6D72F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E7127795B2100E6D72F /* MainViewController.swift */; };
 		FED23E7427795EDF00E6D72F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E7327795EDF00E6D72F /* SignInViewModel.swift */; };
 		FED23E7627795FAF00E6D72F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E7527795FAF00E6D72F /* Observable.swift */; };
+		FED23E7B277A052400E6D72F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E7A277A052400E6D72F /* SignUpViewController.swift */; };
+		FED23E7D277A057E00E6D72F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E7C277A057E00E6D72F /* SignUpViewModel.swift */; };
+		FED23E7F277A067D00E6D72F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E7E277A067D00E6D72F /* SignUpView.swift */; };
+		FED23E81277A068D00E6D72F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E80277A068D00E6D72F /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		FED23E7127795B2100E6D72F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FED23E7327795EDF00E6D72F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		FED23E7527795FAF00E6D72F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		FED23E7A277A052400E6D72F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		FED23E7C277A057E00E6D72F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		FED23E7E277A067D00E6D72F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		FED23E80277A068D00E6D72F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +82,10 @@
 				FED23E54277947EA00E6D72F /* AppDelegate.swift */,
 				FED23E56277947EA00E6D72F /* SceneDelegate.swift */,
 				FED23E7527795FAF00E6D72F /* Observable.swift */,
+				FED23E6D2779503300E6D72F /* APIService.swift */,
 				FED23E5D277947ED00E6D72F /* Assets.xcassets */,
 				FED23E5F277947ED00E6D72F /* LaunchScreen.storyboard */,
 				FED23E62277947ED00E6D72F /* Info.plist */,
-				FED23E6D2779503300E6D72F /* APIService.swift */,
 			);
 			path = SeSAC_WEEK14;
 			sourceTree = "<group>";
@@ -86,8 +94,11 @@
 			isa = PBXGroup;
 			children = (
 				FED23E7127795B2100E6D72F /* MainViewController.swift */,
+				FED23E80277A068D00E6D72F /* MainView.swift */,
 				FED23E58277947EA00E6D72F /* SignInViewController.swift */,
 				FED23E6827794BBA00E6D72F /* SignInView.swift */,
+				FED23E7A277A052400E6D72F /* SignUpViewController.swift */,
+				FED23E7E277A067D00E6D72F /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				FED23E7327795EDF00E6D72F /* SignInViewModel.swift */,
+				FED23E7C277A057E00E6D72F /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -185,13 +197,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				FED23E7227795B2100E6D72F /* MainViewController.swift in Sources */,
+				FED23E81277A068D00E6D72F /* MainView.swift in Sources */,
 				FED23E59277947EA00E6D72F /* SignInViewController.swift in Sources */,
 				FED23E6E2779503300E6D72F /* APIService.swift in Sources */,
 				FED23E55277947EA00E6D72F /* AppDelegate.swift in Sources */,
+				FED23E7F277A067D00E6D72F /* SignUpView.swift in Sources */,
+				FED23E7B277A052400E6D72F /* SignUpViewController.swift in Sources */,
 				FED23E7627795FAF00E6D72F /* Observable.swift in Sources */,
 				FED23E7427795EDF00E6D72F /* SignInViewModel.swift in Sources */,
 				FED23E702779573D00E6D72F /* User.swift in Sources */,
 				FED23E6927794BBA00E6D72F /* SignInView.swift in Sources */,
+				FED23E7D277A057E00E6D72F /* SignUpViewModel.swift in Sources */,
 				FED23E57277947EA00E6D72F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

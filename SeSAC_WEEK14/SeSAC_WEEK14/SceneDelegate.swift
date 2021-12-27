@@ -19,9 +19,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
+        let test = UserDefaults.standard.string(forKey: "token")
+        if test?.isEmpty == nil {
+            let signInViewController = UINavigationController(rootViewController: SignViewController())
+            window?.rootViewController = signInViewController
+        } else {
+            let mainViewController = MainViewController()
+            window?.rootViewController = mainViewController
+        }
         
+        let signInViewController = UINavigationController(rootViewController: SignViewController())
+        window?.rootViewController = signInViewController
+        
+
  
-        window?.rootViewController = SignViewController()
         window?.makeKeyAndVisible() // iOS13부터 생김
     }
 

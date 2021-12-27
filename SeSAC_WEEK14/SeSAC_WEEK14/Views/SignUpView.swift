@@ -1,24 +1,20 @@
 //
-//  SignInView.swift
+//  SignUpView.swift
 //  SeSAC_WEEK14
 //
 //  Created by sungyeon kim on 2021/12/27.
 //
 
+import Foundation
 import UIKit
-import SnapKit
 
-protocol ViewRepresentable {
-    func setupView()
-    func setupConstraints()
-}
 
-class SignInView: UIView, ViewRepresentable {
-
+class SignUpView: UIView, ViewRepresentable {
+    
     let usernameTextField = UITextField()
     let passwordTextField = UITextField()
-    let singInButton = UIButton()
-    let singUpButton = UIButton()
+    let emailTextField = UITextField()
+    let applyButton = UIButton()
 
     
     override init(frame: CGRect) {
@@ -33,18 +29,17 @@ class SignInView: UIView, ViewRepresentable {
     
     func setupView() {
         addSubview(usernameTextField)
-        usernameTextField.backgroundColor = .lightGray
+        usernameTextField.backgroundColor = .white
         
         addSubview(passwordTextField)
         passwordTextField.backgroundColor = .white
         
-        addSubview(singInButton)
-        singInButton.backgroundColor = .orange
-        singInButton.setTitle("로그인", for: .normal)
+        addSubview(emailTextField)
+        emailTextField.backgroundColor = .white
         
-        addSubview(singUpButton)
-        singUpButton.backgroundColor = .orange
-        singUpButton.setTitle("회원가입", for: .normal)
+        addSubview(applyButton)
+        applyButton.backgroundColor = .orange
+        applyButton.setTitle("가입", for: .normal)
     }
     
     func setupConstraints() {
@@ -62,16 +57,16 @@ class SignInView: UIView, ViewRepresentable {
             $0.height.equalTo(50)
         }
         
-        singInButton.snp.makeConstraints {
+        emailTextField.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(passwordTextField.snp.bottom).offset(20)
             $0.width.equalTo(self.snp.width).multipliedBy(0.9)
             $0.height.equalTo(50)
         }
         
-        singUpButton.snp.makeConstraints {
+        applyButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(singInButton.snp.bottom).offset(20)
+            $0.top.equalTo(emailTextField.snp.bottom).offset(20)
             $0.width.equalTo(self.snp.width).multipliedBy(0.9)
             $0.height.equalTo(50)
         }
