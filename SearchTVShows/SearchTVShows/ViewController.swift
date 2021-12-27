@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barStyle = .black
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.reuseIdentifier)
+        collectionView.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.reuseIdentifier)
         
         collectionView.register(HeaderCollectionReusableView.self,forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader ,withReuseIdentifier: HeaderCollectionReusableView.identifier)
         collectionView.delegate = self
@@ -92,19 +92,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.reuseIdentifier, for: indexPath)
-        let posterImageView = UIImageView()
-        cell.addSubview(posterImageView)
-        posterImageView.snp.makeConstraints {
-            $0.edges.equalTo(cell)
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.reuseIdentifier, for: indexPath) as! PosterCollectionViewCell
+
         let posterPath = tvShowsData?.results[indexPath.row].posterPath
         let url = "https://image.tmdb.org/t/p/w500\(posterPath!)"
         
         if let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let myURL = URL(string: encoded) {
             print(myURL)
-            posterImageView.kf.setImage(with: myURL)
+            cell.posterImageView.kf.setImage(with: myURL)
         }
+        
         return cell
     }
     
