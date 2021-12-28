@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum APIError: Error {
+enum APIError: String, Error {
     case invalidResponse
     case noData
     case failed
-    case invalidData
+    case invalidData = "유효하지 않은 데이터"
     
 }
 
@@ -69,7 +69,7 @@ class APIService {
             print("error: \(error)")
             guard error == nil else {
                 completion(nil, .failed)
-
+                print("error APIService에서: \(error)")
                 return
             }
             
@@ -80,6 +80,7 @@ class APIService {
             
             guard let response = response as? HTTPURLResponse else {
                 completion(nil, .invalidData)
+                print("response: \(response)")
                 return
             }
             
@@ -95,9 +96,105 @@ class APIService {
                 print(userData)
             } catch {
                 completion(nil, .invalidData)
+                print("캐치성공")
             }
 
         }.resume()
         
+    }
+    
+    static func lotto(_ number: Int, completion: @escaping (Lotto?, APIError?) -> Void) {
+        let url = URL(string: "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(number)")!
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            DispatchQueue.main.async {
+                guard error == nil else {
+                    completion(nil, .failed)
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(nil, .noData)
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse else {
+                    completion(nil, .invalidResponse)
+                    return
+                }
+                
+                guard response.statusCode == 200 else {
+                    completion(nil, .failed)
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let userData = try decoder.decode(Lotto.self, from: data)
+                    completion(userData, nil)
+                } catch {
+                    completion(nil, .invalidData)
+                }
+    
+            }
+        }.resume()
+
+    }
+    
+    static func person(_ text: String, page: Int, completion: @escaping (Actor?, APIError?) -> Void) {
+        
+        let scheme = "https"
+        let host = "api.themoviedb.org"
+        let path = "/3/search/person"
+        let key = "1d58e1b463506e61588d4b93565a4f73"
+        let language = "ko-KR"
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        var component = URLComponents()
+        component.scheme = scheme
+        component.host = host
+        component.path = path
+        component.queryItems = [
+            URLQueryItem(name: "api_key", value: key),
+            URLQueryItem(name: "query", value: query),
+            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "language", value: language)
+        ]
+
+        URLSession.shared.dataTask(with: component.url!) { data, response, error in
+            
+            DispatchQueue.main.async {
+                guard error == nil else {
+                    completion(nil, .failed)
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(nil, .noData)
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse else {
+                    completion(nil, .invalidResponse)
+                    return
+                }
+                
+                guard response.statusCode == 200 else {
+                    completion(nil, .failed)
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let userData = try decoder.decode(Actor.self, from: data)
+                    completion(userData, nil)
+                } catch {
+                    completion(nil, .invalidData)
+                }
+    
+            }
+        }.resume()
+
     }
 }

@@ -6,20 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 class SignUpViewModel {
     
     var userName: Observabel<String> = Observabel("")
     var password: Observabel<String> = Observabel("")
     var userEmail: Observabel<String> = Observabel("")
- 
+    let alert = UIAlertController(title: "회원가입에 실패했습니다.", message: "왜인지는 몰라", preferredStyle: UIAlertController.Style.alert)
+    let defaultAction = UIAlertAction(title: "OK", style: .destructive, handler : nil)
+
     func registerUser(completion: @escaping () -> Void) {
             print(#function)
         APIService.register(userName: userName.value, password: password.value, userEmail: userEmail.value) { userData, error in
             
             guard let userData = userData else {
                 print("userData 없음")
-                print(error)
+                print("뷰모델에서 에러: \(error)")
+
                 return
             }
             print("SignUpViewModel: \(userData)")

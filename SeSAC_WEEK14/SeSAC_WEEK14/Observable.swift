@@ -8,14 +8,18 @@
 import Foundation
 
 class Observabel<T> {
+    
+    //3
     private var listener: ( (T) -> Void )?
     
+    //2
     var value: T {
         didSet {
             listener?(value)
         }
     }
     
+    //1
     init(_ value: T) {
         self.value = value
     }

@@ -23,6 +23,13 @@
 		FED23E7D277A057E00E6D72F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E7C277A057E00E6D72F /* SignUpViewModel.swift */; };
 		FED23E7F277A067D00E6D72F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E7E277A067D00E6D72F /* SignUpView.swift */; };
 		FED23E81277A068D00E6D72F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E80277A068D00E6D72F /* MainView.swift */; };
+		FED23E83277A1D3400E6D72F /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E82277A1D3400E6D72F /* Alert+Extension.swift */; };
+		FED23E85277A913700E6D72F /* LottoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E84277A913700E6D72F /* LottoViewController.swift */; };
+		FED23E87277A948C00E6D72F /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E86277A948C00E6D72F /* Lotto.swift */; };
+		FED23E89277A961700E6D72F /* LottoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E88277A961700E6D72F /* LottoViewModel.swift */; };
+		FED23E8B277AA5E900E6D72F /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E8A277AA5E900E6D72F /* Actor.swift */; };
+		FED23E8D277AAA7800E6D72F /* ActorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E8C277AAA7800E6D72F /* ActorViewModel.swift */; };
+		FED23E8F277AAB7A00E6D72F /* ActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E8E277AAB7A00E6D72F /* ActorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +50,13 @@
 		FED23E7C277A057E00E6D72F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		FED23E7E277A067D00E6D72F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FED23E80277A068D00E6D72F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FED23E82277A1D3400E6D72F /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
+		FED23E84277A913700E6D72F /* LottoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoViewController.swift; sourceTree = "<group>"; };
+		FED23E86277A948C00E6D72F /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
+		FED23E88277A961700E6D72F /* LottoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoViewModel.swift; sourceTree = "<group>"; };
+		FED23E8A277AA5E900E6D72F /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		FED23E8C277AAA7800E6D72F /* ActorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewModel.swift; sourceTree = "<group>"; };
+		FED23E8E277AAB7A00E6D72F /* ActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,7 @@
 				FED23E54277947EA00E6D72F /* AppDelegate.swift */,
 				FED23E56277947EA00E6D72F /* SceneDelegate.swift */,
 				FED23E7527795FAF00E6D72F /* Observable.swift */,
+				FED23E82277A1D3400E6D72F /* Alert+Extension.swift */,
 				FED23E6D2779503300E6D72F /* APIService.swift */,
 				FED23E5D277947ED00E6D72F /* Assets.xcassets */,
 				FED23E5F277947ED00E6D72F /* LaunchScreen.storyboard */,
@@ -99,6 +114,8 @@
 				FED23E6827794BBA00E6D72F /* SignInView.swift */,
 				FED23E7A277A052400E6D72F /* SignUpViewController.swift */,
 				FED23E7E277A067D00E6D72F /* SignUpView.swift */,
+				FED23E84277A913700E6D72F /* LottoViewController.swift */,
+				FED23E8E277AAB7A00E6D72F /* ActorViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -108,6 +125,8 @@
 			children = (
 				FED23E7327795EDF00E6D72F /* SignInViewModel.swift */,
 				FED23E7C277A057E00E6D72F /* SignUpViewModel.swift */,
+				FED23E88277A961700E6D72F /* LottoViewModel.swift */,
+				FED23E8C277AAA7800E6D72F /* ActorViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -116,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				FED23E6F2779573D00E6D72F /* User.swift */,
+				FED23E86277A948C00E6D72F /* Lotto.swift */,
+				FED23E8A277AA5E900E6D72F /* Actor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,17 +217,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FED23E85277A913700E6D72F /* LottoViewController.swift in Sources */,
 				FED23E7227795B2100E6D72F /* MainViewController.swift in Sources */,
+				FED23E8D277AAA7800E6D72F /* ActorViewModel.swift in Sources */,
 				FED23E81277A068D00E6D72F /* MainView.swift in Sources */,
 				FED23E59277947EA00E6D72F /* SignInViewController.swift in Sources */,
 				FED23E6E2779503300E6D72F /* APIService.swift in Sources */,
+				FED23E83277A1D3400E6D72F /* Alert+Extension.swift in Sources */,
 				FED23E55277947EA00E6D72F /* AppDelegate.swift in Sources */,
+				FED23E8F277AAB7A00E6D72F /* ActorViewController.swift in Sources */,
 				FED23E7F277A067D00E6D72F /* SignUpView.swift in Sources */,
+				FED23E89277A961700E6D72F /* LottoViewModel.swift in Sources */,
+				FED23E87277A948C00E6D72F /* Lotto.swift in Sources */,
 				FED23E7B277A052400E6D72F /* SignUpViewController.swift in Sources */,
 				FED23E7627795FAF00E6D72F /* Observable.swift in Sources */,
 				FED23E7427795EDF00E6D72F /* SignInViewModel.swift in Sources */,
 				FED23E702779573D00E6D72F /* User.swift in Sources */,
 				FED23E6927794BBA00E6D72F /* SignInView.swift in Sources */,
+				FED23E8B277AA5E900E6D72F /* Actor.swift in Sources */,
 				FED23E7D277A057E00E6D72F /* SignUpViewModel.swift in Sources */,
 				FED23E57277947EA00E6D72F /* SceneDelegate.swift in Sources */,
 			);
