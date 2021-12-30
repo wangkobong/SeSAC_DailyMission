@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FEBCBD72277E0EFD000B044E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBD71277E0EFD000B044E /* EndPoint.swift */; };
 		FED23E55277947EA00E6D72F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E54277947EA00E6D72F /* AppDelegate.swift */; };
 		FED23E57277947EA00E6D72F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E56277947EA00E6D72F /* SceneDelegate.swift */; };
 		FED23E59277947EA00E6D72F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED23E58277947EA00E6D72F /* SignInViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FEBCBD71277E0EFD000B044E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		FED23E51277947EA00E6D72F /* SeSAC_WEEK14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_WEEK14.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED23E54277947EA00E6D72F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FED23E56277947EA00E6D72F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				FED23E7527795FAF00E6D72F /* Observable.swift */,
 				FED23E82277A1D3400E6D72F /* Alert+Extension.swift */,
 				FED23E6D2779503300E6D72F /* APIService.swift */,
+				FEBCBD71277E0EFD000B044E /* EndPoint.swift */,
 				FED23E5D277947ED00E6D72F /* Assets.xcassets */,
 				FED23E5F277947ED00E6D72F /* LaunchScreen.storyboard */,
 				FED23E62277947ED00E6D72F /* Info.plist */,
@@ -229,6 +232,7 @@
 				FED23E7F277A067D00E6D72F /* SignUpView.swift in Sources */,
 				FED23E89277A961700E6D72F /* LottoViewModel.swift in Sources */,
 				FED23E87277A948C00E6D72F /* Lotto.swift in Sources */,
+				FEBCBD72277E0EFD000B044E /* EndPoint.swift in Sources */,
 				FED23E7B277A052400E6D72F /* SignUpViewController.swift in Sources */,
 				FED23E7627795FAF00E6D72F /* Observable.swift in Sources */,
 				FED23E7427795EDF00E6D72F /* SignInViewModel.swift in Sources */,

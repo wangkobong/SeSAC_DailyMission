@@ -25,8 +25,6 @@ class LottoViewModel {
             print(error)
             
             guard let lotto = lotto else {
-                
-                
                 return
             }
             

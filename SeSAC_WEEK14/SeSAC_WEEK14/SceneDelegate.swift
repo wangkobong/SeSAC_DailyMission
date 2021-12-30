@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        }
         
         let signInViewController = UINavigationController(rootViewController: SignViewController())
-        window?.rootViewController = ActorViewController()
+        window?.rootViewController = signInViewController
         
 
  

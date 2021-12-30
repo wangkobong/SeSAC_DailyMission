@@ -47,7 +47,7 @@ class ActorViewController: UIViewController {
 }
 
 extension ActorViewController: UISearchBarDelegate{
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {z
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.actorViewModel.fetchActor(query: searchBar.text!, page: 1)
     }
 }
