@@ -17,6 +17,12 @@
 		FEBCBDFC278083EB000B044E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDFB278083EB000B044E /* SignInViewController.swift */; };
 		FEBCBDFE278083F4000B044E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDFD278083F4000B044E /* SignUpViewController.swift */; };
 		FEBCBE002780853D000B044E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDFF2780853D000B044E /* SignUpView.swift */; };
+		FEBCBE03278088B9000B044E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE02278088B9000B044E /* SignUpViewModel.swift */; };
+		FEBCBE05278088E8000B044E /* Observabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE04278088E8000B044E /* Observabel.swift */; };
+		FEBCBE072780990A000B044E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE062780990A000B044E /* SignInView.swift */; };
+		FEBCBE0927809A88000B044E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0827809A88000B044E /* User.swift */; };
+		FEBCBE0B27809EB4000B044E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0A27809EB4000B044E /* AuthManager.swift */; };
+		FEBCBE0D27809F9B000B044E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0C27809F9B000B044E /* EndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +37,12 @@
 		FEBCBDFB278083EB000B044E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FEBCBDFD278083F4000B044E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FEBCBDFF2780853D000B044E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		FEBCBE02278088B9000B044E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		FEBCBE04278088E8000B044E /* Observabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observabel.swift; sourceTree = "<group>"; };
+		FEBCBE062780990A000B044E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		FEBCBE0827809A88000B044E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FEBCBE0A27809EB4000B044E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		FEBCBE0C27809F9B000B044E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +76,11 @@
 		FEBCBDBE277F05E5000B044E /* SeSAC_Community */ = {
 			isa = PBXGroup;
 			children = (
-				FEBCBDF62780733E000B044E /* Other */,
-				FEBCBDF52780732F000B044E /* Views */,
-				FEBCBDF427807328000B044E /* Controllers */,
 				FEBCBDF327807311000B044E /* Models */,
+				FEBCBDF52780732F000B044E /* Views */,
+				FEBCBE012780887B000B044E /* ViewModels */,
+				FEBCBDF62780733E000B044E /* Other */,
+				FEBCBDF427807328000B044E /* Controllers */,
 				FEBCBDF2278072F5000B044E /* Managers */,
 				FEBCBDBF277F05E5000B044E /* AppDelegate.swift */,
 				FEBCBDC1277F05E5000B044E /* SceneDelegate.swift */,
@@ -81,6 +94,7 @@
 		FEBCBDF2278072F5000B044E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				FEBCBE0A27809EB4000B044E /* AuthManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -88,6 +102,7 @@
 		FEBCBDF327807311000B044E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FEBCBE0827809A88000B044E /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,6 +122,7 @@
 			children = (
 				FEBCBDF727807586000B044E /* HomeView.swift */,
 				FEBCBDFF2780853D000B044E /* SignUpView.swift */,
+				FEBCBE062780990A000B044E /* SignInView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,8 +130,18 @@
 		FEBCBDF62780733E000B044E /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				FEBCBE04278088E8000B044E /* Observabel.swift */,
+				FEBCBE0C27809F9B000B044E /* EndPoint.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		FEBCBE012780887B000B044E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FEBCBE02278088B9000B044E /* SignUpViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,13 +220,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEBCBE0D27809F9B000B044E /* EndPoint.swift in Sources */,
 				FEBCBDFE278083F4000B044E /* SignUpViewController.swift in Sources */,
+				FEBCBE0B27809EB4000B044E /* AuthManager.swift in Sources */,
 				FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */,
+				FEBCBE05278088E8000B044E /* Observabel.swift in Sources */,
+				FEBCBE03278088B9000B044E /* SignUpViewModel.swift in Sources */,
+				FEBCBE072780990A000B044E /* SignInView.swift in Sources */,
 				FEBCBDF827807586000B044E /* HomeView.swift in Sources */,
 				FEBCBE002780853D000B044E /* SignUpView.swift in Sources */,
 				FEBCBDC0277F05E5000B044E /* AppDelegate.swift in Sources */,
 				FEBCBDFC278083EB000B044E /* SignInViewController.swift in Sources */,
 				FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */,
+				FEBCBE0927809A88000B044E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

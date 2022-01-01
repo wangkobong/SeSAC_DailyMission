@@ -9,10 +9,17 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+    private let signInView = SignInView()
+    
+    override func loadView() {
+        self.view = signInView
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .systemBackground
     }
-
+    
 }

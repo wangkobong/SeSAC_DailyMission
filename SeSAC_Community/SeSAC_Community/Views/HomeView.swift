@@ -61,7 +61,7 @@ class HomeView: UIView, ViewRepresentable {
         return label
     }()
     
-    private let loginButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("로그인", for: .normal)
         button.setTitleColor(.systemGreen, for: .normal)

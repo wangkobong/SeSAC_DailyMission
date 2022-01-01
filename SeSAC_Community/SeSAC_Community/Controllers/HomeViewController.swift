@@ -20,13 +20,20 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         homeView.startButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
+        homeView.loginButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
     }
     
     @objc private func didTapSignUp() {
         print(#function)
         let vc = SignUpViewController()
         vc.title = "새싹농장 가입하기"
-//        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func didTapSignIn() {
+        print(#function)
+        let vc = SignInViewController()
+        vc.title = "로그인 하기"
         navigationController?.pushViewController(vc, animated: true)
     }
 }
