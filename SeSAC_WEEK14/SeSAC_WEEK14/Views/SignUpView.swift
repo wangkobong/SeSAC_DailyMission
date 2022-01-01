@@ -5,8 +5,8 @@
 //  Created by sungyeon kim on 2021/12/27.
 //
 
-import Foundation
 import UIKit
+import SnapKit
 
 
 class SignUpView: UIView, ViewRepresentable {

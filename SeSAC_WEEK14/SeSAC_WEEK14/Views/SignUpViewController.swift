@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
         signUpViewModel.password.bind { text in
             self.signUpView.passwordTextField.text = text
         }
-        
+          
         signUpViewModel.userEmail.bind { text in
             self.signUpView.emailTextField.text = text
         }
