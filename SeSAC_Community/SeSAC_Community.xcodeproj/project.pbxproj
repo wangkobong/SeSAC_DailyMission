@@ -23,6 +23,7 @@
 		FEBCBE0927809A88000B044E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0827809A88000B044E /* User.swift */; };
 		FEBCBE0B27809EB4000B044E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0A27809EB4000B044E /* AuthManager.swift */; };
 		FEBCBE0D27809F9B000B044E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0C27809F9B000B044E /* EndPoint.swift */; };
+		FEBCBE0F2780BE1E000B044E /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0E2780BE1E000B044E /* BoardsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		FEBCBE0827809A88000B044E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FEBCBE0A27809EB4000B044E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		FEBCBE0C27809F9B000B044E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		FEBCBE0E2780BE1E000B044E /* BoardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				FEBCBDC3277F05E5000B044E /* HomeViewController.swift */,
 				FEBCBDFB278083EB000B044E /* SignInViewController.swift */,
 				FEBCBDFD278083F4000B044E /* SignUpViewController.swift */,
+				FEBCBE0E2780BE1E000B044E /* BoardsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEBCBE0D27809F9B000B044E /* EndPoint.swift in Sources */,
+				FEBCBE0F2780BE1E000B044E /* BoardsViewController.swift in Sources */,
 				FEBCBDFE278083F4000B044E /* SignUpViewController.swift in Sources */,
 				FEBCBE0B27809EB4000B044E /* AuthManager.swift in Sources */,
 				FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */,

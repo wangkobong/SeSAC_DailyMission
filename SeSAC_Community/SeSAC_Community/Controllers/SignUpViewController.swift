@@ -10,6 +10,7 @@ import UIKit
 class SignUpViewController: UIViewController {
     
     private let signUpView = SignUpView()
+    private let signUpViewModel = SignUpViewModel()
     
     override func loadView() {
         self.view = signUpView
@@ -20,7 +21,60 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
+        
+        signUpViewModel.userName.bind { text in
+            self.signUpView.nicknameField.text = text
+        }
+        
+        signUpViewModel.userEmail.bind { text in
+            self.signUpView.emailField.text = text
+        }
+        
+        signUpViewModel.password.bind { text in
+            self.signUpView.passwordField.text = text
+        }
+        
+        signUpViewModel.checkPassword.bind { text in
+            self.signUpView.doubleCheckPasswordField.text = text
+        }
+        
+        signUpView.signUpButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
+        
+        signUpView.nicknameField.addTarget(self, action: #selector(userNameTextFieldDidChange(_:)), for: .editingChanged)
+
+        signUpView.passwordField.addTarget(self, action: #selector(passwordTextFieldDidChange(_:)), for: .editingChanged)
+        
+        signUpView.doubleCheckPasswordField.addTarget(self, action: #selector(checkPasswordTextFieldDidChange(_:)), for: .editingChanged)
+
+        signUpView.emailField.addTarget(self, action: #selector(userEMailTextFieldDidChange(_:)), for: .editingChanged)
+
     }
     
+    @objc func userNameTextFieldDidChange(_ textfield: UITextField) {
+        signUpViewModel.userName.value = textfield.text ?? ""
+    }
 
+    @objc private func passwordTextFieldDidChange(_ textfield: UITextField) {
+        signUpViewModel.password.value = textfield.text ?? ""
+    }
+    
+    @objc private func checkPasswordTextFieldDidChange(_ textfield: UITextField) {
+        signUpViewModel.checkPassword.value = textfield.text ?? ""
+    }
+
+    @objc func userEMailTextFieldDidChange(_ textfield: UITextField) {
+        signUpViewModel.userEmail.value = textfield.text ?? ""
+    }
+    
+    
+    @objc private func didTapRegister() {
+        print("didTapRegister")
+        signUpViewModel.registerUser {
+            DispatchQueue.main.async {
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                windowScene.windows.first?.rootViewController = BoardsViewController()
+                windowScene.windows.first?.makeKeyAndVisible()
+            }
+        }
+    }
 }
