@@ -14,6 +14,9 @@
 		FEBCBDCC277F05E6000B044E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEBCBDCA277F05E6000B044E /* LaunchScreen.storyboard */; };
 		FEBCBDF12780729E000B044E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FEBCBDF02780729E000B044E /* SnapKit */; };
 		FEBCBDF827807586000B044E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDF727807586000B044E /* HomeView.swift */; };
+		FEBCBDFC278083EB000B044E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDFB278083EB000B044E /* SignInViewController.swift */; };
+		FEBCBDFE278083F4000B044E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDFD278083F4000B044E /* SignUpViewController.swift */; };
+		FEBCBE002780853D000B044E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDFF2780853D000B044E /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		FEBCBDCB277F05E6000B044E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEBCBDCD277F05E6000B044E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEBCBDF727807586000B044E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FEBCBDFB278083EB000B044E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		FEBCBDFD278083F4000B044E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		FEBCBDFF2780853D000B044E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				FEBCBDC3277F05E5000B044E /* HomeViewController.swift */,
+				FEBCBDFB278083EB000B044E /* SignInViewController.swift */,
+				FEBCBDFD278083F4000B044E /* SignUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -98,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				FEBCBDF727807586000B044E /* HomeView.swift */,
+				FEBCBDFF2780853D000B044E /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,9 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEBCBDFE278083F4000B044E /* SignUpViewController.swift in Sources */,
 				FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */,
 				FEBCBDF827807586000B044E /* HomeView.swift in Sources */,
+				FEBCBE002780853D000B044E /* SignUpView.swift in Sources */,
 				FEBCBDC0277F05E5000B044E /* AppDelegate.swift in Sources */,
+				FEBCBDFC278083EB000B044E /* SignInViewController.swift in Sources */,
 				FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

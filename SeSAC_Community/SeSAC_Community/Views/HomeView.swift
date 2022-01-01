@@ -42,11 +42,13 @@ class HomeView: UIView, ViewRepresentable {
     }()
     
     
-    private let startButton: UIButton = {
+    let startButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemGreen
         button.setTitle("시작하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
         return button
     }()
     
@@ -102,6 +104,13 @@ class HomeView: UIView, ViewRepresentable {
         descriptionLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+        }
+        
+        startButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(askHavingAccountLabel.snp.top).offset(-20)
+            $0.width.equalTo(self.snp.width).multipliedBy(0.9)
+            $0.height.equalTo(50)
         }
         
         askHavingAccountLabel.snp.makeConstraints {

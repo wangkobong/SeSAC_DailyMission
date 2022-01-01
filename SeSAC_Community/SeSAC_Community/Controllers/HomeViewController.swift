@@ -18,7 +18,16 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
+        homeView.startButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
     }
-
+    
+    @objc private func didTapSignUp() {
+        print(#function)
+        let vc = SignUpViewController()
+        vc.title = "새싹농장 가입하기"
+//        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
