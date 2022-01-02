@@ -9,7 +9,7 @@ import UIKit
 
 class BoardsViewController: UIViewController {
     
-    var posts: [Post] = []
+    var posts: [PostElement] = []
     
     private let boardsView = BoardsView()
     private let postsViewModel = PostViewModel()
@@ -24,8 +24,18 @@ class BoardsViewController: UIViewController {
         boardsView.tableView.delegate = self
         boardsView.tableView.dataSource = self
         title = "새싹농장"
-        postsViewModel.getAllPosts { postData in
-            print(postData)
+        DispatchQueue.main.async {
+            self.postsViewModel.getAllPosts { postData in
+                postData?.forEach {
+                    self.posts.append($0)
+                }
+                print("post: \(self.posts)")
+                
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+            self.boardsView.tableView.reloadData()
         }
     }
     
@@ -33,15 +43,17 @@ class BoardsViewController: UIViewController {
 
 extension BoardsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = boardsView.tableView.dequeueReusableCell(withIdentifier: BoardsTableViewCell.reuseIdentifier, for: indexPath)
-        let maskLayer = CAShapeLayer()
-        let bounds = cell.bounds
-        maskLayer.path = UIBezierPath(roundedRect: CGRect(x: 2, y: 2, width: bounds.width-4, height: bounds.height-4), cornerRadius: 5).cgPath
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BoardsTableViewCell.reuseIdentifier, for: indexPath) as? BoardsTableViewCell else {
+            fatalError()
+        }
+        cell.textView.text = posts[indexPath.row].text
+        cell.userNameLabel.text = posts[indexPath.row].user.username
+        cell.createdAtLabel.text = posts[indexPath.row].createdAt
+        print(posts[indexPath.row])
         return cell
     }
     
