@@ -12,7 +12,7 @@ class BoardsView: UIView {
     
     let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(BoardsTableViewCell.self, forCellReuseIdentifier: BoardsTableViewCell.reuseIdentifier)
         return tableView
     }()
     
