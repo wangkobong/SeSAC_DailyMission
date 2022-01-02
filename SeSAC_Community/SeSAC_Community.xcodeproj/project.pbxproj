@@ -24,6 +24,11 @@
 		FEBCBE0B27809EB4000B044E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0A27809EB4000B044E /* AuthManager.swift */; };
 		FEBCBE0D27809F9B000B044E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0C27809F9B000B044E /* EndPoint.swift */; };
 		FEBCBE0F2780BE1E000B044E /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0E2780BE1E000B044E /* BoardsViewController.swift */; };
+		FEBCBE11278179BE000B044E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE10278179BE000B044E /* SignInViewModel.swift */; };
+		FEBCBE1627818020000B044E /* BoardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE1527818020000B044E /* BoardsView.swift */; };
+		FEBCBE18278181D7000B044E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE17278181D7000B044E /* Post.swift */; };
+		FEBCBE1A2781830F000B044E /* BoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE192781830F000B044E /* BoardsTableViewCell.swift */; };
+		FEBCBE1D2781835F000B044E /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE1C2781835F000B044E /* UITableViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,11 @@
 		FEBCBE0A27809EB4000B044E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		FEBCBE0C27809F9B000B044E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		FEBCBE0E2780BE1E000B044E /* BoardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
+		FEBCBE10278179BE000B044E /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		FEBCBE1527818020000B044E /* BoardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsView.swift; sourceTree = "<group>"; };
+		FEBCBE17278181D7000B044E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FEBCBE192781830F000B044E /* BoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsTableViewCell.swift; sourceTree = "<group>"; };
+		FEBCBE1C2781835F000B044E /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,7 @@
 		FEBCBDBE277F05E5000B044E /* SeSAC_Community */ = {
 			isa = PBXGroup;
 			children = (
+				FEBCBE1B27818338000B044E /* Extensions */,
 				FEBCBDF327807311000B044E /* Models */,
 				FEBCBDF52780732F000B044E /* Views */,
 				FEBCBE012780887B000B044E /* ViewModels */,
@@ -105,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				FEBCBE0827809A88000B044E /* User.swift */,
+				FEBCBE17278181D7000B044E /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -123,9 +135,11 @@
 		FEBCBDF52780732F000B044E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FEBCBE1427817F36000B044E /* cells */,
 				FEBCBDF727807586000B044E /* HomeView.swift */,
 				FEBCBDFF2780853D000B044E /* SignUpView.swift */,
 				FEBCBE062780990A000B044E /* SignInView.swift */,
+				FEBCBE1527818020000B044E /* BoardsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,8 +157,25 @@
 			isa = PBXGroup;
 			children = (
 				FEBCBE02278088B9000B044E /* SignUpViewModel.swift */,
+				FEBCBE10278179BE000B044E /* SignInViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FEBCBE1427817F36000B044E /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				FEBCBE192781830F000B044E /* BoardsTableViewCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		FEBCBE1B27818338000B044E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FEBCBE1C2781835F000B044E /* UITableViewCell+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,19 +255,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEBCBE0D27809F9B000B044E /* EndPoint.swift in Sources */,
+				FEBCBE1627818020000B044E /* BoardsView.swift in Sources */,
 				FEBCBE0F2780BE1E000B044E /* BoardsViewController.swift in Sources */,
 				FEBCBDFE278083F4000B044E /* SignUpViewController.swift in Sources */,
+				FEBCBE18278181D7000B044E /* Post.swift in Sources */,
 				FEBCBE0B27809EB4000B044E /* AuthManager.swift in Sources */,
 				FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */,
+				FEBCBE1D2781835F000B044E /* UITableViewCell+Extension.swift in Sources */,
 				FEBCBE05278088E8000B044E /* Observabel.swift in Sources */,
 				FEBCBE03278088B9000B044E /* SignUpViewModel.swift in Sources */,
 				FEBCBE072780990A000B044E /* SignInView.swift in Sources */,
 				FEBCBDF827807586000B044E /* HomeView.swift in Sources */,
 				FEBCBE002780853D000B044E /* SignUpView.swift in Sources */,
+				FEBCBE1A2781830F000B044E /* BoardsTableViewCell.swift in Sources */,
 				FEBCBDC0277F05E5000B044E /* AppDelegate.swift in Sources */,
 				FEBCBDFC278083EB000B044E /* SignInViewController.swift in Sources */,
 				FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */,
 				FEBCBE0927809A88000B044E /* User.swift in Sources */,
+				FEBCBE11278179BE000B044E /* SignInViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

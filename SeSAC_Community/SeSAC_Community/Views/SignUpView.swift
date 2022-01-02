@@ -67,9 +67,11 @@ class SignUpView: UIView {
 
    let signUpButton: UIButton = {
         let button = UIButton()
-       button.backgroundColor = .systemGray2
+        button.backgroundColor = .systemGreen
         button.setTitle("가입하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
         return button
     }()
 

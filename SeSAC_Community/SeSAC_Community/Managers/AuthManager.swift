@@ -25,4 +25,20 @@ class AuthManager {
         
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
+    
+    static func login(identifier: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: EndPoint.signIn.url)
+        request.httpMethod = Method.POST.rawValue
+        request.httpBody = "identifier=\(identifier)&password=\(password)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(.shared, endpoint: request, completion: completion)
+    }
+    
+//    public var isSignedIn: Bool {
+//        return
+//    }
+    
+    
 }
+
