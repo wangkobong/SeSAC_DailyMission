@@ -17,6 +17,11 @@ enum APIError: String, Error {
 
 class AuthManager {
     
+    //    public var isSignedIn: Bool {
+    //        return
+    //    }
+        
+    
     static func register(userName: String, password: String, userEmail: String, completion: @escaping (User?, APIError?) -> Void) {
         
         var request = URLRequest(url: EndPoint.signUp.url)
@@ -35,10 +40,17 @@ class AuthManager {
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
     
-//    public var isSignedIn: Bool {
-//        return
-//    }
+    static func changePassword(currentPassword: String, newPassword: String, confirmNewPassword: String, completion: @escaping (Authentication?, APIError?) -> Void) {
+
+        var request = URLRequest(url: EndPoint.changePassword.url)
+        let token = UserDefaults.standard.string(forKey: "token")!
+        request.setValue("Bearer \(String(describing: token))", forHTTPHeaderField:"authorization")
+        request.httpMethod = Method.POST.rawValue
+        request.httpBody = "currentPassword=\(currentPassword)&newPassword=\(newPassword)&confirmNewPassword=\(confirmNewPassword)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(.shared, endpoint: request, completion: completion)
+    }
     
-    
+
 }
 

@@ -24,6 +24,7 @@ class BoardsViewController: UIViewController {
         boardsView.tableView.delegate = self
         boardsView.tableView.dataSource = self
         title = "새싹농장"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "비밀번호 변경", style: .done, target: self, action: #selector(didTabChangePassword))
         DispatchQueue.main.async {
             self.postsViewModel.getAllPosts { postData in
                 postData?.forEach {
@@ -37,6 +38,12 @@ class BoardsViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
             self.boardsView.tableView.reloadData()
         }
+    }
+    
+    @objc private func didTabChangePassword() {
+        let vc = ChangePasswordViewController()
+        vc.title = "비밀번호 변경"
+        present(vc, animated: true)
     }
     
 }
@@ -53,7 +60,6 @@ extension BoardsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textView.text = posts[indexPath.row].text
         cell.userNameLabel.text = posts[indexPath.row].user.username
         cell.createdAtLabel.text = posts[indexPath.row].createdAt
-        print(posts[indexPath.row])
         return cell
     }
     

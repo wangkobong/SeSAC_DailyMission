@@ -16,6 +16,18 @@ class BoardsView: UIView {
         return tableView
     }()
     
+    let composeButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemGreen
+        button.tintColor = .white
+        button.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32, weight: .medium)),for: .normal)
+        button.layer.cornerRadius = 30
+        button.layer.shadowColor = UIColor.label.cgColor
+        button.layer.shadowOpacity = 0.4
+        button.layer.shadowRadius = 10
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -28,7 +40,7 @@ class BoardsView: UIView {
     
     internal func setupView() {
         
-        [tableView].forEach {
+        [tableView, composeButton].forEach {
             addSubview($0)
         }
     }
@@ -36,6 +48,13 @@ class BoardsView: UIView {
     internal func setupConstraints() {
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        composeButton.snp.makeConstraints {
+            $0.width.equalTo(60)
+            $0.height.equalTo(60)
+            $0.trailing.equalTo(self).offset(-50)
+            $0.bottom.equalTo(self).offset(-50)
         }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE927D9927831E36009BF88D /* AlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927D9827831E36009BF88D /* AlertController+Extension.swift */; };
+		FE927D9C27831F17009BF88D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = FE927D9B27831F17009BF88D /* Toast */; };
 		FEBCBDC0277F05E5000B044E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDBF277F05E5000B044E /* AppDelegate.swift */; };
 		FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDC1277F05E5000B044E /* SceneDelegate.swift */; };
 		FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDC3277F05E5000B044E /* HomeViewController.swift */; };
@@ -18,7 +20,7 @@
 		FEBCBDFE278083F4000B044E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDFD278083F4000B044E /* SignUpViewController.swift */; };
 		FEBCBE002780853D000B044E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDFF2780853D000B044E /* SignUpView.swift */; };
 		FEBCBE03278088B9000B044E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE02278088B9000B044E /* SignUpViewModel.swift */; };
-		FEBCBE05278088E8000B044E /* Observabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE04278088E8000B044E /* Observabel.swift */; };
+		FEBCBE05278088E8000B044E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE04278088E8000B044E /* Observable.swift */; };
 		FEBCBE072780990A000B044E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE062780990A000B044E /* SignInView.swift */; };
 		FEBCBE0927809A88000B044E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0827809A88000B044E /* User.swift */; };
 		FEBCBE0B27809EB4000B044E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE0A27809EB4000B044E /* AuthManager.swift */; };
@@ -31,9 +33,14 @@
 		FEBCBE1D2781835F000B044E /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE1C2781835F000B044E /* UITableViewCell+Extension.swift */; };
 		FEBCBE1F2781D3AE000B044E /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE1E2781D3AE000B044E /* PostManager.swift */; };
 		FEBCBE212781D5E7000B044E /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBE202781D5E7000B044E /* PostViewModel.swift */; };
+		FEF5D2012782EE2000E29D65 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF5D2002782EE2000E29D65 /* ChangePasswordViewController.swift */; };
+		FEF5D2032782F1DD00E29D65 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF5D2022782F1DD00E29D65 /* ChangePasswordView.swift */; };
+		FEF5D2052782F48F00E29D65 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF5D2042782F48F00E29D65 /* ChangePasswordViewModel.swift */; };
+		FEF5D207278317A700E29D65 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF5D206278317A700E29D65 /* Authentication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE927D9827831E36009BF88D /* AlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController+Extension.swift"; sourceTree = "<group>"; };
 		FEBCBDBC277F05E5000B044E /* SeSAC_Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_Community.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBCBDBF277F05E5000B044E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEBCBDC1277F05E5000B044E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +53,7 @@
 		FEBCBDFD278083F4000B044E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FEBCBDFF2780853D000B044E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FEBCBE02278088B9000B044E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		FEBCBE04278088E8000B044E /* Observabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observabel.swift; sourceTree = "<group>"; };
+		FEBCBE04278088E8000B044E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		FEBCBE062780990A000B044E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		FEBCBE0827809A88000B044E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FEBCBE0A27809EB4000B044E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -59,6 +66,10 @@
 		FEBCBE1C2781835F000B044E /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		FEBCBE1E2781D3AE000B044E /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		FEBCBE202781D5E7000B044E /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		FEF5D2002782EE2000E29D65 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		FEF5D2022782F1DD00E29D65 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		FEF5D2042782F48F00E29D65 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		FEF5D206278317A700E29D65 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE927D9C27831F17009BF88D /* Toast in Frameworks */,
 				FEBCBDF12780729E000B044E /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +134,7 @@
 			children = (
 				FEBCBE0827809A88000B044E /* User.swift */,
 				FEBCBE17278181D7000B044E /* Post.swift */,
+				FEF5D206278317A700E29D65 /* Authentication.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -133,6 +146,7 @@
 				FEBCBDFB278083EB000B044E /* SignInViewController.swift */,
 				FEBCBDFD278083F4000B044E /* SignUpViewController.swift */,
 				FEBCBE0E2780BE1E000B044E /* BoardsViewController.swift */,
+				FEF5D2002782EE2000E29D65 /* ChangePasswordViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -145,6 +159,7 @@
 				FEBCBDFF2780853D000B044E /* SignUpView.swift */,
 				FEBCBE062780990A000B044E /* SignInView.swift */,
 				FEBCBE1527818020000B044E /* BoardsView.swift */,
+				FEF5D2022782F1DD00E29D65 /* ChangePasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,7 +167,7 @@
 		FEBCBDF62780733E000B044E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				FEBCBE04278088E8000B044E /* Observabel.swift */,
+				FEBCBE04278088E8000B044E /* Observable.swift */,
 				FEBCBE0C27809F9B000B044E /* EndPoint.swift */,
 			);
 			path = Other;
@@ -164,6 +179,7 @@
 				FEBCBE02278088B9000B044E /* SignUpViewModel.swift */,
 				FEBCBE10278179BE000B044E /* SignInViewModel.swift */,
 				FEBCBE202781D5E7000B044E /* PostViewModel.swift */,
+				FEF5D2042782F48F00E29D65 /* ChangePasswordViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -180,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				FEBCBE1C2781835F000B044E /* UITableViewCell+Extension.swift */,
+				FE927D9827831E36009BF88D /* AlertController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -202,6 +219,7 @@
 			name = SeSAC_Community;
 			packageProductDependencies = (
 				FEBCBDF02780729E000B044E /* SnapKit */,
+				FE927D9B27831F17009BF88D /* Toast */,
 			);
 			productName = SeSAC_Community;
 			productReference = FEBCBDBC277F05E5000B044E /* SeSAC_Community.app */;
@@ -233,6 +251,7 @@
 			mainGroup = FEBCBDB3277F05E5000B044E;
 			packageReferences = (
 				FEBCBDEF2780729E000B044E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				FE927D9A27831F17009BF88D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = FEBCBDBD277F05E5000B044E /* Products */;
 			projectDirPath = "";
@@ -268,18 +287,23 @@
 				FEBCBE0B27809EB4000B044E /* AuthManager.swift in Sources */,
 				FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */,
 				FEBCBE1D2781835F000B044E /* UITableViewCell+Extension.swift in Sources */,
-				FEBCBE05278088E8000B044E /* Observabel.swift in Sources */,
+				FEBCBE05278088E8000B044E /* Observable.swift in Sources */,
 				FEBCBE03278088B9000B044E /* SignUpViewModel.swift in Sources */,
 				FEBCBE072780990A000B044E /* SignInView.swift in Sources */,
+				FEF5D2012782EE2000E29D65 /* ChangePasswordViewController.swift in Sources */,
 				FEBCBDF827807586000B044E /* HomeView.swift in Sources */,
+				FEF5D207278317A700E29D65 /* Authentication.swift in Sources */,
+				FEF5D2052782F48F00E29D65 /* ChangePasswordViewModel.swift in Sources */,
 				FEBCBE002780853D000B044E /* SignUpView.swift in Sources */,
 				FEBCBE1A2781830F000B044E /* BoardsTableViewCell.swift in Sources */,
 				FEBCBDC0277F05E5000B044E /* AppDelegate.swift in Sources */,
 				FEBCBE212781D5E7000B044E /* PostViewModel.swift in Sources */,
 				FEBCBDFC278083EB000B044E /* SignInViewController.swift in Sources */,
 				FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */,
+				FEF5D2032782F1DD00E29D65 /* ChangePasswordView.swift in Sources */,
 				FEBCBE1F2781D3AE000B044E /* PostManager.swift in Sources */,
 				FEBCBE0927809A88000B044E /* User.swift in Sources */,
+				FE927D9927831E36009BF88D /* AlertController+Extension.swift in Sources */,
 				FEBCBE11278179BE000B044E /* SignInViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +516,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FE927D9A27831F17009BF88D /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		FEBCBDEF2780729E000B044E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -503,6 +535,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FE927D9B27831F17009BF88D /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE927D9A27831F17009BF88D /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		FEBCBDF02780729E000B044E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FEBCBDEF2780729E000B044E /* XCRemoteSwiftPackageReference "SnapKit" */;

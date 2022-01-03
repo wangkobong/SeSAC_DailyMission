@@ -9,21 +9,24 @@ import UIKit
 
 class SignUpViewModel {
     
-    var userName: Observabel<String> = Observabel("")
-    var userEmail: Observabel<String> = Observabel("")
-    var password: Observabel<String> = Observabel("")
-    var checkPassword: Observabel<String> = Observabel("")
+    var userName: Observable<String> = Observable("")
+    var userEmail: Observable<String> = Observable("")
+    var password: Observable<String> = Observable("")
+    var checkPassword: Observable<String> = Observable("")
+    
 
-    func registerUser(completion: @escaping () -> Void) {
+
+    func registerUser(completion: @escaping (Bool) -> Void) {
         print(#function)
+        let testValidation = [userName.value, userEmail.value, password.value, checkPassword.value].filter {
+            $0 == ""
+        }
+        
         if password.value == checkPassword.value {
             AuthManager.register(userName: userName.value, password: password.value, userEmail: userEmail.value) { userData, error in
                 
-                print(userData)
-                print(error)
-         
                 guard let userData = userData else {
-                    print("유저데이터없음")
+                    completion(false)
                     return
                 }
                 print("SignUpViewModel: \(userData)")
@@ -33,11 +36,13 @@ class SignUpViewModel {
                 UserDefaults.standard.set(userData.user.id, forKey: "id")
                 UserDefaults.standard.set(userData.user.email, forKey: "email")
                 
-                completion()
+                completion(true)
 
             }
+        } else if !testValidation.isEmpty {
+            completion(false)
         } else {
-            print("비번확인하셈")
+            completion(false)
         }
 
     }

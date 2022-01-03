@@ -9,15 +9,16 @@ import Foundation
 
 class SignInViewModel {
 
-    var email: Observabel<String> = Observabel("")
-    var password: Observabel<String> = Observabel("")
+    var email: Observable<String> = Observable("")
+    var password: Observable<String> = Observable("")
     
-    func postUserLogin(completion: @escaping () -> Void) {
+    func postUserLogin(completion: @escaping (Bool) -> Void) {
         print(#function)
         AuthManager.login(identifier: email.value, password: password.value) {
             userData, error in
             
             guard let userData = userData else {
+                completion(false)
                 return
             }
             
@@ -26,7 +27,7 @@ class SignInViewModel {
             UserDefaults.standard.set(userData.user.id, forKey: "id")
             UserDefaults.standard.set(userData.user.email, forKey: "email")
             
-            completion()
+            completion(true)
         }
     }
     

@@ -68,12 +68,16 @@ class SignUpViewController: UIViewController {
     
     
     @objc private func didTapRegister() {
-        print("didTapRegister")
-        signUpViewModel.registerUser {
-            DispatchQueue.main.async {
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                windowScene.windows.first?.rootViewController = BoardsViewController()
-                windowScene.windows.first?.makeKeyAndVisible()
+        signUpViewModel.registerUser { success in
+            if success {
+                DispatchQueue.main.async {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    let vc = UINavigationController(rootViewController: BoardsViewController())
+                    windowScene.windows.first?.rootViewController = vc
+                    windowScene.windows.first?.makeKeyAndVisible()
+                }
+            } else {
+                self.view.makeToast("정확한 정보를 입력해주세요", duration: 2.0, position: .center, title: "회원가입 실패", image: nil)
             }
         }
     }

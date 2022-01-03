@@ -70,6 +70,8 @@ class HomeView: UIView, ViewRepresentable {
     }()
     
 
+
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -123,6 +125,8 @@ class HomeView: UIView, ViewRepresentable {
             $0.bottom.equalTo(askHavingAccountLabel)
             $0.height.equalTo(askHavingAccountLabel)
         }
+        
+
     }
 
 }
