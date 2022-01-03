@@ -60,11 +60,16 @@ extension BoardsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textView.text = posts[indexPath.row].text
         cell.userNameLabel.text = posts[indexPath.row].user.username
         cell.createdAtLabel.text = posts[indexPath.row].createdAt
+        if posts[indexPath.row].comments.isEmpty {
+            cell.amountCommentLabel.text = "댓글쓰기"
+        } else {
+            cell.amountCommentLabel.text = "댓글 \(posts[indexPath.row].comments.count)개"
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        180
     }
 
 }

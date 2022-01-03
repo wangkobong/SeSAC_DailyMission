@@ -38,9 +38,16 @@ class BoardsTableViewCell: UITableViewCell {
         return label
     }()
     
+    let separator: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+        return view
+    }()
+    
     let commentImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "bubble.right.circle"))
+        let imageView = UIImageView(image: UIImage(systemName: "bubble.right.circle"))
         imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .systemGray
         return imageView
     }()
     
@@ -65,7 +72,7 @@ class BoardsTableViewCell: UITableViewCell {
     
     internal func setupView() {
         
-        [userNameLabel, textView, createdAtLabel].forEach {
+        [userNameLabel, textView, createdAtLabel, commentImageView, amountCommentLabel, separator].forEach {
             contentView.addSubview($0)
         }
     }
@@ -87,7 +94,27 @@ class BoardsTableViewCell: UITableViewCell {
         
         createdAtLabel.snp.makeConstraints {
             $0.leading.equalTo(self).offset(20)
+            $0.bottom.equalTo(separator).offset(-10)
+        }
+        
+        separator.snp.makeConstraints {
+            $0.bottom.equalTo(commentImageView.snp.top).offset(-10)
+            $0.leading.equalTo(self).offset(20)
+            $0.trailing.equalTo(self)
+            $0.height.equalTo(1)
+        }
+        
+        commentImageView.snp.makeConstraints {
+            $0.leading.equalTo(self).offset(20)
             $0.bottom.equalTo(self).offset(-10)
+            $0.width.equalTo(25)
+            $0.height.equalTo(20)
+        }
+        
+        amountCommentLabel.snp.makeConstraints {
+            $0.leading.equalTo(commentImageView.snp.trailing).offset(8)
+            $0.bottom.equalTo(commentImageView)
+            $0.height.equalTo(commentImageView)
         }
         
     }
