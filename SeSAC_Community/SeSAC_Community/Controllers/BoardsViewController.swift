@@ -30,8 +30,7 @@ class BoardsViewController: UIViewController {
                 postData?.forEach {
                     self.posts.append($0)
                 }
-                print("post: \(self.posts)")
-                
+
             }
         }
         
@@ -70,6 +69,21 @@ extension BoardsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         180
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentPostId = posts[indexPath.row].id
+        
+        let currentPost = posts.filter {
+            $0.id == currentPostId
+        }
+        
+        print(currentPost)
+        
+        let vc = BoardViewController()
+        vc.title = "게시글"
+        vc.post = currentPost
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

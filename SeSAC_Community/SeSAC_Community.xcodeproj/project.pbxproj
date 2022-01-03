@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		FE927D9927831E36009BF88D /* AlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927D9827831E36009BF88D /* AlertController+Extension.swift */; };
 		FE927D9C27831F17009BF88D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = FE927D9B27831F17009BF88D /* Toast */; };
+		FE927D9E27833515009BF88D /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927D9D27833515009BF88D /* BoardViewController.swift */; };
+		FE927DA02783356B009BF88D /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927D9F2783356B009BF88D /* BoardView.swift */; };
+		FE927DA227833583009BF88D /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DA127833583009BF88D /* BoardTableViewCell.swift */; };
+		FE927DA4278335AC009BF88D /* GetPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DA3278335AC009BF88D /* GetPostViewModel.swift */; };
+		FE927DA62783399C009BF88D /* BoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DA52783399C009BF88D /* BoardHeaderView.swift */; };
 		FEBCBDC0277F05E5000B044E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDBF277F05E5000B044E /* AppDelegate.swift */; };
 		FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDC1277F05E5000B044E /* SceneDelegate.swift */; };
 		FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDC3277F05E5000B044E /* HomeViewController.swift */; };
@@ -41,6 +46,11 @@
 
 /* Begin PBXFileReference section */
 		FE927D9827831E36009BF88D /* AlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController+Extension.swift"; sourceTree = "<group>"; };
+		FE927D9D27833515009BF88D /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
+		FE927D9F2783356B009BF88D /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		FE927DA127833583009BF88D /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
+		FE927DA3278335AC009BF88D /* GetPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostViewModel.swift; sourceTree = "<group>"; };
+		FE927DA52783399C009BF88D /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
 		FEBCBDBC277F05E5000B044E /* SeSAC_Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_Community.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBCBDBF277F05E5000B044E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEBCBDC1277F05E5000B044E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +157,7 @@
 				FEBCBDFD278083F4000B044E /* SignUpViewController.swift */,
 				FEBCBE0E2780BE1E000B044E /* BoardsViewController.swift */,
 				FEF5D2002782EE2000E29D65 /* ChangePasswordViewController.swift */,
+				FE927D9D27833515009BF88D /* BoardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,6 +171,8 @@
 				FEBCBE062780990A000B044E /* SignInView.swift */,
 				FEBCBE1527818020000B044E /* BoardsView.swift */,
 				FEF5D2022782F1DD00E29D65 /* ChangePasswordView.swift */,
+				FE927D9F2783356B009BF88D /* BoardView.swift */,
+				FE927DA52783399C009BF88D /* BoardHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +193,7 @@
 				FEBCBE10278179BE000B044E /* SignInViewModel.swift */,
 				FEBCBE202781D5E7000B044E /* PostViewModel.swift */,
 				FEF5D2042782F48F00E29D65 /* ChangePasswordViewModel.swift */,
+				FE927DA3278335AC009BF88D /* GetPostViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -188,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				FEBCBE192781830F000B044E /* BoardsTableViewCell.swift */,
+				FE927DA127833583009BF88D /* BoardTableViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -279,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE927DA227833583009BF88D /* BoardTableViewCell.swift in Sources */,
 				FEBCBE0D27809F9B000B044E /* EndPoint.swift in Sources */,
 				FEBCBE1627818020000B044E /* BoardsView.swift in Sources */,
 				FEBCBE0F2780BE1E000B044E /* BoardsViewController.swift in Sources */,
@@ -288,6 +304,7 @@
 				FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */,
 				FEBCBE1D2781835F000B044E /* UITableViewCell+Extension.swift in Sources */,
 				FEBCBE05278088E8000B044E /* Observable.swift in Sources */,
+				FE927DA62783399C009BF88D /* BoardHeaderView.swift in Sources */,
 				FEBCBE03278088B9000B044E /* SignUpViewModel.swift in Sources */,
 				FEBCBE072780990A000B044E /* SignInView.swift in Sources */,
 				FEF5D2012782EE2000E29D65 /* ChangePasswordViewController.swift in Sources */,
@@ -296,9 +313,12 @@
 				FEF5D2052782F48F00E29D65 /* ChangePasswordViewModel.swift in Sources */,
 				FEBCBE002780853D000B044E /* SignUpView.swift in Sources */,
 				FEBCBE1A2781830F000B044E /* BoardsTableViewCell.swift in Sources */,
+				FE927D9E27833515009BF88D /* BoardViewController.swift in Sources */,
+				FE927DA4278335AC009BF88D /* GetPostViewModel.swift in Sources */,
 				FEBCBDC0277F05E5000B044E /* AppDelegate.swift in Sources */,
 				FEBCBE212781D5E7000B044E /* PostViewModel.swift in Sources */,
 				FEBCBDFC278083EB000B044E /* SignInViewController.swift in Sources */,
+				FE927DA02783356B009BF88D /* BoardView.swift in Sources */,
 				FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */,
 				FEF5D2032782F1DD00E29D65 /* ChangePasswordView.swift in Sources */,
 				FEBCBE1F2781D3AE000B044E /* PostManager.swift in Sources */,

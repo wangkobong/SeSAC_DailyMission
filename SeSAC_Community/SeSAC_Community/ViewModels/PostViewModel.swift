@@ -12,7 +12,6 @@ class PostViewModel {
     func getAllPosts(completion: @escaping (Post?) -> Void) {
         print(#function)
         PostManager.getPosts { postData, error in
-            print("PostViewModel: \(error)")
             completion(postData)
         }
     }
