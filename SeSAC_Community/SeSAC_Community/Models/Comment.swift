@@ -1,33 +1,18 @@
 //
-//  Post.swift
+//  Comment.swift
 //  SeSAC_Community
 //
-//  Created by sungyeon kim on 2022/01/02.
+//  Created by sungyeon kim on 2022/01/04.
 //
 
 import Foundation
 
-// MARK: - PostElement
-struct PostElement: Codable {
-    let id: Int
-    let text: String
-    let user: Users
-    let createdAt, updatedAt: String
-    let comments: [Comment2]
-
-    enum CodingKeys: String, CodingKey {
-        case id, text, user
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case comments
-    }
-}
-
 // MARK: - Comment
-struct Comment2: Codable {
+struct Comment: Codable {
     let id: Int
     let comment: String
-    let user, post: Int
+    let user: User2
+    let post: Post2
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
@@ -37,20 +22,32 @@ struct Comment2: Codable {
     }
 }
 
-// MARK: - User
-struct Users: Codable {
+// MARK: - Post
+struct Post2: Codable {
     let id: Int
-    let username, email, provider: String
-    let confirmed: Bool
-    let blocked: Bool?
-    let role: Int
+    let text: String
+    let user: Int
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
-        case id, username, email, provider, confirmed, blocked, role
+        case id, text, user
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
 }
 
-typealias Post = [PostElement]
+// MARK: - User
+struct User2: Codable {
+    let id: Int
+    let username, email, provider: String
+    let confirmed: Bool
+    let role: Int
+    let createdAt, updatedAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, username, email, provider, confirmed, role
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+

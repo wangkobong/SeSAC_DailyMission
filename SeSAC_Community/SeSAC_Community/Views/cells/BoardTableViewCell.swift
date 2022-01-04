@@ -51,7 +51,6 @@ class BoardTableViewCell: UITableViewCell {
     }
     
     internal func setupView() {
-        
         [userNameLabel, textView, lineButton].forEach {
             contentView.addSubview($0)
         }
@@ -59,7 +58,7 @@ class BoardTableViewCell: UITableViewCell {
     
     internal func setupConstraints() {
         
-        lineButton.snp.makeConstraints {
+        lineButton.snp.makeConstraints {    
             $0.top.equalTo(self).offset(10)
             $0.trailing.equalTo(self).offset(-20)
         }

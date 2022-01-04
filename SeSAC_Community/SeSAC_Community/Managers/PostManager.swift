@@ -30,4 +30,5 @@ class PostManager {
 
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
+    
 }

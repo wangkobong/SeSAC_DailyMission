@@ -9,7 +9,7 @@ import Foundation
 
 class SignInViewModel {
 
-    var email: Observable<String> = Observable("")
+    var email: Observable<String> = Observable("kobong3@gmail.com")
     var password: Observable<String> = Observable("")
     
     func postUserLogin(completion: @escaping (Bool) -> Void) {

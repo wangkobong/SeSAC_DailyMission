@@ -44,7 +44,7 @@ class BoardsTableViewCell: UITableViewCell {
         return view
     }()
     
-    let commentImageView: UIImageView = {
+    private let commentImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "bubble.right.circle"))
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .systemGray

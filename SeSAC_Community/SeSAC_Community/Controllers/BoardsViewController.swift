@@ -39,6 +39,25 @@ class BoardsViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        posts.removeAll()
+        DispatchQueue.main.async {
+            self.postsViewModel.getAllPosts { postData in
+                postData?.forEach {
+                    self.posts.append($0)
+                }
+
+            }
+        }
+
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+            self.boardsView.tableView.reloadData()
+        }
+    }
+    
     @objc private func didTabChangePassword() {
         let vc = ChangePasswordViewController()
         vc.title = "비밀번호 변경"

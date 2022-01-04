@@ -23,7 +23,7 @@ enum EndPoint {
 //    case boardDetail(id: Int)
     case updateBoard(id: Int)
     case deleteBoard(id: Int)
-    case getComments
+    case getComments(id: Int)
     case insertComment
     case deleteComment(id: Int)
 }
@@ -45,8 +45,8 @@ extension EndPoint {
             return .makeEndPoint("posts/\(id)")
         case .deleteBoard(let id):
             return .makeEndPoint("posts/\(id)")
-        case .getComments:
-            return .makeEndPoint("comments")
+        case .getComments(let id):
+            return .makeEndPoint("comments?post=\(id)")
         case .insertComment:
             return .makeEndPoint("comments")
         case .deleteComment(let id):

@@ -12,7 +12,22 @@ class BoardView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.reuseIdentifier)
+        tableView.register(BoardHeaderTableViewCell.self, forCellReuseIdentifier: BoardHeaderTableViewCell.reuseIdentifier)
         return tableView
+    }()
+    
+    let commentField: UITextField = {
+        let field = UITextField()
+        field.keyboardType = .namePhonePad
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
+        field.leftViewMode = .always
+        field.placeholder = "댓글을 입력해주세요"
+        field.autocapitalizationType = .none
+        field.autocorrectionType = .no
+        field.backgroundColor = .secondarySystemBackground
+        field.layer.cornerRadius = 20
+        field.layer.masksToBounds = true
+        return field
     }()
     
     
@@ -28,7 +43,7 @@ class BoardView: UIView {
     
     internal func setupView() {
         
-        [tableView].forEach {
+        [tableView, commentField].forEach {
             addSubview($0)
         }
         
@@ -37,7 +52,17 @@ class BoardView: UIView {
     internal func setupConstraints() {
         
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.equalTo(self.safeAreaLayoutGuide)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        commentField.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.equalTo(self).offset(10)
+            $0.trailing.equalTo(self).offset(-10)
+            $0.height.equalTo(50)
         }
         
     }
