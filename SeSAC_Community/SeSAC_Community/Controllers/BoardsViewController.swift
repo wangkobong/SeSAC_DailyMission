@@ -37,6 +37,8 @@ class BoardsViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
             self.boardsView.tableView.reloadData()
         }
+        
+        boardsView.composeButton.addTarget(self, action: #selector(didTabComposeButton), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +58,13 @@ class BoardsViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
             self.boardsView.tableView.reloadData()
         }
+    }
+    
+    @objc private func didTabComposeButton() {
+        print(#function)
+        let vc = InsertBoardViewController()
+        vc.title = "게시글 작성"
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func didTabChangePassword() {

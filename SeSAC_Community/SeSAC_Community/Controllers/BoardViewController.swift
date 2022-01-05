@@ -23,9 +23,6 @@ class BoardViewController: UIViewController {
 
     override func loadView() {
         self.view = boardView
-
-        boardView.backgroundColor = .blue
-
     }
     
     override func viewDidLoad() {
@@ -129,7 +126,6 @@ extension BoardViewController: UITextFieldDelegate {
 
             } else {
                 self.view.makeToast("", duration: 2.0, position: .center, title: "댓글작성 실패", image: nil)
-                self.boardView.tableView.reloadData()
                 }
             }
      

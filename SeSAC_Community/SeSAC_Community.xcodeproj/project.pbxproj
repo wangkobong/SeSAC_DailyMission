@@ -13,11 +13,14 @@
 		FE927DA02783356B009BF88D /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927D9F2783356B009BF88D /* BoardView.swift */; };
 		FE927DA227833583009BF88D /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DA127833583009BF88D /* BoardTableViewCell.swift */; };
 		FE927DA4278335AC009BF88D /* GetPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DA3278335AC009BF88D /* GetPostViewModel.swift */; };
-		FE927DA62783399C009BF88D /* BoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DA52783399C009BF88D /* BoardHeaderView.swift */; };
 		FE927DAF278448B8009BF88D /* BoardHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DAE278448B8009BF88D /* BoardHeaderTableViewCell.swift */; };
 		FE927DB127846077009BF88D /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DB027846077009BF88D /* CommentManager.swift */; };
 		FE927DB3278461D2009BF88D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DB2278461D2009BF88D /* Comment.swift */; };
 		FE927DB52784638F009BF88D /* InsertCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DB42784638F009BF88D /* InsertCommentViewModel.swift */; };
+		FE927DBB2785677E009BF88D /* InsertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DBA2785677E009BF88D /* InsertBoardViewController.swift */; };
+		FE927DBD278569E8009BF88D /* InsertBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DBC278569E8009BF88D /* InsertBoardView.swift */; };
+		FE927DBF27856C7F009BF88D /* InsertBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DBE27856C7F009BF88D /* InsertBoardViewModel.swift */; };
+		FE927DC127857EAB009BF88D /* InsertPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE927DC027857EAB009BF88D /* InsertPost.swift */; };
 		FEBCBDC0277F05E5000B044E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDBF277F05E5000B044E /* AppDelegate.swift */; };
 		FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDC1277F05E5000B044E /* SceneDelegate.swift */; };
 		FEBCBDC4277F05E5000B044E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBCBDC3277F05E5000B044E /* HomeViewController.swift */; };
@@ -54,11 +57,14 @@
 		FE927D9F2783356B009BF88D /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		FE927DA127833583009BF88D /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
 		FE927DA3278335AC009BF88D /* GetPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostViewModel.swift; sourceTree = "<group>"; };
-		FE927DA52783399C009BF88D /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
 		FE927DAE278448B8009BF88D /* BoardHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		FE927DB027846077009BF88D /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		FE927DB2278461D2009BF88D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		FE927DB42784638F009BF88D /* InsertCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertCommentViewModel.swift; sourceTree = "<group>"; };
+		FE927DBA2785677E009BF88D /* InsertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertBoardViewController.swift; sourceTree = "<group>"; };
+		FE927DBC278569E8009BF88D /* InsertBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertBoardView.swift; sourceTree = "<group>"; };
+		FE927DBE27856C7F009BF88D /* InsertBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertBoardViewModel.swift; sourceTree = "<group>"; };
+		FE927DC027857EAB009BF88D /* InsertPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertPost.swift; sourceTree = "<group>"; };
 		FEBCBDBC277F05E5000B044E /* SeSAC_Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_Community.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBCBDBF277F05E5000B044E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEBCBDC1277F05E5000B044E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 			children = (
 				FEBCBE0827809A88000B044E /* User.swift */,
 				FEBCBE17278181D7000B044E /* Post.swift */,
+				FE927DC027857EAB009BF88D /* InsertPost.swift */,
 				FEF5D206278317A700E29D65 /* Authentication.swift */,
 				FE927DB2278461D2009BF88D /* Comment.swift */,
 			);
@@ -168,6 +175,7 @@
 				FEBCBE0E2780BE1E000B044E /* BoardsViewController.swift */,
 				FEF5D2002782EE2000E29D65 /* ChangePasswordViewController.swift */,
 				FE927D9D27833515009BF88D /* BoardViewController.swift */,
+				FE927DBA2785677E009BF88D /* InsertBoardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,7 +190,7 @@
 				FEBCBE1527818020000B044E /* BoardsView.swift */,
 				FEF5D2022782F1DD00E29D65 /* ChangePasswordView.swift */,
 				FE927D9F2783356B009BF88D /* BoardView.swift */,
-				FE927DA52783399C009BF88D /* BoardHeaderView.swift */,
+				FE927DBC278569E8009BF88D /* InsertBoardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +213,7 @@
 				FEF5D2042782F48F00E29D65 /* ChangePasswordViewModel.swift */,
 				FE927DA3278335AC009BF88D /* GetPostViewModel.swift */,
 				FE927DB42784638F009BF88D /* InsertCommentViewModel.swift */,
+				FE927DBE27856C7F009BF88D /* InsertBoardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -310,6 +319,7 @@
 				FEBCBE0D27809F9B000B044E /* EndPoint.swift in Sources */,
 				FEBCBE1627818020000B044E /* BoardsView.swift in Sources */,
 				FEBCBE0F2780BE1E000B044E /* BoardsViewController.swift in Sources */,
+				FE927DC127857EAB009BF88D /* InsertPost.swift in Sources */,
 				FEBCBDFE278083F4000B044E /* SignUpViewController.swift in Sources */,
 				FE927DB3278461D2009BF88D /* Comment.swift in Sources */,
 				FEBCBE18278181D7000B044E /* Post.swift in Sources */,
@@ -318,11 +328,11 @@
 				FE927DB52784638F009BF88D /* InsertCommentViewModel.swift in Sources */,
 				FEBCBE1D2781835F000B044E /* UITableViewCell+Extension.swift in Sources */,
 				FEBCBE05278088E8000B044E /* Observable.swift in Sources */,
-				FE927DA62783399C009BF88D /* BoardHeaderView.swift in Sources */,
 				FEBCBE03278088B9000B044E /* SignUpViewModel.swift in Sources */,
 				FE927DB127846077009BF88D /* CommentManager.swift in Sources */,
 				FEBCBE072780990A000B044E /* SignInView.swift in Sources */,
 				FE927DAF278448B8009BF88D /* BoardHeaderTableViewCell.swift in Sources */,
+				FE927DBD278569E8009BF88D /* InsertBoardView.swift in Sources */,
 				FEF5D2012782EE2000E29D65 /* ChangePasswordViewController.swift in Sources */,
 				FEBCBDF827807586000B044E /* HomeView.swift in Sources */,
 				FEF5D207278317A700E29D65 /* Authentication.swift in Sources */,
@@ -338,7 +348,9 @@
 				FEBCBDC2277F05E5000B044E /* SceneDelegate.swift in Sources */,
 				FEF5D2032782F1DD00E29D65 /* ChangePasswordView.swift in Sources */,
 				FEBCBE1F2781D3AE000B044E /* PostManager.swift in Sources */,
+				FE927DBF27856C7F009BF88D /* InsertBoardViewModel.swift in Sources */,
 				FEBCBE0927809A88000B044E /* User.swift in Sources */,
+				FE927DBB2785677E009BF88D /* InsertBoardViewController.swift in Sources */,
 				FE927D9927831E36009BF88D /* AlertController+Extension.swift in Sources */,
 				FEBCBE11278179BE000B044E /* SignInViewModel.swift in Sources */,
 			);
