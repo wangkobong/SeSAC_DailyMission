@@ -15,4 +15,18 @@ class PostViewModel {
             completion(postData)
         }
     }
+    
+    func deletePost(boardId: Int, completion: @escaping (Bool) -> Void) {
+        print(#function)
+        PostManager.deletePost(boardId: boardId) { deletedData, error in
+            
+            guard deletedData != nil else {
+                print("deletedData: \(String(describing: deletedData))")
+                completion(false)
+                return
+            }
+
+            completion(true)
+        }
+    }
 }

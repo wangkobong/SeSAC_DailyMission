@@ -39,6 +39,22 @@ class PostManager {
         request.httpMethod = Method.POST.rawValue
         request.setValue("Bearer \(String(describing: token))", forHTTPHeaderField:"authorization")
         request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
-        URLSession.request(.shared, endpoint: request, completion: completion)    }
+        URLSession.request(.shared, endpoint: request, completion: completion)
+        
+    }
+    
+    static func deletePost(boardId: Int, completion: @escaping (InsertPost?, APIError?) -> Void) {
+        print(#function)
+        var request = URLRequest(url: EndPoint.deleteBoard(id: boardId).url)
+        let token = UserDefaults.standard.string(forKey: "token")!
+        print("token: \(token)")
+        request.httpMethod = Method.DELETE.rawValue
+        request.setValue("Bearer \(String(describing: token))", forHTTPHeaderField:"authorization")
+        URLSession.request(.shared, endpoint: request, completion: completion)
+        
+    }
+    
+
+    
     
 }

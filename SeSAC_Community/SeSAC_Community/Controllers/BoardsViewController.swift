@@ -111,6 +111,7 @@ extension BoardsViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = BoardViewController()
         vc.title = "게시글"
         vc.post = currentPost
+        vc.postId = currentPostId
         navigationController?.pushViewController(vc, animated: true)
     }
 
