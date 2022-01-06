@@ -131,6 +131,7 @@ class BoardViewController: UIViewController {
         let actionSheet = UIAlertController(title: "원하시는 메뉴를 선택해주세요", message: "", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "댓글 수정", style: .default, handler: { _ in
             let vc = UpdateCommentViewController()
+            vc.delegate = self
             vc.currentCommentId = currentCommentId
             vc.currentPostId = self.post[0].id
             let currentComment = self.currentComments.filter{ $0.id == currentCommentId }
@@ -267,5 +268,13 @@ extension BoardViewController: UITextFieldDelegate {
      
         }
         return true
+    }
+}
+
+
+extension BoardViewController: UpdateCommentDelegate {
+    func updateComment(comment: Comment) {
+        self.currentComments = comment
+        self.boardView.tableView.reloadData()
     }
 }

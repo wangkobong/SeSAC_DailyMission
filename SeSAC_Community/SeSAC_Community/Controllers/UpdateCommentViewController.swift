@@ -8,7 +8,13 @@
 import UIKit
 import Toast
 
+protocol UpdateCommentDelegate {
+    func updateComment(comment: Comment)
+}
+
 class UpdateCommentViewController: UIViewController  {
+    
+    var delegate: UpdateCommentDelegate?
     
     private let updateCommentView = UpdateCommentView()
     private let updateCommentViewModel = UpdateCommentViewModel()
@@ -45,8 +51,12 @@ class UpdateCommentViewController: UIViewController  {
                 self.getCommentsViewModel.getComments(boardId: self.currentPostId) { comments in
 
                     DispatchQueue.main.async {
-                        self.currentComments = comments!
-                        self.boardView.tableView.reloadData()
+                        guard let comments = comments else {
+                            return
+                        }
+
+                        self.currentComments = comments
+                        self.delegate?.updateComment(comment: self.currentComments)
                     }
                 }
                 self.navigationController?.popViewController(animated: true)
