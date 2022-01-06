@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import Toast
 
 class UpdateCommentViewController: UIViewController  {
     
     private let updateCommentView = UpdateCommentView()
     private let updateCommentViewModel = UpdateCommentViewModel()
+    private let getCommentsViewModel = GetCommentsViewModel()
+    private let boardView = BoardView()
     
     var currentCommentId = 0
     var currentCommentText = ""
     var currentPostId = 0
+    var currentComments: Comment = []
     
     override func loadView() {
         self.view = updateCommentView
@@ -38,9 +42,16 @@ class UpdateCommentViewController: UIViewController  {
         updateCommentViewModel.updateComment(postId: currentPostId, commentId: currentCommentId) { comment, success in
             
             if success {
-                print("수정성공")
+                self.getCommentsViewModel.getComments(boardId: self.currentPostId) { comments in
+
+                    DispatchQueue.main.async {
+                        self.currentComments = comments!
+                        self.boardView.tableView.reloadData()
+                    }
+                }
+                self.navigationController?.popViewController(animated: true)
             } else {
-                print("수정실패")
+                self.view.makeToast("내용을 입력해주세요", duration: 2.0, position: .center, title: "댓글 수정 실패", image: nil)
             }
         }
     }
@@ -57,6 +68,5 @@ extension UpdateCommentViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         updateCommentViewModel.text.value = textView.text ?? ""
-        print("textViewDidChange: \(textView.text)")
     }
 }

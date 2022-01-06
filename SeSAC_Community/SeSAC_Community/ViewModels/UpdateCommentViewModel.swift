@@ -14,16 +14,27 @@ class UpdateCommentViewModel {
     func updateComment(postId: Int, commentId: Int, completion: @escaping (InsertComment?, Bool) -> Void) {
         if text.value != "" {
             
-            CommentManager.updateComment(text: text.value, postId: postId, commentId: commentId) { comentData, error in
-                guard let comentData = comentData else {
+            CommentManager.updateComment(text: text.value, postId: postId, commentId: commentId) { commentData, error in
+                guard let commentData = commentData else {
                     completion(nil, false)
                     return
                 }
                 print("updateComment: \(self.text.value)")
-                completion(comentData, true)
+                completion(commentData, true)
             }
         } else {
             completion(nil, false)
+        }
+    }
+    
+    func deleteComment(commentId: Int, completion: @escaping (InsertComment?, Bool) -> Void) {
+        CommentManager.deleteComment(commentId: commentId) { commentData, error in
+            print(#function)
+            guard let commentData = commentData else {
+                completion(nil, false)
+                return
+            }
+            completion(commentData, true)
         }
     }
 }
