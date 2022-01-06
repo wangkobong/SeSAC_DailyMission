@@ -7,11 +7,12 @@
 
 import Foundation
 
-class InsertBoardViewModel {
+class InsertPostViewModel {
     
     var text: Observable<String> = Observable("")
     
-    func insertComment(completion: @escaping (InsertPost?, Bool) -> Void) {
+    func insertPost(completion: @escaping (InsertPost?, Bool) -> Void) {
+        print("InsertPostViewModel text: \(text.value)")
         if text.value != "" {
             PostManager.insertPost(text: text.value) { post, error in
 
@@ -26,5 +27,6 @@ class InsertBoardViewModel {
             completion(nil, false)
         }
     }
+ 
     
 }

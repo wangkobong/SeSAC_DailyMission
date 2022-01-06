@@ -12,7 +12,7 @@ class InsertCommentViewModel {
     var comment: Observable<String> = Observable("")
     var boardId = 0
 
-    func insertComment(completion: @escaping (Comment?, Bool) -> Void) {
+    func insertComment(completion: @escaping (InsertComment?, Bool) -> Void) {
         if comment.value != "" {
             CommentManager.insertComment(comment: comment.value, postId: boardId) { comment, error in
                 guard let comment = comment else {

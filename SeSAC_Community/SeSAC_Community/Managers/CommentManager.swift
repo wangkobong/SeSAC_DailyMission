@@ -9,7 +9,7 @@ import Foundation
 
 class CommentManager {
     
-    static func insertComment(comment: String, postId: Int, completion: @escaping (Comment?, APIError?) -> Void) {
+    static func insertComment(comment: String, postId: Int, completion: @escaping (InsertComment?, APIError?) -> Void) {
         print(#function)
         var request = URLRequest(url: EndPoint.insertComment.url)
         let token = UserDefaults.standard.string(forKey: "token")!
@@ -26,8 +26,23 @@ class CommentManager {
         var request = URLRequest(url: EndPoint.getComments(id: boardId).url)
         let token = UserDefaults.standard.string(forKey: "token")!
 
-        request.httpMethod = "GET"
+        request.httpMethod = Method.GET.rawValue
         request.setValue("Bearer \(String(describing: token))", forHTTPHeaderField:"authorization")
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
+    
+    static func updateComment(text: String, postId: Int, commentId: Int, completion: @escaping (InsertComment?, APIError?) -> Void) {
+        print(#function)
+        var request = URLRequest(url: EndPoint.updateComment(id: commentId).url)
+        let token = UserDefaults.standard.string(forKey: "token")!
+        print("token: \(token)")
+        request.httpMethod = Method.PUT.rawValue
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
+        request.setValue("Bearer \(String(describing: token))", forHTTPHeaderField:"authorization")
+        request.httpBody = "comment=\(text)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
+        URLSession.request(.shared, endpoint: request, completion: completion)
+        
+    }
+    
+    
 }

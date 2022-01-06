@@ -26,6 +26,7 @@ enum EndPoint {
     case getComments(id: Int)
     case insertComment
     case deleteComment(id: Int)
+    case updateComment(id: Int)
 }
 
 extension EndPoint {
@@ -40,7 +41,7 @@ extension EndPoint {
         case .insertBoard:
             return .makeEndPoint("posts")
         case .boards:
-            return .makeEndPoint("posts")
+            return .makeEndPoint("posts?_start=0&_limit=100&_sort=created_at:desc")
         case .updateBoard(let id):
             return .makeEndPoint("posts/\(id)")
         case .deleteBoard(let id):
@@ -50,7 +51,9 @@ extension EndPoint {
         case .insertComment:
             return .makeEndPoint("comments")
         case .deleteComment(let id):
-            return .makeEndPoint("comments\(id)")
+            return .makeEndPoint("comments/\(id)")
+        case .updateComment(let id):
+            return .makeEndPoint("comments/\(id)")
         }
     }
 }

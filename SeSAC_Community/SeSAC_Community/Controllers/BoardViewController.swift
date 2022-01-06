@@ -14,10 +14,14 @@ class BoardViewController: UIViewController {
     var post: [PostElement] = []
     var posts: [PostElement] = []
     var postId: Int = 0
+    var currentComments: Comment = []
+
     
     private let boardView = BoardView()
+    private let boardTableViewCell = BoardTableViewCell()
     private let insertCommentViewModel = InsertCommentViewModel()
     private let postViewModel = PostViewModel()
+    private let getCommentsViewModel = GetCommentsViewModel()
     private let BoardsVC = BoardsViewController()
     
 
@@ -33,12 +37,20 @@ class BoardViewController: UIViewController {
         boardView.commentField.delegate = self
         
         setRightBarButtonItem()
+        let group = DispatchGroup()
+        DispatchQueue.global().async(group: group) {
+            group.enter()
+            self.getComments()
+        }
+       
+
         
         insertCommentViewModel.comment.bind { text in
             self.boardView.commentField.text = text
         }
         
         boardView.commentField.addTarget(self, action: #selector(commentTextFieldDidChange), for: .editingChanged)
+        
 
     }
 
@@ -49,8 +61,25 @@ class BoardViewController: UIViewController {
     
     @objc private func didTabRightBarButton() {
         print(#function)
-        showActionSheet()
+        showActionSheetForPost()
     }
+    
+    @objc private func didTabLineButton(sender: UIButton) {
+        print(#function)
+        let test = sender.tag
+        showActionSheetForComment(commentId: test)
+    }
+    
+    func getComments() {
+        self.getCommentsViewModel.getComments(boardId: self.postId) { comments in
+            
+            comments?.forEach {
+                self.currentComments.append($0)
+            }
+
+        }
+    }
+
     
     func setRightBarButtonItem() {
         let writerEmail = post[0].user.email
@@ -62,12 +91,16 @@ class BoardViewController: UIViewController {
         }
     }
     
-    func showActionSheet() {
+    func showActionSheetForPost() {
         let boardId = postId
         print("boardID: \(boardId)")
         let actionSheet = UIAlertController(title: "선택", message: "뭐할래", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "게시글 수정", style: .default, handler: { result in
-            print(result)
+        actionSheet.addAction(UIAlertAction(title: "게시글 수정", style: .default, handler: { _ in
+            let vc = InsertBoardViewController()
+            vc.title = "게시글 수정"
+            vc.isInsert = false
+            vc.currentPost = self.post
+            self.navigationController?.pushViewController(vc, animated: true)
         }))
         
         actionSheet.addAction(UIAlertAction(title: "게시글 삭제", style: .destructive, handler: { _ in
@@ -84,6 +117,28 @@ class BoardViewController: UIViewController {
                     self.view.makeToast("다시 시도해주세요!", duration: 2.0, position: .center, title: "게시글 삭제 실패", image: nil)
                 }
             }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func showActionSheetForComment(commentId: Int) {
+        let cuurentCommentId = commentId
+        let actionSheet = UIAlertController(title: "원하시는 메뉴를 선택해주세요", message: "", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "댓글 수정", style: .default, handler: { _ in
+            let vc = UpdateCommentViewController()
+            vc.currentCommentId = cuurentCommentId
+            vc.currentPostId = self.post[0].id
+            let currentComment = self.currentComments.filter{ $0.id == cuurentCommentId }
+            vc.currentCommentText = currentComment[0].comment
+            vc.title = "댓글 수정"
+
+            self.navigationController?.pushViewController(vc, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "댓글 삭제", style: .destructive, handler: { _ in
+            print("댓글 삭제")
         }))
         
         actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
@@ -130,8 +185,17 @@ extension BoardViewController: UITableViewDelegate, UITableViewDataSource {
                 fatalError()
             }
             if !post[0].comments.isEmpty {
-                commentCell.userNameLabel.text = "\(post[0].comments[indexPath.row].id)"
-                commentCell.textView.text = post[0].comments[indexPath.row].comment
+                commentCell.userNameLabel.text = "\(currentComments[indexPath.row].user.username)"
+                commentCell.textView.text = currentComments[indexPath.row].comment
+                let myEmail = UserDefaults.standard.string(forKey: "email") ?? ""
+                if currentComments[indexPath.row].user.email != myEmail {
+                    commentCell.lineButton.layer.isHidden = true
+                } else {
+                    let commentId = currentComments[indexPath.row].id
+                    commentCell.lineButton.layer.isHidden = false
+                    commentCell.lineButton.tag = commentId
+                    commentCell.lineButton.addTarget(self, action: #selector(didTabLineButton(sender:)), for: .touchUpInside)
+                }
                 return commentCell
             }
             return commentCell
@@ -162,17 +226,32 @@ extension BoardViewController: UITextFieldDelegate {
             if success {
                 self.view.makeToast("성공.", duration: 2.0, position: .center, title: "댓글작성 성공", image: nil)
                 let currentPostId = boardId
-                self.postViewModel.getAllPosts { post in
-                    post?.forEach {
-                        self.posts.append($0)
+                self.currentComments.removeAll()
+                print("댓글작성성공후 removeAll 확인: \(self.currentComments)")
+                self.getCommentsViewModel.getComments(boardId: currentPostId) { comments in
+                    guard let comments = comments else {
+                        return
                     }
-                    let currentPost = self.posts.filter {
-                        $0.id == currentPostId
+                    comments.forEach {
+                        self.currentComments.append($0)
                     }
-                    self.post = currentPost
+                    print("댓글작성성공후 currentComments확인: \(self.currentComments)")
                     self.boardView.tableView.reloadData()
                     self.boardView.commentField.text = ""
+
                 }
+//                self.postViewModel.getAllPosts { post in
+//                    post?.forEach {
+//                        self.posts.append($0)
+//                    }
+//                    let currentPost = self.posts.filter {
+//                        $0.id == currentPostId
+//                    }
+//                    self.post = currentPost
+//
+//                    self.boardView.tableView.reloadData()
+//                    self.boardView.commentField.text = ""
+//                }
 
             } else {
                 self.view.makeToast("", duration: 2.0, position: .center, title: "댓글작성 실패", image: nil)

@@ -7,12 +7,12 @@
 
 import Foundation
 
-// MARK: - Comment
-struct Comment: Codable {
+// MARK: - CommentElement
+struct CommentElement: Codable {
     let id: Int
     let comment: String
-    let user: User2
-    let post: Post2
+    let user: User4
+    let post: Post4
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
@@ -23,7 +23,7 @@ struct Comment: Codable {
 }
 
 // MARK: - Post
-struct Post2: Codable {
+struct Post4: Codable {
     let id: Int
     let text: String
     let user: Int
@@ -37,17 +37,20 @@ struct Post2: Codable {
 }
 
 // MARK: - User
-struct User2: Codable {
+struct User4: Codable {
     let id: Int
     let username, email, provider: String
     let confirmed: Bool
+    let blocked: JSONNull?
     let role: Int
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
-        case id, username, email, provider, confirmed, role
+        case id, username, email, provider, confirmed, blocked, role
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
 }
+
+typealias Comment = [CommentElement]
 

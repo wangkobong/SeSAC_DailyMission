@@ -1,33 +1,20 @@
 //
-//  Post.swift
+//  insertComment.swift
 //  SeSAC_Community
 //
-//  Created by sungyeon kim on 2022/01/02.
+//  Created by sungyeon kim on 2022/01/06.
 //
 
 import Foundation
 
-// MARK: - PostElement
-struct PostElement: Codable {
-    let id: Int
-    let text: String
-    let user: Users
-    let createdAt, updatedAt: String
-    var comments: [Comment2]
-
-    enum CodingKeys: String, CodingKey {
-        case id, text, user
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case comments
-    }
-}
+import Foundation
 
 // MARK: - Comment
-struct Comment2: Codable {
+struct InsertComment: Codable {
     let id: Int
     let comment: String
-    let user, post: Int
+    let user: User6
+    let post: Post6
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
@@ -37,12 +24,26 @@ struct Comment2: Codable {
     }
 }
 
+// MARK: - Post
+struct Post6: Codable {
+    let id: Int
+    let text: String
+    let user: Int
+    let createdAt, updatedAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, text, user
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+
 // MARK: - User
-struct Users: Codable {
+struct User6: Codable {
     let id: Int
     let username, email, provider: String
     let confirmed: Bool
-    let blocked: Bool?
+    let blocked: JSONNull?
     let role: Int
     let createdAt, updatedAt: String
 
@@ -53,4 +54,5 @@ struct Users: Codable {
     }
 }
 
-typealias Post = [PostElement]
+// MARK: - Encode/decode helpers
+

@@ -10,9 +10,11 @@ import UIKit
 class BoardsViewController: UIViewController {
     
     var posts: [PostElement] = []
+    var comments: [Comment] = []
     
     private let boardsView = BoardsView()
     private let postsViewModel = PostViewModel()
+    private let getCommentsViewModel = GetCommentsViewModel()
     
     override func loadView() {
         self.view = boardsView
@@ -25,18 +27,18 @@ class BoardsViewController: UIViewController {
         boardsView.tableView.dataSource = self
         title = "새싹농장"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "비밀번호 변경", style: .done, target: self, action: #selector(didTabChangePassword))
-        DispatchQueue.main.async {
-            self.postsViewModel.getAllPosts { postData in
-                postData?.forEach {
-                    self.posts.append($0)
-                }
-
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
-            self.boardsView.tableView.reloadData()
-        }
+//        DispatchQueue.main.async {
+//            self.postsViewModel.getAllPosts { postData in
+//                postData?.forEach {
+//                    self.posts.append($0)
+//                }
+//
+//            }
+//        }
+//
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+//            self.boardsView.tableView.reloadData()
+//        }
         
         boardsView.composeButton.addTarget(self, action: #selector(didTabComposeButton), for: .touchUpInside)
     }
@@ -106,13 +108,23 @@ extension BoardsViewController: UITableViewDelegate, UITableViewDataSource {
             $0.id == currentPostId
         }
         
-        print(currentPost)
-        
+        let group = DispatchGroup()
         let vc = BoardViewController()
         vc.title = "게시글"
         vc.post = currentPost
         vc.postId = currentPostId
-        navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.global().async(group: group) {
+            group.enter()
+            self.getCommentsViewModel.getComments(boardId: currentPostId) { comments in
+                comments?.forEach {
+                    vc.currentComments.append($0)
+                }
+                group.leave()
+            }
+        }
+        group.notify(queue: DispatchQueue.main) {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
 }
