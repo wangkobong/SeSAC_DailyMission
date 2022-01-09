@@ -202,10 +202,10 @@
 			isa = PBXGroup;
 			children = (
 				FEBCBE1427817F36000B044E /* cells */,
-				FEBCBDF727807586000B044E /* HomeView.swift */,
 				FEBCBDFF2780853D000B044E /* SignUpView.swift */,
 				FEBCBE062780990A000B044E /* SignInView.swift */,
 				FEBCBE1527818020000B044E /* BoardsView.swift */,
+				FEBCBDF727807586000B044E /* HomeView.swift */,
 				FEF5D2022782F1DD00E29D65 /* ChangePasswordView.swift */,
 				FE927D9F2783356B009BF88D /* BoardView.swift */,
 				FE927DBC278569E8009BF88D /* InsertBoardView.swift */,

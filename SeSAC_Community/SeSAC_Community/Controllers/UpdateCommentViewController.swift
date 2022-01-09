@@ -75,7 +75,6 @@ class UpdateCommentViewController: UIViewController  {
 
 
 extension UpdateCommentViewController: UITextViewDelegate {
-    
     func textViewDidChange(_ textView: UITextView) {
         updateCommentViewModel.text.value = textView.text ?? ""
     }

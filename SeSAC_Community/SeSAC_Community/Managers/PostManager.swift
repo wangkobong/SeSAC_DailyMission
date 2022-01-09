@@ -55,7 +55,6 @@ class PostManager {
     static func updatePost(text: String, boardId: Int, completion: @escaping (Update?, APIError?) -> Void) {
         print(#function)
         var request = URLRequest(url: EndPoint.updateBoard(id: boardId).url)
-        print("reuqest: \(request.url)")
         let token = UserDefaults.standard.string(forKey: "token")!
         print("token: \(token)")
         request.httpMethod = Method.PUT.rawValue

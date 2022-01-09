@@ -198,7 +198,7 @@ extension BoardViewController: UITableViewDelegate, UITableViewDataSource {
             boardCell.userNameLabel.text = "\(post[0].user.username)"
             boardCell.createdAtLabel.text = "\(post[0].updatedAt)"
             boardCell.textView2.text = "\(post[0].text)"
-            boardCell.amountCommentLabel.text = "댓글 \(post[0].comments.count)"
+            boardCell.amountCommentLabel.text = "댓글 \(currentComments.count)"
             
             return boardCell
         } else if indexPath.section == 1 {
