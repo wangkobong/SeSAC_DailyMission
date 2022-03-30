@@ -19,7 +19,6 @@ class UpdatePostViewModel {
                 print(#function)
                 guard let postData = postData else {
                     completion(nil, false)
-                    print("error: \(error)")
                     return
                 }
                 print("updatePost text: \(self.text2.value)")

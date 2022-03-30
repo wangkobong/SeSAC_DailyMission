@@ -87,7 +87,7 @@ class InsertBoardViewController: UIViewController {
     @objc private func didTabUpdate() {
         print(#function)
         let currentBoardId = currentPost[0].id
-        updatePostViewModel.updatePost(boardId: currentBoardId) { post, success in
+        updatePostViewModel.updatePost(boardId: currentBoardId) {[weak self] post, success in
             if success {
                 DispatchQueue.main.async {
                     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
@@ -96,7 +96,7 @@ class InsertBoardViewController: UIViewController {
                     windowScene.windows.first?.makeKeyAndVisible()
                 }
             } else {
-                self.view.makeToast("내용을 입력해주세요", duration: 2.0, position: .center, title: "게시글수정 실패", image: nil)
+                self?.view.makeToast("내용을 입력해주세요", duration: 2.0, position: .center, title: "게시글수정 실패", image: nil)
             }
         }
     }
@@ -106,7 +106,6 @@ class InsertBoardViewController: UIViewController {
 extension InsertBoardViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         postTextViewdDidChange(textView)
-        print("textViewDidChange: \(textView.text)")
     }
     
 //    func textViewDidEndEditing(_ textView: UITextView) {

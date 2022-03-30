@@ -55,12 +55,12 @@ class ChangePasswordViewController: UIViewController {
     }
     
     @objc private func didTapChangePassword() {
-        changePasswordViewModel.changePassword { success in
+        changePasswordViewModel.changePassword { [weak self] success in
             if success {
-                self.view.makeToast("비밀번호 변경성공")
-                self.dismiss(animated: true, completion: nil)
+                self?.view.makeToast("비밀번호 변경성공")
+                self?.dismiss(animated: true, completion: nil)
             } else {
-                self.view.makeToast("정확한 정보를 입력 후 다시 시도해주세요.", duration: 2.0, position: .center, title: "비밀번호 변경 실패", image: nil)
+                self?.view.makeToast("정확한 정보를 입력 후 다시 시도해주세요.", duration: 2.0, position: .center, title: "비밀번호 변경 실패", image: nil)
             }
         }
     }

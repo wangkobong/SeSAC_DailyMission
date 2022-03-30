@@ -8,13 +8,13 @@
 import UIKit
 import Toast
 
-protocol UpdateCommentDelegate {
+protocol UpdateCommentDelegate: AnyObject {
     func updateComment(comment: Comment)
 }
 
 class UpdateCommentViewController: UIViewController  {
     
-    var delegate: UpdateCommentDelegate?
+    weak var delegate: UpdateCommentDelegate?
     
     private let updateCommentView = UpdateCommentView()
     private let updateCommentViewModel = UpdateCommentViewModel()
@@ -45,23 +45,23 @@ class UpdateCommentViewController: UIViewController  {
     }
     
     @objc private func didTabUpdateComment() {
-        updateCommentViewModel.updateComment(postId: currentPostId, commentId: currentCommentId) { comment, success in
+        updateCommentViewModel.updateComment(postId: currentPostId, commentId: currentCommentId) { [weak self] comment, success in
             
             if success {
-                self.getCommentsViewModel.getComments(boardId: self.currentPostId) { comments in
+                self?.getCommentsViewModel.getComments(boardId: self?.currentPostId ?? 0) { comments in
 
                     DispatchQueue.main.async {
                         guard let comments = comments else {
                             return
                         }
 
-                        self.currentComments = comments
-                        self.delegate?.updateComment(comment: self.currentComments)
+                        self?.currentComments = comments
+                        self?.delegate?.updateComment(comment: self!.currentComments)
                     }
                 }
-                self.navigationController?.popViewController(animated: true)
+                self?.navigationController?.popViewController(animated: true)
             } else {
-                self.view.makeToast("내용을 입력해주세요", duration: 2.0, position: .center, title: "댓글 수정 실패", image: nil)
+                self?.view.makeToast("내용을 입력해주세요", duration: 2.0, position: .center, title: "댓글 수정 실패", image: nil)
             }
         }
     }

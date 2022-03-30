@@ -40,8 +40,8 @@ class BoardsView: UIView {
     
     internal func setupView() {
         
-        [tableView, composeButton].forEach {
-            addSubview($0)
+        [tableView, composeButton].forEach { [weak self] in
+            self?.addSubview($0)
         }
     }
     

@@ -47,7 +47,6 @@ class CommentManager {
     static func deleteComment(commentId: Int, completion: @escaping (InsertComment?, APIError?) -> Void) {
         var request = URLRequest(url: EndPoint.deleteComment(id: commentId).url)
         let token = UserDefaults.standard.string(forKey: "token")!
-        print(request.url)
         request.httpMethod = Method.DELETE.rawValue
         request.setValue("Bearer \(String(describing: token))", forHTTPHeaderField:"authorization")
         URLSession.request(.shared, endpoint: request, completion: completion)

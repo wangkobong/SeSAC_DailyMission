@@ -9,6 +9,10 @@ import UIKit
 
 class BoardsViewController: UIViewController {
     
+    deinit {
+        print("\(self) deinit")
+    }
+    
     var posts: [PostElement] = []
     var comments: [Comment] = []
     
@@ -36,17 +40,17 @@ class BoardsViewController: UIViewController {
 
         posts.removeAll()
         DispatchQueue.main.async {
-            self.postsViewModel.getAllPosts { postData in
+            self.postsViewModel.getAllPosts { [weak self] postData in
                 postData?.forEach {
-                    self.posts.append($0)
+                    self?.posts.append($0)
                 }
 
             }
         }
 
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
-            self.boardsView.tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) { [weak self] in
+            self?.boardsView.tableView.reloadData()
         }
     }
     
@@ -101,17 +105,17 @@ extension BoardsViewController: UITableViewDelegate, UITableViewDataSource {
         vc.title = "게시글"
         vc.post = currentPost
         vc.postId = currentPostId
-        DispatchQueue.global().async(group: group) {
+        DispatchQueue.global().async(group: group) { [weak self] in
             group.enter()
-            self.getCommentsViewModel.getComments(boardId: currentPostId) { comments in
+            self?.getCommentsViewModel.getComments(boardId: currentPostId) { comments in
                 comments?.forEach {
                     vc.currentComments.append($0)
                 }
                 group.leave()
             }
         }
-        group.notify(queue: DispatchQueue.main) {
-            self.navigationController?.pushViewController(vc, animated: true)
+        group.notify(queue: DispatchQueue.main) { [weak self] in
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
 

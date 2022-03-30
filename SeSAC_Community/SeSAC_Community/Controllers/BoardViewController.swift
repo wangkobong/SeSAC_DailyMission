@@ -10,6 +10,10 @@ import SnapKit
 import Toast
 
 class BoardViewController: UIViewController {
+    
+    deinit {
+        print("\(self) deinit")
+    }
 
     var post: [PostElement] = []
     var posts: [PostElement] = []
@@ -26,7 +30,7 @@ class BoardViewController: UIViewController {
     private let BoardsVC = BoardsViewController()
     
 
-    override func loadView() {
+    override func loadView() { 
         self.view = boardView
     }
     
@@ -38,12 +42,12 @@ class BoardViewController: UIViewController {
         boardView.commentField.delegate = self
         
         setRightBarButtonItem()
-        let group = DispatchGroup()
-        DispatchQueue.global().async(group: group) {
-            group.enter()
-            self.getComments()
-        }
-       
+//        let group = DispatchGroup()
+//        DispatchQueue.global().async(group: group) {
+//            group.enter()
+//            self.getComments()
+//        }
+//       
 
         
         insertCommentViewModel.comment.bind { text in
@@ -75,10 +79,10 @@ class BoardViewController: UIViewController {
 
     
     func getComments() {
-        self.getCommentsViewModel.getComments(boardId: self.postId) { comments in
+        self.getCommentsViewModel.getComments(boardId: self.postId) { [weak self] comments in
             
             comments?.forEach {
-                self.currentComments.append($0)
+                self?.currentComments.append($0)
             }
 
         }
@@ -108,7 +112,7 @@ class BoardViewController: UIViewController {
         }))
         
         actionSheet.addAction(UIAlertAction(title: "게시글 삭제", style: .destructive, handler: { _ in
-            self.postViewModel.deletePost(boardId: boardId) { success in
+            self.postViewModel.deletePost(boardId: boardId) { [weak self] success in
                 if success {
                     DispatchQueue.main.async {
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
@@ -118,7 +122,7 @@ class BoardViewController: UIViewController {
 
                     }
                 } else {
-                    self.view.makeToast("다시 시도해주세요!", duration: 2.0, position: .center, title: "게시글 삭제 실패", image: nil)
+                    self?.view.makeToast("다시 시도해주세요!", duration: 2.0, position: .center, title: "게시글 삭제 실패", image: nil)
                 }
             }
         }))
@@ -143,20 +147,20 @@ class BoardViewController: UIViewController {
         
         actionSheet.addAction(UIAlertAction(title: "댓글 삭제", style: .destructive, handler: { _ in
   
-            self.updateCommentViewModel.deleteComment(commentId: currentCommentId) { deletedCommentData, success in
+            self.updateCommentViewModel.deleteComment(commentId: currentCommentId) {[weak self] deletedCommentData, success in
                 if success {
  
-                    self.view.makeToast("성공!", duration: 2.0, position: .center, title: "댓글 삭제 성공", image: nil)
-                    self.getCommentsViewModel.getComments(boardId: self.post[0].id) { comments in
+                    self?.view.makeToast("성공!", duration: 2.0, position: .center, title: "댓글 삭제 성공", image: nil)
+                    self?.getCommentsViewModel.getComments(boardId: (self?.post[0].id)!) { comments in
                         DispatchQueue.main.async {
 
-                            self.currentComments = comments!
+                            self?.currentComments = comments!
 
-                            self.boardView.tableView.reloadData()
+                            self?.boardView.tableView.reloadData()
                         }
                     }
                 } else {
-                    self.view.makeToast("다시 시도해주세요!", duration: 2.0, position: .center, title: "댓글 삭제 실패", image: nil)
+                    self?.view.makeToast("다시 시도해주세요!", duration: 2.0, position: .center, title: "댓글 삭제 실패", image: nil)
                 }
             }
         }))
@@ -244,25 +248,23 @@ extension BoardViewController: UITextFieldDelegate {
         let boardId = post[0].id
         insertCommentViewModel.boardId = boardId
         DispatchQueue.main.async {
-            self.insertCommentViewModel.insertComment { comment, success in
+            self.insertCommentViewModel.insertComment { [weak self] comment, success in
             if success {
-                self.view.makeToast("성공.", duration: 2.0, position: .center, title: "댓글작성 성공", image: nil)
+                self?.view.makeToast("성공.", duration: 2.0, position: .center, title: "댓글작성 성공", image: nil)
                 let currentPostId = boardId
-                self.currentComments.removeAll()
-                self.getCommentsViewModel.getComments(boardId: currentPostId) { comments in
+                self?.currentComments.removeAll()
+                self?.getCommentsViewModel.getComments(boardId: currentPostId) { comments in
                     DispatchQueue.main.async {
-                        print("댓글삭제후 남은 댓글불러오기: \(comments)")
-                        self.currentComments = comments!
-                        print("댓글삭제후 남은 댓글불러와서 다른데 넣기: \(self.currentComments)")
-
-                        self.boardView.tableView.reloadData()
-                        self.boardView.commentField.text = ""
+                        self?.currentComments = comments!
+        
+                        self?.boardView.tableView.reloadData()
+                        self?.boardView.commentField.text = ""
                     }
                 }
 
 
             } else {
-                self.view.makeToast("", duration: 2.0, position: .center, title: "댓글작성 실패", image: nil)
+                self?.view.makeToast("", duration: 2.0, position: .center, title: "댓글작성 실패", image: nil)
                 }
             }
      

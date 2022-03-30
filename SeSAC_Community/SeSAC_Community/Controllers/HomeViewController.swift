@@ -9,6 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    deinit {
+        print("\(self) deinit")
+    }
+    
     private let homeView = HomeView()
     
     override func loadView() {

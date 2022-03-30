@@ -9,7 +9,7 @@ import Foundation
 
 class GetCommentsViewModel {
     
-    func getComments(boardId: Int, completion: @escaping (Comment?) -> Void) {
+    func getComments(boardId: Int, completion: @escaping (Comment?) -> Void) { 
         CommentManager.getCommentByBoardId(boardId: boardId) { comments, error in
             
             guard let comments = comments else {

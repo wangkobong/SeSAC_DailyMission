@@ -92,7 +92,7 @@ class SignUpView: UIView {
         }
     }
     
-    internal func setupConstraints() {
+    fileprivate func setupConstraints() {
         
         emailField.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)

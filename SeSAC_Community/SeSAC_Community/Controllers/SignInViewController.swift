@@ -13,6 +13,10 @@ class SignInViewController: UIViewController {
     private let signInView = SignInView()
     private let signInViewModel = SignInViewModel()
     
+    deinit {
+        print("\(self) deinit")
+    }
+    
     override func loadView() {
         self.view = signInView
 
@@ -48,7 +52,7 @@ class SignInViewController: UIViewController {
     
     @objc private func didTabSignIn() {
         print(#function)
-        signInViewModel.postUserLogin { success in
+        signInViewModel.postUserLogin { [weak self] success in
             if success {
                 DispatchQueue.main.async {
                     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
@@ -58,7 +62,7 @@ class SignInViewController: UIViewController {
 
                 }
             } else {
-                self.view.makeToast("이메일 또는 비밀번호를 확인해주세요!", duration: 2.0, position: .center, title: "로그인 실패", image: nil)
+                self?.view.makeToast("이메일 또는 비밀번호를 확인해주세요!", duration: 2.0, position: .center, title: "로그인 실패", image: nil)
             }
         }
     }
